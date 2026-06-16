@@ -1,0 +1,6 @@
+{
+  "name": "Villa Bungalov Tatil",
+  "description": "Lüks Sapanca villaları ve ısıtmalı havuzlu bungalov tatil seçenekleri sunan yapay zeka destekli rezervasyon platformu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

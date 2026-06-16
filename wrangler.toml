@@ -1,0 +1,17 @@
+name = "villa-bungalov-tatil"
+compatibility_date = "2024-03-20"
+pages_build_output_dir = "dist"
+
+# D1 Database Binding
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "villa_bungalov_db"
+# database_id = "YOUR_DATABASE_ID_HERE"
+
+# R2 Bucket Binding
+# [[r2_buckets]]
+# binding = "R2_CDN"
+# bucket_name = "villa-bungalov-assets"
+
+[vars]
+# GEMINI_API_KEY = "YOUR_API_KEY"
