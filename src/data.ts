@@ -38,6 +38,8 @@ export interface Villa {
   };
   classifiedImages?: Array<{ id: string; url: string; name: string; category: 'vitrin' | 'dis' | 'ic' | 'hizmet' }>;
   kademeliFiyatlar?: TieredPrice[];
+  approvalStatus?: 'pending' | 'approved' | 'rejected';
+  featuredCategories?: string[]; // 'balayi', 'muhafazakar'
 }
 
 export interface TieredPrice {

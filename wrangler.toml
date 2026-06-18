@@ -3,15 +3,15 @@ compatibility_date = "2024-03-20"
 pages_build_output_dir = "dist"
 
 # D1 Database Binding
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "villa_bungalov_db"
-# database_id = "YOUR_DATABASE_ID_HERE"
+[[d1_databases]]
+binding = "DB"
+database_name = "villa-bungalov-tatil"
+database_id = "49ee8e7b-20bf-4d58-bb56-fd35679e3ffd"
 
 # R2 Bucket Binding
-# [[r2_buckets]]
-# binding = "R2_CDN"
-# bucket_name = "villa-bungalov-assets"
+[[r2_buckets]]
+binding = "R2_CDN"
+bucket_name = "r2-villa-bungalov-tatil"
 
 [vars]
 # GEMINI_API_KEY = "YOUR_API_KEY"

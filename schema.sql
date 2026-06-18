@@ -41,6 +41,8 @@ CREATE TABLE villas (
     rating REAL DEFAULT 0.00 CHECK (rating >= 0 AND rating <= 5),
     review_count INTEGER DEFAULT 0 CHECK (review_count >= 0),
     host_id TEXT NOT NULL REFERENCES users(id) ON DELETE RESTRICT,
+    approval_status TEXT NOT NULL DEFAULT 'pending' CHECK (approval_status IN ('pending', 'approved', 'rejected')),
+    featured_categories TEXT,
     min_nights INTEGER NOT NULL DEFAULT 1 CHECK (min_nights >= 1),
     pre_payment_rate INTEGER DEFAULT 0 CHECK (pre_payment_rate >= 0 AND pre_payment_rate <= 100),
     

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Phone, MessageCircle, CalendarDays, Heart, User, Plus, Grid, Info, ChevronDown, LogOut, Shield } from 'lucide-react';
+import { Compass, Phone, MessageCircle, CalendarDays, Heart, User, Plus, Grid, Info, ChevronDown, LogOut, Shield, Menu, X } from 'lucide-react';
 import { AGENCY_DETAILS, REGIONS, REGIONS_MAP, VILLA_TYPES_MAP } from '../data';
 
 interface NavbarProps {
@@ -40,6 +40,7 @@ export default function Navbar({
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [citiesDropdownOpen, setCitiesDropdownOpen] = useState(false);
   const [typesDropdownOpen, setTypesDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [logoTitle, setLogoTitle] = useState(() => localStorage.getItem("villabungalov_logo_title") || "VillaBungalovTatil");
   const [logoSubtitle, setLogoSubtitle] = useState(() => localStorage.getItem("villabungalov_logo_subtitle") || "Harika Evler Muhteşem Tatiller");
@@ -54,7 +55,6 @@ export default function Navbar({
   }, []);
 
   // If we are currently viewing a dashboard panel (custom pathway), do not render this header.
-  // The user says "panellerde sitenin üst ve alt tarafı olmasın".
   if (['/kullanici', '/evsahibi', '/admin'].includes(currentPath)) {
     return null;
   }
@@ -77,7 +77,7 @@ export default function Navbar({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-stone-200 bg-white/95 backdrop-blur-md shadow-xs" id="app-header">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex flex-col lg:flex-row lg:h-20 max-w-7xl items-center justify-between px-2 sm:px-6 lg:px-8 py-3 lg:py-0 gap-3 lg:gap-0">
         
         {/* Brand Logo in signature Airbnb pink-rose */}
         <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => onNavigate('/')}>
@@ -204,7 +204,7 @@ export default function Navbar({
         </nav>
 
         {/* Right action items */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2 w-full lg:w-auto">
           
           {/* Konut Ekle (Red Button) */}
           <button
@@ -386,8 +386,87 @@ export default function Navbar({
             )}
           </div>
 
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex lg:hidden h-9 w-9 items-center justify-center rounded-full border border-stone-200 bg-stone-50 text-stone-600 hover:bg-stone-100 transition-all cursor-pointer"
+          >
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+
         </div>
       </div>
+
+      {/* Mobile Full Screen Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute top-20 left-0 right-0 bg-white border-b border-stone-200 shadow-xl z-50 p-4 max-h-[80vh] overflow-y-auto animate-in fade-in slide-in-from-top-2">
+          <div className="flex flex-col gap-4">
+            
+            {/* Şehirler Section */}
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest pl-1">Bölgeler</span>
+              <div className="grid grid-cols-2 gap-2">
+                {REGIONS.map((reg) => (
+                  <button
+                    key={reg}
+                    onClick={() => {
+                      if (onSelectRegion) onSelectRegion(reg);
+                      setMobileMenuOpen(false);
+                      onNavigate('/');
+                    }}
+                    className="flex items-center gap-2 p-2 rounded-xl border border-stone-100 bg-stone-50 text-left hover:bg-rose-50 hover:border-rose-100 hover:text-rose-600 transition text-stone-700 font-bold text-xs"
+                  >
+                    <span>{reg === "Hepsi" ? "🌍" : REGIONS_MAP[reg]?.icon || "📍"}</span>
+                    <span className="truncate">{reg === "Hepsi" ? "Tüm Şehirler" : reg}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-stone-100" />
+
+            {/* Konutlar Section */}
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest pl-1">Konut Türleri</span>
+              <div className="grid grid-cols-2 gap-2">
+                {Object.entries(VILLA_TYPES_MAP).map(([key, val]) => (
+                  <button
+                    key={key}
+                    onClick={() => {
+                      if (onSelectType) onSelectType(key);
+                      setMobileMenuOpen(false);
+                      onNavigate('/');
+                    }}
+                    className="flex items-center gap-2 p-2 rounded-xl border border-stone-100 bg-stone-50 text-left hover:bg-rose-50 hover:border-rose-100 hover:text-rose-600 transition text-stone-700 font-bold text-xs"
+                  >
+                    <span>{val.icon}</span>
+                    <span className="truncate">{val.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-stone-100" />
+
+            {/* Ekstra Menüler */}
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => { onShowBoats(); setMobileMenuOpen(false); }}
+                className="flex items-center justify-center w-full gap-2 p-3 rounded-xl border border-amber-100 bg-amber-50 text-amber-700 font-extrabold text-sm hover:bg-amber-100 transition"
+              >
+                ⛵ Kiralık Tekne Ara
+              </button>
+              <button
+                onClick={() => { onShowTours(); setMobileMenuOpen(false); }}
+                className="flex items-center justify-center w-full gap-2 p-3 rounded-xl border border-emerald-100 bg-emerald-50 text-emerald-700 font-extrabold text-sm hover:bg-emerald-100 transition"
+              >
+                🍀 Günübirlik Turlar
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      )}
 
     </header>
   );

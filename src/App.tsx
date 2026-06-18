@@ -748,18 +748,22 @@ export default function App() {
 
   // Load state from localStorage on Mount
   useEffect(() => {
-    // 1. Villas load
-    const savedVillas = localStorage.getItem("airbnb_villas");
-    if (savedVillas) {
+    // 1. Villas load from API
+    const fetchVillas = async () => {
       try {
-        setVillas(JSON.parse(savedVillas));
-      } catch (e) {
+        const response = await fetch('/api/villas');
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setVillas(data);
+        } else {
+          setVillas(VILLA_DATA);
+        }
+      } catch (err) {
+        console.error("API Error, fallback to initial data", err);
         setVillas(VILLA_DATA);
       }
-    } else {
-      setVillas(VILLA_DATA);
-      localStorage.setItem("airbnb_villas", JSON.stringify(VILLA_DATA));
-    }
+    };
+    fetchVillas();
 
     // 2. Bookings load
     const savedBookings = localStorage.getItem("villabungalov_bookings");
@@ -887,7 +891,6 @@ export default function App() {
   // Save actions helpers
   const saveVillasState = (updatedList: Villa[]) => {
     setVillas(updatedList);
-    localStorage.setItem("airbnb_villas", JSON.stringify(updatedList));
   };
 
   const saveBookingsState = (updatedList: Booking[]) => {
@@ -3145,8 +3148,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   </button>
                 </div>
 
-                <div className="space-y-4 font-sans">
-                  {villas.map((v) => (
+                <div className="space-y-4 font-sans">`n                  {villas.filter(v => currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).map((v) => (
                     <div
                       key={v.id}
                       className="flex flex-col xl:flex-row items-start xl:items-center justify-between p-4 rounded-2xl border border-stone-100 hover:border-stone-200 bg-stone-50/40 gap-4 transition font-sans"
@@ -3465,6 +3467,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* 1. MİSAFİR YORUMLARI TAB */}
                 {adminActiveTab === "Misafir Yorumları" && (
                   <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
                     <div>
                       <h3 className="text-sm font-black text-stone-900 font-display">Misafir Yorumları Alan Yönetimi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
@@ -3669,6 +3801,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* 3. GÖRSEL ALT MENÜLER TAB */}
                 {adminActiveTab === "Görsel Alt menüler" && (
                   <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
                     <div>
                       <h3 className="text-sm font-black text-stone-900 font-display">Görsel Alt Menü Yapılandırması</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
@@ -3730,6 +3992,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* 5. MANŞET TAB */}
                 {adminActiveTab === "manşet" && (
                   <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
                     <div>
                       <h3 className="text-sm font-black text-stone-900 font-display">Logo ve Marka Slogan Ayarları</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
@@ -3773,6 +4165,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* 6. SSS TAB */}
                 {adminActiveTab === "SSS" && (
                   <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
                     <div>
                       <h3 className="text-sm font-black text-stone-900 font-display">Sıkça Sorulan Sorular (SSS) Yönetimi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
@@ -3872,6 +4394,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* 7. ALAN 1 TAB */}
                 {adminActiveTab === "Alan 1" && (
                   <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
                     <div>
                       <h3 className="text-sm font-black text-stone-900 font-display">Alan 1 - Özel Evler Listesi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
@@ -4295,6 +4947,136 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
             {/* Quick Admin Actions & Platform state control */}
             <div className="space-y-6">
+              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
+                <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  <span>İlan Onay & Vitrin Yönetimi</span>
+                </h3>
+                <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
+                  Ev sahipleri tarafından eklenen ilanları onaylayın/reddedin ve hangi vitrinlerde listeleneceğini seçin.
+                </p>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
+                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Ev Sahibi</th>
+                        <th className="pb-3 font-semibold">Durum</th>
+                        <th className="pb-3 font-semibold text-center">İlan Onayı</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-150">
+                      {villas.map((v) => (
+                        <tr key={v.id} className="hover:bg-stone-50 transition-colors">
+                          <td className="py-3 font-semibold text-stone-800">{v.title || v.name}</td>
+                          <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
+                          <td className="py-3">
+                            {v.approvalStatus === "approved" && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold">Yayında</span>}
+                            {v.approvalStatus === "rejected" && <span className="px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">Reddedildi</span>}
+                            {v.approvalStatus === "pending" && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold">Onay Bekliyor</span>}
+                          </td>
+                          <td className="py-3 text-center">
+                            <div className="flex gap-2 justify-center">
+                              {v.approvalStatus !== "rejected" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "rejected" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'rejected' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-rose-50 text-rose-600 rounded font-medium hover:bg-rose-100 transition-colors"
+                                >
+                                  Reddet
+                                </button>
+                              )}
+                              {v.approvalStatus !== "approved" && (
+                                <button
+                                  onClick={async () => {
+                                    const updatedList = villas.map(villa => 
+                                      villa.id === v.id ? { ...villa, approvalStatus: "approved" } : villa
+                                    );
+                                    saveVillasState(updatedList);
+                                    try {
+                                      await fetch(`/api/villas/${v.id}`, {
+                                        method: 'PUT',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ approvalStatus: 'approved' })
+                                      });
+                                    } catch(e) {}
+                                  }}
+                                  className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded font-medium hover:bg-emerald-100 transition-colors"
+                                >
+                                  Onayla
+                                </button>`n                              )}`n                              <button`n                                onClick={async () => {`n                                  if (confirm("Bu ilan� tamamen silmek istedi�inize emin misiniz?")) {`n                                    const updatedList = villas.filter(villa => villa.id !== v.id);`n                                    saveVillasState(updatedList);`n                                    try {`n                                      await fetch(`/api/villas/${v.id}`, { method: "DELETE" });`n                                    } catch(e) {}`n                                  }`n                                }}`n                                className="px-3 py-1 bg-red-50 text-red-600 rounded font-medium hover:bg-red-100 transition-colors"`n                              >`n                                Sil`n                              </button>`n                            </div>`n                          </td>`n                          <td className="py-3 text-center">
+                            {v.approvalStatus === "approved" ? (
+                              <div className="flex justify-center gap-4">
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("balayi") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "balayi"] : currentCats.filter(c => c !== "balayi");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Balayı
+                                </label>
+                                <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-medium text-stone-600">
+                                  <input 
+                                    type="checkbox" 
+                                    checked={v.featuredCategories?.includes("muhafazakar") || false}
+                                    onChange={async (e) => {
+                                      const isChecked = e.target.checked;
+                                      const currentCats = v.featuredCategories || [];
+                                      const newCats = isChecked ? [...currentCats, "muhafazakar"] : currentCats.filter(c => c !== "muhafazakar");
+                                      const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, featuredCategories: newCats } : villa);
+                                      saveVillasState(updatedList);
+                                      try {
+                                        await fetch(`/api/villas/${v.id}`, {
+                                          method: 'PUT',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ featuredCategories: newCats })
+                                        });
+                                      } catch(e) {}
+                                    }}
+                                    className="rounded text-rose-500 focus:ring-rose-500" 
+                                  />
+                                  Muhafazakar
+                                </label>
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
               {/* Slogan and Image Customization Panel */}
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
                 <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
@@ -7224,10 +8006,19 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
       {showAddVillaModal && (
         <AddVillaModal
           onClose={() => setShowAddVillaModal(false)}
-          onSave={(newVilla) => {
+          onSave={async (newVilla) => {
             const updated = [newVilla, ...villas];
             saveVillasState(updated);
             setShowAddVillaModal(false);
+            try {
+              await fetch('/api/villas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newVilla)
+              });
+            } catch (err) {
+              console.error("Failed to add villa to DB", err);
+            }
           }}
         />
       )}
@@ -9093,3 +9884,7 @@ function EditVillaModal({
     </div>
   );
 }
+
+
+
+

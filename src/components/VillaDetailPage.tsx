@@ -94,6 +94,11 @@ export default function VillaDetailPage({
 
   return (
     <div className="w-full bg-[#FAFAFA]" id="villa-detail-page">
+      {villa.approvalStatus === "pending" && (
+        <div className="bg-amber-100 text-amber-800 text-xs font-bold text-center py-2 px-4 shadow-sm border-b border-amber-200">
+          Bu ilan şu anda onay bekliyor. Sadece sizin (veya sistem yöneticisinin) önizleme yapabilmesi için gösterilmektedir.
+        </div>
+      )}
       
       {/* Detail upper subheader / breadcrumb bar */}
       <div className="border-b border-stone-200 bg-white">

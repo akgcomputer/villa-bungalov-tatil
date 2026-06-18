@@ -15,7 +15,14 @@ export interface Booking {
   guestsCount: number;
   totalDays: number;
   totalPrice: number;
-  status: 'pending' | 'confirmed' | 'cancelled';
+  basePrice?: number;
+  discountAmount?: number;
+  servicesCost?: number;
+  selectedServicesList?: { name: string; cost: number; qty: number }[];
+  prepaymentAmount?: number;
+  status: 'pending' | 'confirmed' | 'host_confirmed' | 'cancelled' | 'user_cancelled' | 'host_cancelled' | 'admin_cancelled';
+  paymentStatus?: 'pending' | 'paid' | 'iban_notified';
+  cancelReason?: string;
   createdAt: string;
 }
 
@@ -141,14 +148,36 @@ export default function ReservationPanel({ isOpen, onClose, bookings, onCancelBo
                       </div>
                     </div>
 
-                    {/* Calculated Total Price */}
-                    <div className="mt-4 flex items-center justify-between border-t border-stone-100 pt-3">
-                      <div>
-                        <span className="block text-[10px] text-stone-400 uppercase font-medium">Tahmini Toplam Tutar</span>
-                        <span className="font-mono text-sm font-bold text-amber-600">{booking.totalPrice.toLocaleString('tr-TR')} ₺</span>
+                    {/* Calculated Total Price Detailed */}
+                    <div className="mt-4 border-t border-stone-100 pt-3">
+                      <div className="space-y-1 mb-3">
+                        <div className="flex justify-between text-xs font-medium text-stone-500">
+                          <span>Konaklama Bedeli:</span>
+                          <span>₺{(booking.basePrice || booking.totalPrice).toLocaleString('tr-TR')}</span>
+                        </div>
+                        {booking.discountAmount ? (
+                          <div className="flex justify-between text-xs font-bold text-emerald-600">
+                            <span>Kupon İndirimi:</span>
+                            <span>-₺{booking.discountAmount.toLocaleString('tr-TR')}</span>
+                          </div>
+                        ) : null}
+                        {booking.selectedServicesList?.map((s, idx) => (
+                          <div key={idx} className="flex justify-between text-xs font-medium text-stone-500">
+                            <span>Ek Hizmet: {s.name} (x{s.qty})</span>
+                            <span>+₺{s.cost.toLocaleString('tr-TR')}</span>
+                          </div>
+                        ))}
+                        <div className="flex justify-between text-sm font-bold text-stone-800 pt-1 border-t border-stone-100/50">
+                          <span>Tahmini Toplam Tutar:</span>
+                          <span className="text-amber-600">₺{booking.totalPrice.toLocaleString('tr-TR')}</span>
+                        </div>
+                        <div className="flex justify-between text-xs font-bold text-rose-600 bg-rose-50 p-1.5 rounded mt-2">
+                          <span>Ön Ödeme (Kaparo):</span>
+                          <span>₺{((booking as any).prepaymentAmount || booking.totalPrice * 0.1).toLocaleString('tr-TR')}</span>
+                        </div>
                       </div>
-                      
-                      <div className="flex gap-1.5">
+
+                      <div className="flex justify-end gap-1.5 border-t border-stone-100 pt-3">
                         {booking.status !== 'cancelled' && (
                           <button
                             onClick={() => onCancelBooking(booking.id)}

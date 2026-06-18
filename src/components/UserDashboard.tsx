@@ -17,7 +17,8 @@ interface UserDashboardProps {
   onAddCompanion: (name: string, tcNo: string) => void;
   onDeleteCompanion: (id: string) => void;
   bookings: any[];
-  onCancelBooking: (bookingId: string) => void;
+  onCancelBooking: (bookingId: string, reason?: string) => void;
+  onUpdateBooking?: (bookingId: string, data: any) => void;
   favorites: string[];
   villas: any[];
   onSelectVilla: (villa: any) => void;
@@ -34,6 +35,7 @@ export default function UserDashboard({
   onDeleteCompanion,
   bookings,
   onCancelBooking,
+  onUpdateBooking,
   favorites,
   villas,
   onSelectVilla,
@@ -55,6 +57,12 @@ export default function UserDashboard({
   const [compTc, setCompTc] = useState('');
   const [compError, setCompError] = useState('');
   const [compSuccess, setCompSuccess] = useState('');
+
+  // Payment & Cancel Popup states
+  const [paymentPopup, setPaymentPopup] = useState<'cc' | 'iban' | null>(null);
+  const [selectedBookingId, setSelectedBookingId] = useState<string | null>(null);
+  const [cancelPopupOpen, setCancelPopupOpen] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
 
   // Handle companion addition
   const handleCompanionSubmit = (e: React.FormEvent) => {
@@ -105,8 +113,8 @@ export default function UserDashboard({
 
   // Filter bookings belonging to this logged-in guest user (by name / phone matches)
   const myBookings = bookings.filter(b => 
-    b.phone === currentUser.phone || 
-    b.name.toLowerCase() === currentUser.name.toLowerCase()
+    (b.phone === currentUser.phone || b.guestPhone === currentUser.phone) || 
+    ((b.name || b.guestName || '').toLowerCase() === currentUser.name.toLowerCase())
   );
 
   // Filter bookmarked villas
@@ -128,7 +136,7 @@ export default function UserDashboard({
             <User className="h-6 w-6" />
           </div>
           <div>
-            <span className="block text-[10px] font-black text-[#FF385C] uppercase tracking-widest leading-none mb-1">MİSAFİR SEÇKİN KOKPİTİ</span>
+            <span className="block text-[10px] font-black text-[#FF385C] uppercase tracking-widest leading-none mb-1">MİSAFİR Yönetim Paneli</span>
             <h1 className="text-xl font-extrabold tracking-tight text-stone-950 leading-none">Hoş Geldiniz, {currentUser.name}</h1>
           </div>
         </div>
@@ -161,6 +169,13 @@ export default function UserDashboard({
             <LogOut className="h-3.5 w-3.5" />
             <span>Güvenli Çıkış</span>
           </button>
+          
+          <a
+            href="/"
+            className="flex items-center gap-1.5 rounded-2xl bg-[#FF385C] hover:bg-rose-600 text-white font-extrabold px-4 py-2 text-xs transition shadow-md hover:shadow active:scale-95 cursor-pointer"
+          >
+            Siteyi Aç
+          </a>
         </div>
 
       </div>
@@ -200,7 +215,7 @@ export default function UserDashboard({
           >
             <div className="flex items-center gap-2.5">
               <Users className="h-4 w-4" />
-              <span>Kayıtlı Refakatçiler</span>
+              <span>Yakınlarım</span>
             </div>
             {companions.length > 0 && (
               <span className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] font-mono leading-none ${activeTab === 'companions' ? 'bg-white text-stone-900 font-black' : 'bg-stone-100 text-stone-600'}`}>
@@ -266,6 +281,9 @@ export default function UserDashboard({
                 <div>
                   <h2 className="text-lg font-black text-stone-900 font-display">Rezervasyon Talepleriniz</h2>
                   <p className="text-xs text-stone-500 mt-1">Ön rezervasyonlarınızın güncel rezervasyon onay durumunu ve detaylarını buradan takip edin.</p>
+                  <div className="mt-4 bg-emerald-50 text-emerald-800 p-4 rounded-xl border border-emerald-100 text-xs leading-relaxed font-medium">
+                    WhatsApp Hattımızla talebinizi ayrıca iletmeniz için otomatik yönlendirildiniz. Onayın ardında buradan takip edebileceksiniz, hizmet veren (ev yada tekne sahibi) ile iletişime geçebileceksiniz.
+                  </div>
                 </div>
 
                 {myBookings.length === 0 ? (
@@ -321,30 +339,99 @@ export default function UserDashboard({
                               <p className="text-[11px] font-medium text-stone-400 mt-1">
                                 TALEP NO: <span className="font-mono text-stone-500 font-bold">#{booking.id.toUpperCase().slice(0, 6)}</span>
                               </p>
+                              <div className="mt-2">
+                                {booking.paymentStatus === 'paid' ? (
+                                  <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-md">Ödeme Yapıldı</span>
+                                ) : booking.paymentStatus === 'iban_notified' ? (
+                                  <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md">IBAN Bildirimi Yapıldı</span>
+                                ) : (
+                                  <span className="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-md">Ödeme Yapılmadı</span>
+                                )}
+                              </div>
                             </div>
                           </div>
 
-                          <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-3 md:pt-0 md:pl-6 text-left md:text-right flex flex-row md:flex-col justify-between md:justify-center items-center md:items-end gap-2 shrink-0">
-                            <div>
-                              <span className="block text-[10px] text-stone-400 font-bold uppercase leading-none tracking-wide">ÖDENECEK KAPARO (%10)</span>
-                              <span className="block text-base font-extrabold text-stone-900 font-mono leading-none mt-1">
-                                ₺{(booking.totalPrice * 0.1).toLocaleString('tr-TR')}
-                              </span>
-                              <span className="block text-[9px] text-stone-400 mt-1">Sitede ödenecek kaparo tescili</span>
+                          <div className="border-t md:border-t-0 md:border-l border-stone-200 pt-3 md:pt-0 md:pl-6 text-left md:text-right flex flex-col justify-between items-stretch gap-3 shrink-0 min-w-[220px]">
+                            {/* Detailed Price Breakdown */}
+                            <div className="bg-white p-3 rounded-xl border border-stone-100 shadow-sm text-xs font-medium text-stone-600 w-full text-left">
+                              {/* If base price exists, show it */}
+                              {(booking as any).basePrice && (
+                                <div className="flex justify-between mb-1.5 text-stone-500">
+                                  <span>Konaklama Bedeli:</span>
+                                  <span>₺{((booking as any).basePrice).toLocaleString('tr-TR')}</span>
+                                </div>
+                              )}
+                              
+                              {/* If discount applied, show it */}
+                              {(booking as any).discountAmount > 0 && (
+                                <div className="flex justify-between mb-1.5 text-emerald-600 font-semibold">
+                                  <span>İndirim Tutarı:</span>
+                                  <span>-₺{((booking as any).discountAmount).toLocaleString('tr-TR')}</span>
+                                </div>
+                              )}
+                              
+                              {/* Service Cost */}
+                              <div className="flex flex-col gap-1 mb-2 text-[10px] text-stone-400 border-b border-stone-100 pb-2">
+                                {(booking as any).selectedServicesList?.map((s: any, idx: number) => (
+                                  <div key={idx} className="flex justify-between">
+                                    <span>Ek Hizmet: {s.name} (x{s.qty})</span>
+                                    <span className="text-stone-700 font-semibold">+₺{s.cost.toLocaleString('tr-TR')}</span>
+                                  </div>
+                                ))}
+                                {(!(booking as any).selectedServicesList || (booking as any).selectedServicesList.length === 0) && (
+                                  <div className="flex justify-between">
+                                    <span>Ek Hizmet:</span>
+                                    <span>Yok</span>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className="flex justify-between mb-1.5">
+                                <span>Toplam Tutar:</span>
+                                <span className="font-mono text-stone-900 font-bold">₺{booking.totalPrice.toLocaleString('tr-TR')}</span>
+                              </div>
+                              
+                              <div className="flex justify-between items-center text-rose-600 bg-rose-50 p-2 rounded-lg border border-rose-100 font-bold mb-1 mt-2">
+                                <span>Ön Ödeme (Kaparo vb.):</span>
+                                <span className="font-mono text-[13px]">₺{((booking as any).prepaymentAmount || booking.totalPrice * 0.1).toLocaleString('tr-TR')}</span>
+                              </div>
+                              <div className="flex justify-between items-center text-stone-500 bg-stone-50 p-2 rounded-lg font-semibold text-[10px]">
+                                <span>Kapıda Kalan:</span>
+                                <span className="font-mono">₺{(booking.totalPrice - ((booking as any).prepaymentAmount || booking.totalPrice * 0.1)).toLocaleString('tr-TR')}</span>
+                              </div>
                             </div>
 
-                            {booking.status === 'pending' && (
-                              <button
-                                onClick={() => {
-                                  if (confirm('Bu ön rezervasyon talebini iptal etmek istediğinize emin misiniz?')) {
-                                    onCancelBooking(booking.id);
-                                  }
-                                }}
-                                className="rounded-lg bg-stone-100 hover:bg-rose-50 hover:text-rose-600 text-stone-500 font-bold px-3 py-1.5 text-[10px] tracking-wide transition uppercase cursor-pointer"
-                              >
-                                İPTAL ET
-                              </button>
-                            )}
+                            <div className="flex flex-col gap-1.5 mt-2">
+                              {(booking.status === 'pending' || booking.status === 'confirmed' || booking.status === 'host_confirmed') && booking.paymentStatus !== 'paid' && booking.paymentStatus !== 'iban_notified' && (
+                                <>
+                                  <button
+                                    onClick={() => { setSelectedBookingId(booking.id); setPaymentPopup('cc'); }}
+                                    className="rounded-lg bg-[#FF385C] hover:bg-rose-600 text-white font-bold px-3 py-1.5 text-[10px] tracking-wide transition cursor-pointer"
+                                  >
+                                    Kredi Kartı ile Öde
+                                  </button>
+                                  <button
+                                    onClick={() => { setSelectedBookingId(booking.id); setPaymentPopup('iban'); }}
+                                    className="rounded-lg bg-stone-800 hover:bg-stone-900 text-white font-bold px-3 py-1.5 text-[10px] tracking-wide transition cursor-pointer"
+                                  >
+                                    İban EFT/Havale ile öde
+                                  </button>
+                                </>
+                              )}
+
+                              {(booking.status === 'pending' || booking.status === 'confirmed') && (
+                                <button
+                                  onClick={() => {
+                                    setSelectedBookingId(booking.id);
+                                    setCancelReason('');
+                                    setCancelPopupOpen(true);
+                                  }}
+                                  className="rounded-lg bg-stone-100 hover:bg-rose-50 hover:text-rose-600 text-stone-500 font-bold px-3 py-1.5 text-[10px] tracking-wide transition uppercase cursor-pointer"
+                                >
+                                  {booking.status === 'confirmed' ? 'İptal talebinde bulun' : 'İPTAL ET'}
+                                </button>
+                              )}
+                            </div>
                           </div>
 
                         </div>
@@ -359,7 +446,7 @@ export default function UserDashboard({
             {activeTab === 'companions' && (
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-lg font-black text-stone-900 font-display">Tesis Refakatçi Havuzunuz</h2>
+                  <h2 className="text-lg font-black text-stone-900 font-display">Tesislerde Benimle Birlikte Kalacak Yakınlarım</h2>
                   <p className="text-xs text-stone-500 mt-1">
                     Misafir bildirim bildirim yasası gereğince, tesiste sizinle beraber kalacak misafirlerin Ad Soyad ve T.C. bilgilerini önceden ekleyebilirsiniz.
                   </p>
@@ -367,7 +454,7 @@ export default function UserDashboard({
 
                 {/* Companion Adding form */}
                 <form onSubmit={handleCompanionSubmit} className="bg-stone-50 p-5 rounded-2xl border border-stone-150 space-y-4">
-                  <h3 className="text-xs font-black text-stone-800 uppercase tracking-widest">➕ Yeni Refakatçi Ekle</h3>
+                  <h3 className="text-xs font-black text-stone-800 uppercase tracking-widest">➕ Yeni Yakınımı Ekle</h3>
                   
                   {compError && (
                     <div className="bg-red-50 text-red-700 p-2.5 rounded-xl text-xs flex items-center gap-1.5 border border-red-100 animate-pulse">
@@ -399,7 +486,7 @@ export default function UserDashboard({
 
                     <div>
                       <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1.5">
-                        🔒 Cep Telefon Numarası veya T.C. Kimlik <span className="text-red-500 text-xs inline">*</span>
+                        🔒 T.C. Kimlik <span className="text-red-500 text-xs inline">*</span>
                       </label>
                       <input
                         type="text"
@@ -589,6 +676,92 @@ export default function UserDashboard({
         </div>
 
       </div>
+
+      {/* Popups */}
+      {cancelPopupOpen && selectedBookingId && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-sm p-6 shadow-xl">
+            <h3 className="text-lg font-black text-stone-900 mb-2">İptal Nedeni</h3>
+            <p className="text-xs text-stone-500 mb-4">Lütfen rezervasyonunuzu iptal etme nedeninizi kısaca belirtin.</p>
+            <textarea
+              className="w-full rounded-xl border border-stone-200 p-3 text-sm focus:ring-[#FF385C] focus:border-[#FF385C] resize-none h-24 mb-4"
+              placeholder="İptal sebebiniz..."
+              value={cancelReason}
+              onChange={(e) => setCancelReason(e.target.value)}
+            />
+            <div className="flex gap-3 justify-end">
+              <button 
+                onClick={() => setCancelPopupOpen(false)}
+                className="px-4 py-2 text-xs font-bold text-stone-500 hover:bg-stone-100 rounded-xl"
+              >
+                Vazgeç
+              </button>
+              <button 
+                onClick={() => {
+                  onCancelBooking(selectedBookingId, cancelReason);
+                  setCancelPopupOpen(false);
+                }}
+                className="px-4 py-2 text-xs font-bold bg-rose-600 text-white rounded-xl hover:bg-rose-700"
+              >
+                İptal İşlemini Tamamla
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {paymentPopup === 'cc' && selectedBookingId && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl relative">
+            <button onClick={() => setPaymentPopup(null)} className="absolute top-4 right-4 text-stone-400 hover:text-stone-700"><Trash2 className="h-4 w-4 hidden" /> ✕</button>
+            <h3 className="text-lg font-black text-stone-900 mb-4">Kredi Kartı ile Öde</h3>
+            <div className="space-y-4">
+              <input type="text" placeholder="Kart Üzerindeki İsim" className="w-full border rounded-xl p-3 text-sm" />
+              <input type="text" placeholder="Kart Numarası (XXXX XXXX XXXX XXXX)" className="w-full border rounded-xl p-3 text-sm font-mono" />
+              <div className="flex gap-4">
+                <input type="text" placeholder="AA/YY" className="w-1/2 border rounded-xl p-3 text-sm" />
+                <input type="text" placeholder="CVC" className="w-1/2 border rounded-xl p-3 text-sm" />
+              </div>
+              <button 
+                onClick={() => {
+                  if (onUpdateBooking) onUpdateBooking(selectedBookingId, { paymentStatus: 'paid' });
+                  setPaymentPopup(null);
+                  alert('Ödeme başarıyla alındı!');
+                }}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl mt-4"
+              >
+                Ödemeyi Tamamla
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {paymentPopup === 'iban' && selectedBookingId && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl relative">
+            <button onClick={() => setPaymentPopup(null)} className="absolute top-4 right-4 text-stone-400 hover:text-stone-700">✕</button>
+            <h3 className="text-lg font-black text-stone-900 mb-2">IBAN ile Ödeme</h3>
+            <p className="text-xs text-stone-500 mb-4">Lütfen kaparo tutarını aşağıdaki hesaba transfer ettikten sonra bildirim butonuna tıklayınız.</p>
+            <div className="bg-stone-50 border border-stone-200 p-4 rounded-xl mb-4">
+              <div className="text-xs text-stone-400 font-bold mb-1">Alıcı:</div>
+              <div className="text-sm font-bold text-stone-800 mb-3">Villa Bungalov Tatil Turizm Tic. A.Ş.</div>
+              <div className="text-xs text-stone-400 font-bold mb-1">IBAN:</div>
+              <div className="text-sm font-mono font-bold text-stone-800 break-all select-all">TR12 3456 7890 0000 0000 0000 00</div>
+            </div>
+            <button 
+              onClick={() => {
+                if (onUpdateBooking) onUpdateBooking(selectedBookingId, { paymentStatus: 'iban_notified' });
+                setPaymentPopup(null);
+                alert('Ödeme bildiriminiz alınmıştır.');
+              }}
+              className="w-full bg-[#FF385C] hover:bg-rose-600 text-white font-bold py-3 rounded-xl"
+            >
+              Ödemeyi Yaptım
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
