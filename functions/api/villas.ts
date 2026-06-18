@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         v.id, v.name, v.type, v.title, v.region, v.capacity, v.bedrooms, v.bathrooms, 
         v.price_per_night as pricePerNight, v.description, v.badge, v.whatsapp_message as whatsappMessage, 
         v.rating, v.review_count as reviewCount, v.min_nights as minNights, v.is_boat as isBoat,
-        v.approval_status as approvalStatus, v.featured_categories as featuredCategories,
+        v.approval_status as approvalStatus, v.featured_categories as featuredCategories, v.host_id as hostId,
         u.name as hostName, u.avatar_url as hostAvatar,
         (SELECT json_group_array(image_url) FROM (SELECT image_url FROM villa_images WHERE villa_id = v.id ORDER BY display_order)) as images,
         (SELECT json_group_array(json_object('id', es.id, 'name', es.name, 'price', es.price, 'type', es.type)) FROM extra_services es WHERE es.villa_id = v.id OR es.villa_id IS NULL) as extraServices
@@ -90,3 +90,4 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return Response.json({ error: err.message }, { status: 500 });
   }
 };
+
