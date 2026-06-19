@@ -10,6 +10,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         v.price_per_night as pricePerNight, v.description, v.badge, v.whatsapp_message as whatsappMessage, 
         v.rating, v.review_count as reviewCount, v.min_nights as minNights, v.is_boat as isBoat,
         v.approval_status as approvalStatus, v.featured_categories as featuredCategories, v.host_id as hostId,
+        v.is_active as isActive,
         u.name as hostName, u.avatar_url as hostAvatar,
         (SELECT json_group_array(image_url) FROM (SELECT image_url FROM villa_images WHERE villa_id = v.id ORDER BY display_order)) as images,
         (SELECT json_group_array(json_object('id', es.id, 'name', es.name, 'price', es.price, 'type', es.type)) FROM extra_services es WHERE es.villa_id = v.id OR es.villa_id IS NULL) as extraServices
@@ -29,6 +30,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       images: JSON.parse(row.images || '[]'),
       extraServices: JSON.parse(row.extraServices || '[]'),
       tieredPrices: [],
+      isActive: row.isActive !== 0,
       boatDetails: row.isBoat ? {
         boatType: row.boatType || "Katamaran",
         skipper: row.skipper || "Kaptanlı",
@@ -61,8 +63,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       INSERT INTO villas (
         id, name, type, title, region, capacity, bedrooms, bathrooms, price_per_night, 
         description, badge, whatsapp_message, rating, review_count, host_id, 
-        approval_status, featured_categories, min_nights, is_boat, boat_type, boat_skipper, boat_concept, boat_port
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        approval_status, featured_categories, min_nights, is_boat, boat_type, boat_skipper, boat_concept, boat_port, is_active
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       villa.id, villa.name, villa.type || 'villa', villa.title || '', villa.region || 'İstanbul',
       villa.capacity || 2, villa.bedrooms || 1, villa.bathrooms || 1, villa.pricePerNight || 0,
@@ -70,7 +72,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       villa.rating || 0, villa.reviewCount || 0, hostId,
       villa.approvalStatus || 'pending', featuredCats, villa.minNights || 1, isBoat,
       villa.boatDetails?.boatType || '', villa.boatDetails?.skipper || '', 
-      villa.boatDetails?.concept || '', villa.boatDetails?.port || ''
+      villa.boatDetails?.concept || '', villa.boatDetails?.port || '',
+      villa.isActive !== false ? 1 : 0
     ).run();
 
     // 3. Insert images

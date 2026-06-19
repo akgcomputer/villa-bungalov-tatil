@@ -20,6 +20,11 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
       values.push(JSON.stringify(updateData.featuredCategories));
     }
 
+    if (updateData.isActive !== undefined) {
+      updates.push('is_active = ?');
+      values.push(updateData.isActive ? 1 : 0);
+    }
+
     if (updates.length === 0) {
       return Response.json({ success: true, message: "No updates provided" });
     }
