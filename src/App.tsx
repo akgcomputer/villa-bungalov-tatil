@@ -751,17 +751,32 @@ export default function App() {
   // Load state from localStorage on Mount
   useEffect(() => {
     // 1. Villas load
-    const savedVillas = localStorage.getItem("airbnb_villas");
-    if (savedVillas) {
+    const loadVillas = async () => {
       try {
-        setVillas(JSON.parse(savedVillas));
-      } catch (e) {
-        setVillas(VILLA_DATA);
+        const response = await fetch('/api/villas');
+        if (response.ok) {
+          const apiVillas = await response.json();
+          setVillas(apiVillas);
+          localStorage.setItem("airbnb_villas", JSON.stringify(apiVillas));
+          return;
+        }
+      } catch (err) {
+        console.error("API fetch error", err);
       }
-    } else {
-      setVillas(VILLA_DATA);
-      localStorage.setItem("airbnb_villas", JSON.stringify(VILLA_DATA));
-    }
+      
+      const savedVillas = localStorage.getItem("airbnb_villas");
+      if (savedVillas) {
+        try {
+          setVillas(JSON.parse(savedVillas));
+        } catch (e) {
+          setVillas(VILLA_DATA);
+        }
+      } else {
+        setVillas(VILLA_DATA);
+        localStorage.setItem("airbnb_villas", JSON.stringify(VILLA_DATA));
+      }
+    };
+    loadVillas();
 
     // 2. Bookings load
     const savedBookings = localStorage.getItem("villabungalov_bookings");
@@ -911,6 +926,7 @@ export default function App() {
 
   // Main system filters (Guest view)
   const filteredVillas = villas.filter((villa) => {
+    if (villa.isActive === false) return false;
     // Region
     if (filterRegion !== "Hepsi" && villa.region !== filterRegion) return false;
     // Type
@@ -3205,10 +3221,20 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           📅 Kademeli Fiyat Gir
                         </button>
                         <button
-                          onClick={() => handleDeleteVilla(v.id)}
+                          onClick={() => handleToggleActive(v.id, v.isActive)}
+                          className="bg-stone-100 border border-stone-200 hover:bg-stone-200 text-stone-700 rounded-xl px-3 py-2 text-xs font-black transition cursor-pointer shrink-0 flex items-center gap-1"
+                        >
+                          {v.isActive === false ? '▶ İlanı Başlat' : '⏸ İlanı Durdur'}
+                        </button>
+                        <button
+                          onClick={() => {
+                            if(window.confirm('İlanı tamamen silmek istediğinize emin misiniz?')) {
+                              handleDeleteVilla(v.id);
+                            }
+                          }}
                           className="bg-rose-50 hover:bg-[#FF385C] text-[#FF385C] hover:text-white rounded-xl px-3 py-2 text-xs font-black transition cursor-pointer shrink-0 border border-rose-100"
                         >
-                          İlanı Kapat
+                          🗑 İlanı Sil
                         </button>
                       </div>
                     </div>
