@@ -1,0 +1,45 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/villas/:id",
+      "mountPath": "/api/villas",
+      "method": "DELETE",
+      "module": [
+        "api/villas/[id].ts:onRequestDelete"
+      ]
+    },
+    {
+      "routePath": "/api/villas/:id",
+      "mountPath": "/api/villas",
+      "method": "PUT",
+      "module": [
+        "api/villas/[id].ts:onRequestPut"
+      ]
+    },
+    {
+      "routePath": "/api/chat",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/chat.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/villas",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/villas.ts:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/villas",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/villas.ts:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
