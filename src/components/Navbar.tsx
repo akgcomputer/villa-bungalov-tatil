@@ -344,24 +344,7 @@ export default function Navbar({
                     </button>
                   )}
 
-                  {/* Admin Session Options */}
-                  {currentAdmin ? (
-                    <button
-                      onClick={() => { setProfileDropdownOpen(false); onNavigate('/admin'); }}
-                      className="w-full text-left rounded-xl px-2.5 py-1.5 text-xs text-stone-700 hover:bg-blue-500/5 hover:text-blue-600 font-semibold transition-colors flex items-center gap-2"
-                    >
-                      <Shield className="h-3.5 w-3.5" />
-                      <span>Yönetici Paneli</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => { setProfileDropdownOpen(false); onOpenLogin('admin'); }}
-                      className="w-full text-left rounded-xl px-2.5 py-1.5 text-xs text-stone-700 hover:bg-stone-50 transition-colors flex items-center gap-2 border-t border-stone-100 pt-1.5 mt-1"
-                    >
-                      <Shield className="h-3.5 w-3.5 text-blue-600" />
-                      <span>Admin Girişi</span>
-                    </button>
-                  )}
+
 
                   {/* Clear All active sessions */}
                   {(currentUser || currentHost || currentAdmin) && (

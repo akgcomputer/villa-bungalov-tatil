@@ -131,11 +131,13 @@ export default function App() {
     () => window.location.pathname || "/",
   );
   const currentRole =
-    currentPath === "/evsahibi"
+    currentPath.startsWith("/evsahibi")
       ? "host"
-      : currentPath === "/admin"
-        ? "admin"
-        : "guest";
+      : currentPath.startsWith("/admin")
+      ? "admin"
+      : currentPath.startsWith("/kullanici")
+      ? "guest"
+      : "guest";
 
   const navigateTo = (path: string) => {
     window.history.pushState(null, "", path);
@@ -793,6 +795,9 @@ export default function App() {
         guestsCount: 2,
         totalDays: 3,
         totalPrice: 15600,
+        basePrice: 15600,
+        discountAmount: 0,
+        prepaymentAmount: 1560,
         status: "confirmed",
         createdAt: "2026-06-11T12:00:00Z",
       },
@@ -808,6 +813,9 @@ export default function App() {
         guestsCount: 4,
         totalDays: 4,
         totalPrice: 50000,
+        basePrice: 50000,
+        discountAmount: 0,
+        prepaymentAmount: 5000,
         status: "pending",
         createdAt: "2026-06-12T10:30:00Z",
       },
@@ -823,6 +831,9 @@ export default function App() {
         guestsCount: 6,
         totalDays: 2,
         totalPrice: 37000,
+        basePrice: 37000,
+        discountAmount: 0,
+        prepaymentAmount: 3700,
         status: "pending",
         createdAt: "2026-06-12T14:15:00Z",
       },
@@ -927,6 +938,7 @@ export default function App() {
   // Main system filters (Guest view)
   const filteredVillas = villas.filter((villa) => {
     if (villa.isActive === false) return false;
+    if (villa.approvalStatus !== "approved" && villa.approvalStatus !== undefined) return false;
     // Region
     if (filterRegion !== "Hepsi" && villa.region !== filterRegion) return false;
     // Type
@@ -1105,9 +1117,9 @@ export default function App() {
     handleOpenQuickBook(villa);
   };
 
-  const handleCancelBooking = (bookingId: string) => {
+  const handleCancelBooking = (bookingId: string, reason?: string) => {
     const updated = bookings.map((b) =>
-      b.id === bookingId ? { ...b, status: "cancelled" as const } : b,
+      b.id === bookingId ? { ...b, status: "cancelled" as const, cancelReason: reason } : b,
     );
     saveBookingsState(updated);
   };
@@ -1253,6 +1265,21 @@ export default function App() {
       guestsCount: bookingForm.guestsCount,
       totalDays: days,
       totalPrice: finalTotalPrice,
+      basePrice: total,
+      discountAmount: campaignDiscountAmount,
+      servicesCost: servicesCost,
+      selectedServicesList: bookingForm.serviceQuantities ? 
+        Object.entries(bookingForm.serviceQuantities)
+          .filter(([_, qty]) => qty > 0)
+          .map(([id, qty]) => {
+            const srv = villa.services?.find(s => s.id === id);
+            return {
+              name: srv?.name || id,
+              cost: srv ? (srv.type.includes("per_person") ? srv.price * bookingForm.guestsCount * qty : srv.price * qty) : 0,
+              qty
+            };
+          }) : [],
+      prepaymentAmount: onRezOdenecek,
       status: "pending",
       createdAt: new Date().toISOString(),
     };
@@ -1428,9 +1455,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
   // Host Action: Delete house listing
   const handleDeleteVilla = async (id: string) => {
-    const updated = villas.filter((v) => v.id !== id);
+    // Instead of completely removing, mark it as inactive and rejected, so admin can see it was deleted.
+    const updated = villas.map((v) => v.id === id ? { ...v, isActive: false, approvalStatus: "rejected" as const } : v);
     saveVillasState(updated);
     try {
+      // Assuming the API handles soft deletes or real deletes. If real delete, we still keep it locally as inactive for admin history.
       await fetch(`/api/villas/${id}`, { method: 'DELETE' });
     } catch (e) {
       console.error("Failed to delete villa from API", e);
@@ -2109,32 +2138,34 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             )}
 
             {(() => {
-              const muhafazakarVillas = villas.filter(v => 
+              const activeVillas = villas.filter(v => v.isActive !== false && (v.approvalStatus === "approved" || v.approvalStatus === undefined));
+              
+              const muhafazakarVillas = activeVillas.filter(v => 
                 v.title.toLowerCase().includes("muhafazakar") || 
                 v.title.toLowerCase().includes("korunaklı") || 
                 v.description.toLowerCase().includes("muhafazakar") ||
                 (v.badge && (v.badge.toLowerCase().includes("muhafazakar") || v.badge.toLowerCase().includes("korunaklı")))
               ).slice(0, 3);
-              const finalMuhafazakar = muhafazakarVillas.length >= 3 ? muhafazakarVillas : [...muhafazakarVillas, ...villas.filter(v => !muhafazakarVillas.includes(v))].slice(0, 3);
+              const finalMuhafazakar = muhafazakarVillas.length >= 3 ? muhafazakarVillas : [...muhafazakarVillas, ...activeVillas.filter(v => !muhafazakarVillas.includes(v))].slice(0, 3);
 
-              const balayiVillas = villas.filter(v => 
+              const balayiVillas = activeVillas.filter(v => 
                 v.title.toLowerCase().includes("balayı") || 
                 v.title.toLowerCase().includes("romantik") || 
                 v.description.toLowerCase().includes("balayı") ||
                 v.type === "balayi"
               ).slice(0, 3);
-              const finalBalayi = balayiVillas.length >= 3 ? balayiVillas : [...balayiVillas, ...villas.filter(v => !balayiVillas.includes(v))].slice(0, 3);
+              const finalBalayi = balayiVillas.length >= 3 ? balayiVillas : [...balayiVillas, ...activeVillas.filter(v => !balayiVillas.includes(v))].slice(0, 3);
 
-              const hemenVillas = villas.filter(v => 
+              const hemenVillas = activeVillas.filter(v => 
                 v.title.toLowerCase().includes("anında") || 
                 v.title.toLowerCase().includes("hemen") || 
                 v.instantBook || 
                 v.id.toString().includes("instant") ||
                 v.id.toString().includes("vip")
               ).slice(0, 3);
-              const finalHemen = hemenVillas.length >= 3 ? hemenVillas : [...hemenVillas, ...villas.filter(v => !hemenVillas.includes(v))].slice(0, 3);
+              const finalHemen = hemenVillas.length >= 3 ? hemenVillas : [...hemenVillas, ...activeVillas.filter(v => !hemenVillas.includes(v))].slice(0, 3);
 
-              const anindaVillas = villas.filter(v => 
+              const anindaVillas = activeVillas.filter(v => 
                 v.title.toLowerCase().includes("anında") || 
                 v.instantBook || 
                 v.id.toString().includes("instant")
@@ -2859,7 +2890,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   Aktif İlanlarınız
                 </span>
                 <span className="font-mono text-lg font-extrabold text-stone-900">
-                  {villas.length} İlan
+                  {villas.filter(v => v.isActive !== false && currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).length} İlan
                 </span>
                 <span className="block text-[9px] text-[#10B981] mt-0.5 font-bold">
                   Kiralama yayında aktif
@@ -2977,9 +3008,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </span>
                             )}
                             {b.status === "cancelled" && (
-                              <span className="bg-rose-100 text-rose-800 text-[10px] px-2 py-0.5 rounded font-bold uppercase">
-                                Reddedildi
-                              </span>
+                              <div className="flex items-center gap-1 group relative inline-flex">
+                                <span className="bg-rose-100 text-rose-800 text-[10px] px-2 py-0.5 rounded font-bold uppercase">
+                                  Reddedildi
+                                </span>
+                                {b.cancelReason && (
+                                  <>
+                                    <HelpCircle className="h-4 w-4 text-stone-400 cursor-help" />
+                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-stone-800 text-white text-[10px] p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-normal normal-case font-normal text-center">
+                                      <span className="block font-bold mb-0.5 text-stone-300">İptal Gerekçesi:</span>
+                                      {b.cancelReason}
+                                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
                             )}
                           </div>
                         </div>
@@ -3182,7 +3225,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 </div>
 
                 <div className="space-y-4 font-sans">
-                  {villas.filter(v => currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).map((v) => (
+                  {villas.filter(v => v.isActive !== false && currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).map((v) => (
                     <div
                       key={v.id}
                       className="flex flex-col xl:flex-row items-start xl:items-center justify-between p-4 rounded-2xl border border-stone-100 hover:border-stone-200 bg-stone-50/40 gap-4 transition font-sans"
@@ -3394,7 +3437,23 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             </div>
           </div>
 
-          <div className="flex flex-col space-y-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <button onClick={() => navigateTo("/admin/users")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
+              <Users className="h-5 w-5 text-blue-400" /> Kullanıcılar
+            </button>
+            <button onClick={() => navigateTo("/admin/hosts")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
+              <UserCheck className="h-5 w-5 text-emerald-400" /> Ev Sahipleri
+            </button>
+            <button onClick={() => navigateTo("/admin/campaigns")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
+              <BadgeAlert className="h-5 w-5 text-amber-400" /> Kampanyalar
+            </button>
+            <button onClick={() => navigateTo("/admin/pictures")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
+              <ImageIcon className="h-5 w-5 text-[#FF385C]" /> Görseller
+            </button>
+          </div>
+
+          {currentPath === "/admin" && (
+            <div className="flex flex-col space-y-8">
             {/* Global Reservation queue system for Admin */}
             <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
               <h3 className="text-base font-bold text-stone-950 mb-4 font-display">
@@ -3461,9 +3520,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </span>
                             )}
                             {b.status === "cancelled" && (
-                              <span className="bg-rose-100 text-rose-800 text-[10px] px-2 py-1 rounded font-bold">
-                                İptal
-                              </span>
+                              <div className="flex items-center justify-center gap-1 group relative">
+                                <span className="bg-rose-100 text-rose-800 text-[10px] px-2 py-1 rounded font-bold">
+                                  İptal
+                                </span>
+                                {b.cancelReason && (
+                                  <>
+                                    <HelpCircle className="h-4 w-4 text-stone-400 cursor-help" />
+                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-stone-800 text-white text-[10px] p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-normal font-normal text-left">
+                                      <span className="block font-bold mb-0.5 text-stone-300">İptal Gerekçesi:</span>
+                                      {b.cancelReason}
+                                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
                             )}
                           </td>
                           <td className="py-4">
@@ -3586,7 +3657,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               <button
                                 onClick={async () => {
                                   if (confirm("Bu ilanı tamamen silmek istediğinize emin misiniz?")) {
-                                    const updatedList = villas.filter(villa => villa.id !== v.id);
+                                    const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, isActive: false, approvalStatus: "rejected" as const } : villa);
                                     saveVillasState(updatedList);
                                     try {
                                       await fetch(`/api/villas/${v.id}`, { method: "DELETE" });
@@ -4794,6 +4865,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         guestsCount: 2,
                         totalDays: 3,
                         totalPrice: randomVilla.pricePerNight * 3,
+                        basePrice: randomVilla.pricePerNight * 3,
+                        discountAmount: 0,
+                        servicesCost: 0,
+                        selectedServicesList: [],
+                        prepaymentAmount: Math.round(randomVilla.pricePerNight * 3 * 0.1),
                         status: "pending",
                         createdAt: new Date().toISOString(),
                       };
@@ -4806,8 +4882,53 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   </button>
                 </div>
               </div>
+            </div>
+            </div>
+          )}
+
+          {currentPath === "/admin/users" && (
+            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
+              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
+                <Users className="h-5 w-5 text-blue-500" /> Sistem Kullanıcıları
+              </h3>
+              <div className="text-center py-10 text-stone-400 text-xs">
+                Yükleniyor...
               </div>
-          </div>
+            </div>
+          )}
+
+          {currentPath === "/admin/hosts" && (
+            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
+              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
+                <UserCheck className="h-5 w-5 text-emerald-500" /> Ev Sahipleri Yönetimi
+              </h3>
+              <div className="text-center py-10 text-stone-400 text-xs">
+                Yükleniyor...
+              </div>
+            </div>
+          )}
+
+          {currentPath === "/admin/campaigns" && (
+            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
+              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
+                <BadgeAlert className="h-5 w-5 text-amber-500" /> Kampanyalar ve Kuponlar
+              </h3>
+              <div className="text-center py-10 text-stone-400 text-xs">
+                Yükleniyor...
+              </div>
+            </div>
+          )}
+
+          {currentPath === "/admin/pictures" && (
+            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
+              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
+                <ImageIcon className="h-5 w-5 text-[#FF385C]" /> Tesis Görselleri
+              </h3>
+              <div className="text-center py-10 text-stone-400 text-xs">
+                Yükleniyor...
+              </div>
+            </div>
+          )}
         </main>
       )}
 
@@ -6413,7 +6534,6 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <h3 className="text-base font-extrabold font-display mt-0.5">
                 {activeLoginPopup === "guest" && "Kullanıcı Girişi"}
                 {activeLoginPopup === "host" && "Ev Sahibi Girişi"}
-                {activeLoginPopup === "admin" && "Sistem Yöneticisi Girişi"}
               </h3>
             </div>
 
@@ -6598,51 +6718,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 </button>
               </div>
 
-              {/* Demo Fill Helper */}
-              <div className="bg-stone-50 border border-stone-200/60 rounded-xl p-2.5 text-[10px] text-stone-500 leading-relaxed">
-                <span className="block text-[8px] font-black text-stone-450 uppercase tracking-wider mb-1">
-                  Hızlı Test Hesabı (Tıklayın Dolsun)
-                </span>
-                {activeLoginPopup === "guest" && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setInputPhone("555 555 55 55");
-                      setInputPassword("123456");
-                    }}
-                    className="w-full text-left p-1 rounded bg-white hover:bg-rose-50 border border-stone-150 transition-colors cursor-pointer mt-0.5 text-[9px]"
-                  >
-                    👤 Misafir Girişi: <b>555 555 55 55</b> / Şifre:{" "}
-                    <b>123456</b>
-                  </button>
-                )}
-                {activeLoginPopup === "host" && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setInputPhone("532 532 32 32");
-                      setInputPassword("123456");
-                    }}
-                    className="w-full text-left p-1 rounded bg-white hover:bg-amber-50 border border-stone-150 transition-colors cursor-pointer mt-0.5 text-[9px]"
-                  >
-                    🏡 Ev Sahibi Girişi: <b>532 532 32 32</b> / Şifre:{" "}
-                    <b>123456</b>
-                  </button>
-                )}
-                {activeLoginPopup === "admin" && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setInputPhone("544 544 44 44");
-                      setInputPassword("123456");
-                    }}
-                    className="w-full text-left p-1 rounded bg-white hover:bg-blue-50 border border-stone-150 transition-colors cursor-pointer mt-0.5 text-[9px]"
-                  >
-                    👑 Yönetici Girişi: <b>544 544 44 44</b> / Şifre:{" "}
-                    <b>123456</b>
-                  </button>
-                )}
-              </div>
+
 
               <div className="text-center text-[11px] text-stone-500 pt-1 border-t border-stone-100">
                 <span>Hesabınız yok mu? </span>

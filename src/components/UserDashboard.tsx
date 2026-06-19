@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   User, Calendar, Heart, ShieldAlert, Users, Trash2, 
-  Clock, Plus, Mail, Phone, ShieldCheck, RefreshCw, LogOut, CheckCircle, AlertCircle
+  Clock, Plus, Mail, Phone, ShieldCheck, RefreshCw, LogOut, CheckCircle, AlertCircle, HelpCircle
 } from 'lucide-react';
 import { getVillaPricePerNightForDisplay } from '../data';
 
@@ -327,7 +327,19 @@ export default function UserDashboard({
                                   <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">ONAYLANDI</span>
                                 )}
                                 {booking.status === 'cancelled' && (
-                                  <span className="bg-stone-200 text-stone-600 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">KAYIT İPTAL</span>
+                                  <div className="flex items-center gap-1 group relative">
+                                    <span className="bg-stone-200 text-stone-600 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">KAYIT İPTAL</span>
+                                    {booking.cancelReason && (
+                                      <>
+                                        <HelpCircle className="h-4 w-4 text-stone-400 cursor-help" />
+                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-stone-800 text-white text-[10px] p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-normal">
+                                          <span className="block font-bold mb-0.5 text-stone-300">İptal Gerekçesi:</span>
+                                          {booking.cancelReason}
+                                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></div>
+                                        </div>
+                                      </>
+                                    )}
+                                  </div>
                                 )}
                               </div>
                               <p className="text-[11px] text-stone-500 font-medium mt-1 leading-normal">
