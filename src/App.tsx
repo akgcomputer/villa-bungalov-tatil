@@ -185,7 +185,7 @@ export default function App() {
   const [regPassConfirm, setRegPassConfirm] = useState("");
   const [regShowPass, setRegShowPass] = useState(false);
 
-  // Time-out session management (Zaman aşımı - 15 minutes)
+  // Time-out session management (Zaman aÅŸÄ±mÄ± - 15 minutes)
   const [sessionTimeout, setSessionTimeout] = useState<number>(900);
 
   // Listen to popstate for back/forward browser support
@@ -219,7 +219,7 @@ export default function App() {
           }
           navigateTo("/");
           alert(
-            "Güvenliğiniz için 15 dakikalık oturum zaman aşımı süreniz dolmuştur. Lütfen tekrar giriş yapın.",
+            "GÃ¼venliÄŸiniz iÃ§in 15 dakikalÄ±k oturum zaman aÅŸÄ±mÄ± sÃ¼reniz dolmuÅŸtur. LÃ¼tfen tekrar giriÅŸ yapÄ±n.",
           );
           return 900;
         }
@@ -284,13 +284,13 @@ export default function App() {
   const [filterRegion, setFilterRegion] = useState("Hepsi");
   const [filterType, setFilterType] = useState<string>("all");
   const [heroSlogan, setHeroSlogan] = useState(() => {
-    return localStorage.getItem("villabungalov_hero_slogan") || "Şehrin Stresinden Uzak, Doğayla İç İçe Tatil İçin..";
+    return localStorage.getItem("villabungalov_hero_slogan") || "Åehrin Stresinden Uzak, DoÄŸayla Ä°Ã§ Ä°Ã§e Tatil Ä°Ã§in..";
   });
   const [heroTitle, setHeroTitle] = useState(() => {
-    return localStorage.getItem("villabungalov_hero_title") || "🌴 Şehirden uzak ama yakın yerde 3-4 gün ne kadar güzel olurdu..";
+    return localStorage.getItem("villabungalov_hero_title") || "ğŸŒ´ Åehirden uzak ama yakÄ±n yerde 3-4 gÃ¼n ne kadar gÃ¼zel olurdu..";
   });
   const [heroDescription, setHeroDescription] = useState(() => {
-    return localStorage.getItem("villabungalov_hero_desc") || "Bazen Deniz kenarı bazen Göl kenarında ya da dağın eteklerinde; ısıtmalı havuzlu bungalovlar, lüks villalar ve şömineli evler. Onaylı Ev sahiplerinden yerinizi ayırtın.";
+    return localStorage.getItem("villabungalov_hero_desc") || "Bazen Deniz kenarÄ± bazen GÃ¶l kenarÄ±nda ya da daÄŸÄ±n eteklerinde; Ä±sÄ±tmalÄ± havuzlu bungalovlar, lÃ¼ks villalar ve ÅŸÃ¶mineli evler. OnaylÄ± Ev sahiplerinden yerinizi ayÄ±rtÄ±n.";
   });
   const [heroBgImage, setHeroBgImage] = useState(() => {
     const saved = localStorage.getItem("villabungalov_hero_bg");
@@ -306,9 +306,9 @@ export default function App() {
       try { return JSON.parse(saved); } catch (e) { return []; }
     }
     return [
-      { id: '1', type: 'WhatsApp', label: '7/24 Doğrudan WhatsApp Destek', value: '+90 541 246 54 29', url: 'https://wa.me/905412465429' },
-      { id: '2', type: 'Telefon', label: 'Doğrudan Ev Sahibi Asistanı', value: '+90 541 246 54 29', url: 'tel:+905412465429' },
-      { id: '3', type: 'Instagram', label: 'Instagram Resmi Hesabımız', value: '@villabungalovtatil', url: 'https://instagram.com/villabungalovtatil' }
+      { id: '1', type: 'WhatsApp', label: '7/24 DoÄŸrudan WhatsApp Destek', value: '+90 541 246 54 29', url: 'https://wa.me/905412465429' },
+      { id: '2', type: 'Telefon', label: 'DoÄŸrudan Ev Sahibi AsistanÄ±', value: '+90 541 246 54 29', url: 'tel:+905412465429' },
+      { id: '3', type: 'Instagram', label: 'Instagram Resmi HesabÄ±mÄ±z', value: '@villabungalovtatil', url: 'https://instagram.com/villabungalovtatil' }
     ];
   });
 
@@ -318,9 +318,9 @@ export default function App() {
     window.dispatchEvent(new Event('villabungalov_socials_changed'));
   };
 
-  // CMS STATE HOOKS (Süper Admin)
+  // CMS STATE HOOKS (SÃ¼per Admin)
   const [topBarText, setTopBarText] = useState(() => {
-    return localStorage.getItem("villabungalov_topbar_text") || "Türkiye'nin En Seçkin Villa ve Bungalov Evleri Tek Adreste!";
+    return localStorage.getItem("villabungalov_topbar_text") || "TÃ¼rkiye'nin En SeÃ§kin Villa ve Bungalov Evleri Tek Adreste!";
   });
 
   const [logoTitle, setLogoTitleState] = useState(() => {
@@ -328,7 +328,7 @@ export default function App() {
   });
 
   const [logoSubtitle, setLogoSubtitleState] = useState(() => {
-    return localStorage.getItem("villabungalov_logo_subtitle") || "Harika Evler Muhteşem Tatiller";
+    return localStorage.getItem("villabungalov_logo_subtitle") || "Harika Evler MuhteÅŸem Tatiller";
   });
 
   // helper to change logo and notify other components
@@ -341,7 +341,7 @@ export default function App() {
   };
 
   const [reviewsSubtitle, setReviewsSubtitle] = useState(() => {
-    return localStorage.getItem("villabungalov_reviews_subtitle") || "Daha önce konaklayan misafirlerimizin gerçek tatil ve deneyim paylaşımları";
+    return localStorage.getItem("villabungalov_reviews_subtitle") || "Daha Ã¶nce konaklayan misafirlerimizin gerÃ§ek tatil ve deneyim paylaÅŸÄ±mlarÄ±";
   });
 
   const [reviewsData, setReviewsData] = useState<{name: string, comment: string, property: string}[]>(() => {
@@ -351,40 +351,40 @@ export default function App() {
     }
     return [
       {
-        name: "Kübra Ö.",
-        comment: "Harika bir muhafazakar villa deneyimi yaşadık. Havuzun dışarıdan görünmemesi bizim için çok önemliydi, gerçekten çok rahattı.",
-        property: "Muhafazakar Aile Bahçeli"
+        name: "KÃ¼bra Ã–.",
+        comment: "Harika bir muhafazakar villa deneyimi yaÅŸadÄ±k. Havuzun dÄ±ÅŸarÄ±dan gÃ¶rÃ¼nmemesi bizim iÃ§in Ã§ok Ã¶nemliydi, gerÃ§ekten Ã§ok rahattÄ±.",
+        property: "Muhafazakar Aile BahÃ§eli"
       },
       {
         name: "Ahmet T.",
-        comment: "Eşimle balayımız için burayı tercih ettik. Şömine başında ve jakuzide vakit geçirmek mükemmeldi. Herkese tavsiye ederim.",
-        property: "Özel Havuzlu Balayı Evleri"
+        comment: "EÅŸimle balayÄ±mÄ±z iÃ§in burayÄ± tercih ettik. ÅÃ¶mine baÅŸÄ±nda ve jakuzide vakit geÃ§irmek mÃ¼kemmeldi. Herkese tavsiye ederim.",
+        property: "Ã–zel Havuzlu BalayÄ± Evleri"
       },
       {
         name: "Meltem S.",
-        comment: "Sessiz, huzurlu ve doğayla baş başa muazzam bir 3 gün geçirdik. Isıtmalı havuzun derecesi harikaydı, hiç üşümedik.",
-        property: "Isıtmalı Havuzlu Lüks Dome"
+        comment: "Sessiz, huzurlu ve doÄŸayla baÅŸ baÅŸa muazzam bir 3 gÃ¼n geÃ§irdik. IsÄ±tmalÄ± havuzun derecesi harikaydÄ±, hiÃ§ Ã¼ÅŸÃ¼medik.",
+        property: "IsÄ±tmalÄ± Havuzlu LÃ¼ks Dome"
       },
       {
         name: "Can Y.",
-        comment: "Kalabalık arkadaş grubumuzla gittik. Geniş bahçesi, barbekü alanı ve temizliği kusursuzdu. Ev sahibimiz Muhammet Bey'e çok teşekkürler.",
-        property: "Geniş Aile Özel Havuz"
+        comment: "KalabalÄ±k arkadaÅŸ grubumuzla gittik. GeniÅŸ bahÃ§esi, barbekÃ¼ alanÄ± ve temizliÄŸi kusursuzdu. Ev sahibimiz Muhammet Bey'e Ã§ok teÅŸekkÃ¼rler.",
+        property: "GeniÅŸ Aile Ã–zel Havuz"
       },
       {
         name: "Selin G.",
-        comment: "Bungalov tatili severler için kesinlikle 1 numara! Jakuzili banyosu ve lüks dekorasyonuyla rüya gibiydi.",
-        property: "Şömineli ve Jakuzili Dağ Evi"
+        comment: "Bungalov tatili severler iÃ§in kesinlikle 1 numara! Jakuzili banyosu ve lÃ¼ks dekorasyonuyla rÃ¼ya gibiydi.",
+        property: "ÅÃ¶mineli ve Jakuzili DaÄŸ Evi"
       },
       {
         name: "Burak K.",
-        comment: "Lokasyon ve manzara mükemmel. Anında onay sistemiyle çok hızlı kiraladık, her şey anlatıldığı gibi tertemizdi.",
-        property: "Kalkan Koyu Şık Balayı"
+        comment: "Lokasyon ve manzara mÃ¼kemmel. AnÄ±nda onay sistemiyle Ã§ok hÄ±zlÄ± kiraladÄ±k, her ÅŸey anlatÄ±ldÄ±ÄŸÄ± gibi tertemizdi.",
+        property: "Kalkan Koyu ÅÄ±k BalayÄ±"
       }
     ];
   });
 
   const [faqSubtitle, setFaqSubtitle] = useState(() => {
-    return localStorage.getItem("villabungalov_faq_subtitle") || "Rezervasyon süreci ve konaklama kuralları hakkında bilmek istedikleriniz";
+    return localStorage.getItem("villabungalov_faq_subtitle") || "Rezervasyon sÃ¼reci ve konaklama kurallarÄ± hakkÄ±nda bilmek istedikleriniz";
   });
 
   const [faqList, setFaqList] = useState<{q: string, a: string}[]>(() => {
@@ -394,46 +394,46 @@ export default function App() {
     }
     return [
       {
-        q: "Giriş ve çıkış saatleri nedir?",
-        a: "Giriş saati en erken 14:00, çıkış saati ise en geç 11:00'dir. Erken giriş veya geç çıkış talepleri tesisin müsaitlik durumuna göre önceden teyit edilerek planlanabilir."
+        q: "GiriÅŸ ve Ã§Ä±kÄ±ÅŸ saatleri nedir?",
+        a: "GiriÅŸ saati en erken 14:00, Ã§Ä±kÄ±ÅŸ saati ise en geÃ§ 11:00'dir. Erken giriÅŸ veya geÃ§ Ã§Ä±kÄ±ÅŸ talepleri tesisin mÃ¼saitlik durumuna gÃ¶re Ã¶nceden teyit edilerek planlanabilir."
       },
       {
         q: "Evcil hayvan kabul ediliyor mu?",
-        a: "Bazı bungalov ve villalarımız evcil hayvan kabul etmektedir. Detayları incelemek için ilan sayfalarındaki 'Evcil Dostu' filtresini kullanabilirsiniz."
+        a: "BazÄ± bungalov ve villalarÄ±mÄ±z evcil hayvan kabul etmektedir. DetaylarÄ± incelemek iÃ§in ilan sayfalarÄ±ndaki 'Evcil Dostu' filtresini kullanabilirsiniz."
       },
       {
-        q: "Isıtmalı havuzlar kışın sıcak oluyor mu?",
-        a: "Evet, ısıtmalı havuzlarımızın tamamı kış dönemlerinde dahi 28-30°C sıcaklık seviyesine sahip otomatik termostatik ısıtıcılarla sabit tutulmaktadır."
+        q: "IsÄ±tmalÄ± havuzlar kÄ±ÅŸÄ±n sÄ±cak oluyor mu?",
+        a: "Evet, Ä±sÄ±tmalÄ± havuzlarÄ±mÄ±zÄ±n tamamÄ± kÄ±ÅŸ dÃ¶nemlerinde dahi 28-30Â°C sÄ±caklÄ±k seviyesine sahip otomatik termostatik Ä±sÄ±tÄ±cÄ±larla sabit tutulmaktadÄ±r."
       },
       {
-        q: "Kaporayı nasıl ödüyoruz?",
-        a: "Rezervasyon esnasında toplam tutarın %20-30 civarındaki ön ödemesini (kapora) güvenli banka havalesi veya kredi kartı ile doğrudan mülk sahibine yapabilirsiniz."
+        q: "KaporayÄ± nasÄ±l Ã¶dÃ¼yoruz?",
+        a: "Rezervasyon esnasÄ±nda toplam tutarÄ±n %20-30 civarÄ±ndaki Ã¶n Ã¶demesini (kapora) gÃ¼venli banka havalesi veya kredi kartÄ± ile doÄŸrudan mÃ¼lk sahibine yapabilirsiniz."
       },
       {
         q: "Fiyatlara KDV ve temizlik dahil mi?",
-        a: "Fiyatlarımız şeffaftır. Temizlik ücretleri bazı evlerimizde fiyata dahilken, bazılarında tek seferlik çıkış ücreti olarak belirtilir. İlan detaylarında görebilirsiniz."
+        a: "FiyatlarÄ±mÄ±z ÅŸeffaftÄ±r. Temizlik Ã¼cretleri bazÄ± evlerimizde fiyata dahilken, bazÄ±larÄ±nda tek seferlik Ã§Ä±kÄ±ÅŸ Ã¼creti olarak belirtilir. Ä°lan detaylarÄ±nda gÃ¶rebilirsiniz."
       },
       {
         q: "Rezervasyon iptal edilebilir mi?",
-        a: "Giriş tarihinize 30 gün kalana dek yapılan iptallerde ön ödemenizin %100'ü kesintisiz olarak hesabınıza iade edilmektedir."
+        a: "GiriÅŸ tarihinize 30 gÃ¼n kalana dek yapÄ±lan iptallerde Ã¶n Ã¶demenizin %100'Ã¼ kesintisiz olarak hesabÄ±nÄ±za iade edilmektedir."
       },
       {
-        q: "Gıda alışverişimizi nereden yapabiliriz?",
-        a: "Tesislerimizin birçoğu market ve restoran kurye ağlarının merkezindedir. Ayrıca en yakın yerel zincir markete genellikle 5-10 dakikalık sürüş mesafesindedir."
+        q: "GÄ±da alÄ±ÅŸveriÅŸimizi nereden yapabiliriz?",
+        a: "Tesislerimizin birÃ§oÄŸu market ve restoran kurye aÄŸlarÄ±nÄ±n merkezindedir. AyrÄ±ca en yakÄ±n yerel zincir markete genellikle 5-10 dakikalÄ±k sÃ¼rÃ¼ÅŸ mesafesindedir."
       },
       {
         q: "Villalarda elektrik ve internet kesintisi oluyor mu?",
-        a: "Tesislerimizin birçoğunda fiber internet ve elektrik dalgalanmalarına karşı jeneratör ya da regülatör sistemi kurulu olup kesintisiz bir deneyim sunulmaktadır."
+        a: "Tesislerimizin birÃ§oÄŸunda fiber internet ve elektrik dalgalanmalarÄ±na karÅŸÄ± jeneratÃ¶r ya da regÃ¼latÃ¶r sistemi kurulu olup kesintisiz bir deneyim sunulmaktadÄ±r."
       },
       {
-        q: "Jakuzi ve şömine kullanımı ücretsiz mi?",
-        a: "Evet, şömine ve jakuzi donanımı olan tüm evlerimizde bu hizmetler konaklama fiyatına dahildir ve ek bir ücret ödemeniz gerekmez."
+        q: "Jakuzi ve ÅŸÃ¶mine kullanÄ±mÄ± Ã¼cretsiz mi?",
+        a: "Evet, ÅŸÃ¶mine ve jakuzi donanÄ±mÄ± olan tÃ¼m evlerimizde bu hizmetler konaklama fiyatÄ±na dahildir ve ek bir Ã¼cret Ã¶demeniz gerekmez."
       }
     ];
   });
 
   const [area1Subtitle, setArea1Subtitle] = useState(() => {
-    return localStorage.getItem("villabungalov_area1_subtitle") || "Aradığınız en spesifik özelliklere sahip popüler kiralama alternatifleri";
+    return localStorage.getItem("villabungalov_area1_subtitle") || "AradÄ±ÄŸÄ±nÄ±z en spesifik Ã¶zelliklere sahip popÃ¼ler kiralama alternatifleri";
   });
 
   const [area1Titles, setArea1Titles] = useState<string[]>(() => {
@@ -442,43 +442,43 @@ export default function App() {
       try { return JSON.parse(saved); } catch (e) { }
     }
     return [
-      "Evcil Hayvan İzinli Villalar",
-      "Evcil Hayvan Kabul Eden Kiralık Villa",
-      "Evcil Hayvan İzinli Kiralık Bungalov",
+      "Evcil Hayvan Ä°zinli Villalar",
+      "Evcil Hayvan Kabul Eden KiralÄ±k Villa",
+      "Evcil Hayvan Ä°zinli KiralÄ±k Bungalov",
       "Bungalov Villalar",
-      "Havuzu Dışarıdan Görünmeyen Bungalov Evler",
-      "Jakuzili ve Şömineli Kiralık Bungalovlar",
-      "Kiralık Lüks Villalar",
-      "Kiralık Konforlu Özel Havuzlu Lüks Villalar",
-      "Muhafazakar Kiralık Villa Seçenekleri",
-      "En Romantik Balayı Villaları ve Fiyatları",
-      "Lüks Göz Alıcı Kiralık Isıtmalı Isınan Havuzlu Villalar",
-      "Jakuzili ve Şömineli Romantik Dağ Evleri"
+      "Havuzu DÄ±ÅŸarÄ±dan GÃ¶rÃ¼nmeyen Bungalov Evler",
+      "Jakuzili ve ÅÃ¶mineli KiralÄ±k Bungalovlar",
+      "KiralÄ±k LÃ¼ks Villalar",
+      "KiralÄ±k Konforlu Ã–zel Havuzlu LÃ¼ks Villalar",
+      "Muhafazakar KiralÄ±k Villa SeÃ§enekleri",
+      "En Romantik BalayÄ± VillalarÄ± ve FiyatlarÄ±",
+      "LÃ¼ks GÃ¶z AlÄ±cÄ± KiralÄ±k IsÄ±tmalÄ± IsÄ±nan Havuzlu Villalar",
+      "Jakuzili ve ÅÃ¶mineli Romantik DaÄŸ Evleri"
     ];
   });
 
   const [area2Title, setArea2Title] = useState(() => {
-    return localStorage.getItem("villabungalov_area2_title") || "Kiralık Villa ve Bungalov Seçenekleri ile İzole ve Konforlu Bir Tatil";
+    return localStorage.getItem("villabungalov_area2_title") || "KiralÄ±k Villa ve Bungalov SeÃ§enekleri ile Ä°zole ve Konforlu Bir Tatil";
   });
 
   const [area2Subtitle, setArea2Subtitle] = useState(() => {
-    return localStorage.getItem("villabungalov_area2_subtitle") || "Sıcak, özgür ve güvenli bir konaklama rehberi";
+    return localStorage.getItem("villabungalov_area2_subtitle") || "SÄ±cak, Ã¶zgÃ¼r ve gÃ¼venli bir konaklama rehberi";
   });
 
   const [area2Intro, setArea2Intro] = useState(() => {
-    return localStorage.getItem("villabungalov_area2_intro") || "Klasik otel tatillerinin kalabalık, gürültülü ve katı kurallarla dolu atmosferi yerini artık özgürlüğe bırakıyor. Günümüzde tatilciler; çiftlerden kalabalık ailelere, arkadaş gruplarından kafa dinlemek isteyen bireysel gezginlere kadar herkes, kendi kurallarını koyabileceği bir alan arıyor. İşte tam bu noktada villabungalovtatil.com.tr olarak, hayalinizdeki konforlu ve mahremiyet odaklı tatili ayağınıza getiriyoruz. Lüks bir kiralık villa keyfi ya da doğanın kalbinde sıcak bir bungalov deneyimi... Aradığınız huzur ve özgürlük burada başlıyor.";
+    return localStorage.getItem("villabungalov_area2_intro") || "Klasik otel tatillerinin kalabalÄ±k, gÃ¼rÃ¼ltÃ¼lÃ¼ ve katÄ± kurallarla dolu atmosferi yerini artÄ±k Ã¶zgÃ¼rlÃ¼ÄŸe bÄ±rakÄ±yor. GÃ¼nÃ¼mÃ¼zde tatilciler; Ã§iftlerden kalabalÄ±k ailelere, arkadaÅŸ gruplarÄ±ndan kafa dinlemek isteyen bireysel gezginlere kadar herkes, kendi kurallarÄ±nÄ± koyabileceÄŸi bir alan arÄ±yor. Ä°ÅŸte tam bu noktada villabungalovtatil.com.tr olarak, hayalinizdeki konforlu ve mahremiyet odaklÄ± tatili ayaÄŸÄ±nÄ±za getiriyoruz. LÃ¼ks bir kiralÄ±k villa keyfi ya da doÄŸanÄ±n kalbinde sÄ±cak bir bungalov deneyimi... AradÄ±ÄŸÄ±nÄ±z huzur ve Ã¶zgÃ¼rlÃ¼k burada baÅŸlÄ±yor.";
   });
 
   const [area3Title, setArea3Title] = useState(() => {
-    return localStorage.getItem("villabungalov_area3_title") || "Direkt Karşılıklı Güvenli Ev Sahibi Anlaşmaları";
+    return localStorage.getItem("villabungalov_area3_title") || "Direkt KarÅŸÄ±lÄ±klÄ± GÃ¼venli Ev Sahibi AnlaÅŸmalarÄ±";
   });
 
   const [area3Text, setArea3Text] = useState(() => {
-    return localStorage.getItem("villabungalov_area3_text") || "Villa Bungalov Tatil, bağımsız kiralama yapan mülk sahipleri ile doğa tutkunlarını ortak bir tabanda buluşturur. Aracı platform masrafları ve yüksek acente komisyonları olmadan, direkt ev sahibi asistanlığıyla en ekonomik fiyatın keyfini çıkarırsınız.";
+    return localStorage.getItem("villabungalov_area3_text") || "Villa Bungalov Tatil, baÄŸÄ±msÄ±z kiralama yapan mÃ¼lk sahipleri ile doÄŸa tutkunlarÄ±nÄ± ortak bir tabanda buluÅŸturur. AracÄ± platform masraflarÄ± ve yÃ¼ksek acente komisyonlarÄ± olmadan, direkt ev sahibi asistanlÄ±ÄŸÄ±yla en ekonomik fiyatÄ±n keyfini Ã§Ä±karÄ±rsÄ±nÄ±z.";
   });
 
   const [area3ButtonText, setArea3ButtonText] = useState(() => {
-    return localStorage.getItem("villabungalov_area3_btn_text") || "WhatsApp Desteği";
+    return localStorage.getItem("villabungalov_area3_btn_text") || "WhatsApp DesteÄŸi";
   });
 
   const [area3ButtonUrl, setArea3ButtonUrl] = useState(() => {
@@ -494,19 +494,19 @@ export default function App() {
   });
 
   const [area4Title, setArea4Title] = useState(() => {
-    return localStorage.getItem("villabungalov_area4_title") || "Günübirlik Kamp ve Doğa Aktiviteleri";
+    return localStorage.getItem("villabungalov_area4_title") || "GÃ¼nÃ¼birlik Kamp ve DoÄŸa Aktiviteleri";
   });
 
   const [area4Subtitle, setArea4Subtitle] = useState(() => {
-    return localStorage.getItem("villabungalov_area4_subtitle") || "Tatilinizi macera ve huzur dolu anlarla taçlandırın";
+    return localStorage.getItem("villabungalov_area4_subtitle") || "Tatilinizi macera ve huzur dolu anlarla taÃ§landÄ±rÄ±n";
   });
 
   const [area4Text, setArea4Text] = useState(() => {
-    return localStorage.getItem("villabungalov_area4_text") || "Sapanca ve çevresinde at safari, ATV turları ve göl kenarı kano aktiviteleriyle doğanın tadını çıkarabilirsiniz. Rezervasyon sonrası asistanımızla iletişime geçerek indirimli aktivite paketlerinden yararlanın.";
+    return localStorage.getItem("villabungalov_area4_text") || "Sapanca ve Ã§evresinde at safari, ATV turlarÄ± ve gÃ¶l kenarÄ± kano aktiviteleriyle doÄŸanÄ±n tadÄ±nÄ± Ã§Ä±karabilirsiniz. Rezervasyon sonrasÄ± asistanÄ±mÄ±zla iletiÅŸime geÃ§erek indirimli aktivite paketlerinden yararlanÄ±n.";
   });
 
   const [area4ButtonText, setArea4ButtonText] = useState(() => {
-    return localStorage.getItem("villabungalov_area4_btn_text") || "Aktiviteleri Keşfet";
+    return localStorage.getItem("villabungalov_area4_btn_text") || "Aktiviteleri KeÅŸfet";
   });
 
   const [area4ButtonUrl, setArea4ButtonUrl] = useState(() => {
@@ -517,7 +517,7 @@ export default function App() {
     return localStorage.getItem("villabungalov_area4_image_url") || "https://images.unsplash.com/photo-1533587834167-a4814c976da9?auto=format&fit=crop&q=80&w=800";
   });
 
-  const [adminActiveTab, setAdminActiveTab] = useState("Misafir Yorumları");
+  const [adminActiveTab, setAdminActiveTab] = useState("Misafir YorumlarÄ±");
   const [cmsUnsaved, setCmsUnsaved] = useState(false);
   const [cmsPublishing, setCmsPublishing] = useState(false);
   const [cmsPublishSuccess, setCmsPublishSuccess] = useState(false);
@@ -654,7 +654,7 @@ export default function App() {
     return [
       {
         id: "camp-1",
-        name: "Yaz Sezonu Özel Başlangıç Fırsatı",
+        name: "Yaz Sezonu Ã–zel BaÅŸlangÄ±Ã§ FÄ±rsatÄ±",
         code: "YAZ10",
         discountType: "percentage",
         discountValue: 10,
@@ -665,7 +665,7 @@ export default function App() {
       },
       {
         id: "camp-2",
-        name: "Hafta Sonu Bungalov Kampanyası",
+        name: "Hafta Sonu Bungalov KampanyasÄ±",
         code: "BUNGALOV2000",
         discountType: "fixed",
         discountValue: 2000,
@@ -711,14 +711,14 @@ export default function App() {
     name: "",
     title: "",
     type: "bungalow" as Villa["type"],
-    region: "İstanbul" as Villa["region"],
+    region: "Ä°stanbul" as Villa["region"],
     capacity: 4,
     bedrooms: 2,
     bathrooms: 1,
     pricePerNight: 5000,
     minNights: 2,
     description: "",
-    badge: "Yeni İlan",
+    badge: "Yeni Ä°lan",
     features: [] as string[],
     selectedExtraServices: [] as string[],
     imagePreset: "preset1", // Will mapping mock premium images
@@ -748,9 +748,9 @@ export default function App() {
     // Boat Options
     isBoat: false,
     boatType: "Katamaran",
-    skipper: "Kaptanlı",
-    concept: "Günlük Koy Gezisi",
-    port: "Kuruçeşme Marinası, İstanbul",
+    skipper: "KaptanlÄ±",
+    concept: "GÃ¼nlÃ¼k Koy Gezisi",
+    port: "KuruÃ§eÅŸme MarinasÄ±, Ä°stanbul",
   });
   const [hostFormSuccess, setHostFormSuccess] = useState(false);
 
@@ -804,7 +804,7 @@ export default function App() {
         id: "REZ-2026-A101",
         villaId: "sapanca-dome",
         villaName: "Sapanca Glass Dome",
-        guestName: "Ahmet Yılmaz",
+        guestName: "Ahmet YÄ±lmaz",
         guestPhone: "+90 533 987 65 43",
         guestEmail: "ahmet@gmail.com",
         checkIn: "2026-06-15",
@@ -821,7 +821,7 @@ export default function App() {
       {
         id: "REZ-2026-B202",
         villaId: "kirkpinar-nest",
-        villaName: "Kırkpınar Family Villa",
+        villaName: "KÄ±rkpÄ±nar Family Villa",
         guestName: "Zeynep Kaya",
         guestPhone: "+90 542 345 67 89",
         guestEmail: "zeynep@hotmail.com",
@@ -955,7 +955,7 @@ export default function App() {
   // Main system filters (Guest view)
   const filteredVillas = villas.filter((villa) => {
     if (villa.isActive === false) return false;
-    if (villa.approvalStatus !== "approved" && villa.approvalStatus !== undefined) return false;
+    if (villa.approvalStatus !== "approved" && villa.approvalStatus !== undefined && villa.approvalStatus !== "pending_edit") return false;
     // Region
     if (filterRegion !== "Hepsi" && villa.region !== filterRegion) return false;
     // Type
@@ -963,19 +963,19 @@ export default function App() {
       if (filterType === "muhafazakar") {
         const isMuhafazakar = 
           villa.title.toLowerCase().includes("muhafazakar") || 
-          villa.title.toLowerCase().includes("korunaklı") ||
+          villa.title.toLowerCase().includes("korunaklÄ±") ||
           villa.description.toLowerCase().includes("muhafazakar") || 
-          villa.description.toLowerCase().includes("korunaklı") ||
-          (villa.badge && (villa.badge.toLowerCase().includes("muhafazakar") || villa.badge.toLowerCase().includes("korunaklı"))) ||
+          villa.description.toLowerCase().includes("korunaklÄ±") ||
+          (villa.badge && (villa.badge.toLowerCase().includes("muhafazakar") || villa.badge.toLowerCase().includes("korunaklÄ±"))) ||
           villa.type === "muhafazakar";
         if (!isMuhafazakar) return false;
       } else if (filterType === "balayi") {
         const isBalayi = 
-          villa.title.toLowerCase().includes("balayı") || 
+          villa.title.toLowerCase().includes("balayÄ±") || 
           villa.title.toLowerCase().includes("romantik") ||
-          villa.description.toLowerCase().includes("balayı") || 
+          villa.description.toLowerCase().includes("balayÄ±") || 
           villa.description.toLowerCase().includes("romantik") ||
-          (villa.badge && (villa.badge.toLowerCase().includes("balayı") || villa.badge.toLowerCase().includes("romantik"))) ||
+          (villa.badge && (villa.badge.toLowerCase().includes("balayÄ±") || villa.badge.toLowerCase().includes("romantik"))) ||
           villa.type === "balayi";
         if (!isBalayi) return false;
       } else if (filterType === "bungalow") {
@@ -1029,19 +1029,19 @@ export default function App() {
 
     if (lower.includes("evcil") || lower.includes("pet")) {
       setActiveAmenities(["pet_friendly"]);
-    } else if (lower.includes("ısıtmalı") || lower.includes("isitmali")) {
+    } else if (lower.includes("Ä±sÄ±tmalÄ±") || lower.includes("isitmali")) {
       setActiveAmenities(["heated_pool"]);
     } else if (lower.includes("jakuzili")) {
       setActiveAmenities(["jacuzzi"]);
-    } else if (lower.includes("şömineli") || lower.includes("somineli")) {
+    } else if (lower.includes("ÅŸÃ¶mineli") || lower.includes("somineli")) {
       setActiveAmenities(["fireplace"]);
-    } else if (lower.includes("muhafazakar") || lower.includes("korunaklı")) {
+    } else if (lower.includes("muhafazakar") || lower.includes("korunaklÄ±")) {
       setFilterType("muhafazakar");
-    } else if (lower.includes("balayı") || lower.includes("balayi") || lower.includes("romantik")) {
+    } else if (lower.includes("balayÄ±") || lower.includes("balayi") || lower.includes("romantik")) {
       setFilterType("balayi");
     } else if (lower.includes("bungalov")) {
       setFilterType("bungalow");
-    } else if (lower.includes("lüks") || lower.includes("luks") || lower.includes("villa")) {
+    } else if (lower.includes("lÃ¼ks") || lower.includes("luks") || lower.includes("villa")) {
       setFilterType("villa");
     }
 
@@ -1148,7 +1148,7 @@ export default function App() {
 
     if (!currentUser) {
       alert(
-        "Misafir Bilgisi Eksik: Rezervasyon yapmadan önce lütfen yukarıdaki 'Kullanıcı Girişi & Kimlik Bildirim Paneli' üzerinden Ad-Soyad ve T.C. Kimlik numaranızı girerek üye girişi yapınız.",
+        "Misafir Bilgisi Eksik: Rezervasyon yapmadan Ã¶nce lÃ¼tfen yukarÄ±daki 'KullanÄ±cÄ± GiriÅŸi & Kimlik Bildirim Paneli' Ã¼zerinden Ad-Soyad ve T.C. Kimlik numaranÄ±zÄ± girerek Ã¼ye giriÅŸi yapÄ±nÄ±z.",
       );
       return;
     }
@@ -1159,7 +1159,7 @@ export default function App() {
       bookingForm.checkOut,
     );
     if (days <= 0) {
-      alert("Hata: Çıkış tarihi giriş tarihinden sonra olmalıdır.");
+      alert("Hata: Ã‡Ä±kÄ±ÅŸ tarihi giriÅŸ tarihinden sonra olmalÄ±dÄ±r.");
       return;
     }
 
@@ -1167,7 +1167,7 @@ export default function App() {
     const minN = villa.minNights || 2;
     if (days < minN) {
       alert(
-        `Hata: Bu ev için en az konaklama süresi ${minN} gecedir. Giriş/Çıkış tarihlerinizi en az ${minN} gece olacak şekilde güncelleyin. (Mevcut seçiminiz: ${days} Gece)`,
+        `Hata: Bu ev iÃ§in en az konaklama sÃ¼resi ${minN} gecedir. GiriÅŸ/Ã‡Ä±kÄ±ÅŸ tarihlerinizi en az ${minN} gece olacak ÅŸekilde gÃ¼ncelleyin. (Mevcut seÃ§iminiz: ${days} Gece)`,
       );
       return;
     }
@@ -1181,7 +1181,7 @@ export default function App() {
     });
     if (hasOverlap) {
       alert(
-        "Hata: Seçtiğiniz tarihler arasında dolu/rezervasyonlu günler bulunmaktadır. Lütfen takvimde çizgili olmayan uygun tarihleri seçiniz.",
+        "Hata: SeÃ§tiÄŸiniz tarihler arasÄ±nda dolu/rezervasyonlu gÃ¼nler bulunmaktadÄ±r. LÃ¼tfen takvimde Ã§izgili olmayan uygun tarihleri seÃ§iniz.",
       );
       return;
     }
@@ -1196,7 +1196,7 @@ export default function App() {
     }
     if (missingCompanionCount > 0) {
       alert(
-        "Yasal Bildirim Uyarısı: Konaklayacak diğer kişilerin (refakatçilerin) bilgilerini seçmediniz veya eklemediniz. Lütfen listeden seçim yapın ya da yeni refakatçi tanımlayın.",
+        "Yasal Bildirim UyarÄ±sÄ±: Konaklayacak diÄŸer kiÅŸilerin (refakatÃ§ilerin) bilgilerini seÃ§mediniz veya eklemediniz. LÃ¼tfen listeden seÃ§im yapÄ±n ya da yeni refakatÃ§i tanÄ±mlayÄ±n.",
       );
       return;
     }
@@ -1219,7 +1219,7 @@ export default function App() {
           }
           servicesCost += cost;
           srvTextList.push(
-            `${srv.name} (x${qty} - ₺${cost.toLocaleString("tr-TR")})`,
+            `${srv.name} (x${qty} - â‚º${cost.toLocaleString("tr-TR")})`,
           );
         }
       });
@@ -1307,31 +1307,31 @@ export default function App() {
 
     // Dynamic Whatsapp text redirection
     setTimeout(() => {
-      const waText = `Merhaba Villa Bungalov Tatil, sitemizden bir ön rezervasyon talebi başlattım:
+      const waText = `Merhaba Villa Bungalov Tatil, sitemizden bir Ã¶n rezervasyon talebi baÅŸlattÄ±m:
 
-🧾 *Rezervasyon Kodu:* ${newBooking.id}
-🏡 *Tesis:* ${newBooking.villaName} (${villa.region})
-📆 *Tarihler:* ${formatTurkishDate(newBooking.checkIn)} - ${formatTurkishDate(newBooking.checkOut)} (${newBooking.totalDays} Gece)
-👥 *Kişi Sayısı:* ${newBooking.guestsCount} Misafir
-👤 *Rezervasyon Sahibi:* ${currentUser.name} (TC: ${currentUser.tcNo})
-📞 *İrtibat:* ${currentUser.phone} / ${currentUser.email}
+ğŸ§¾ *Rezervasyon Kodu:* ${newBooking.id}
+ğŸ¡ *Tesis:* ${newBooking.villaName} (${villa.region})
+ğŸ“† *Tarihler:* ${formatTurkishDate(newBooking.checkIn)} - ${formatTurkishDate(newBooking.checkOut)} (${newBooking.totalDays} Gece)
+ğŸ‘¥ *KiÅŸi SayÄ±sÄ±:* ${newBooking.guestsCount} Misafir
+ğŸ‘¤ *Rezervasyon Sahibi:* ${currentUser.name} (TC: ${currentUser.tcNo})
+ğŸ“ *Ä°rtibat:* ${currentUser.phone} / ${currentUser.email}
 
-👥 *Konaklayacak Diğer Kişiler (KBBS):*
-${stayingGuestsDetails.map((g) => `   • ${g}`).join("\n")}
+ğŸ‘¥ *Konaklayacak DiÄŸer KiÅŸiler (KBBS):*
+${stayingGuestsDetails.map((g) => `   â€¢ ${g}`).join("\n")}
 
-🛒 *Seçilen Ek Hizmetler:*
-${srvTextList.length > 0 ? srvTextList.map((s) => `   • ${s}`).join("\n") : "   • Yok"}
+ğŸ›’ *SeÃ§ilen Ek Hizmetler:*
+${srvTextList.length > 0 ? srvTextList.map((s) => `   â€¢ ${s}`).join("\n") : "   â€¢ Yok"}
 
-💵 *Ödeme Hesap Dağılımı:*
-   • Kiralama Bedeli (${days} Gece): ₺${total.toLocaleString("tr-TR")}
-${appliedCampaign ? `   • Kampanyalı Kiralama Bedeli: ₺${rentalAfterDiscount.toLocaleString("tr-TR")} (Kod: ${appliedCampaign.code})\n` : ""}${servicesCost > 0 ? `   • Ekstra Hizmetler Toplamı: ₺${servicesCost.toLocaleString("tr-TR")}\n` : ""}   • Toplam Ödeme: ₺${finalTotalPrice.toLocaleString("tr-TR")}
-   • *Kaparo %10:* ₺${kaparo.toLocaleString("tr-TR")}
-${prePaymentRate > 0 ? `   • *Ev Sahibi Ön Ödemesi (%${prePaymentRate}):* ₺${kesinPayment.toLocaleString("tr-TR")}\n` : ""}   • *Ön Rezervasyonda Ödenecek:* ₺${onRezOdenecek.toLocaleString("tr-TR")}
-   • *Kapıda Kalan Ödeme:* ₺${kalanKapida.toLocaleString("tr-TR")}
+ğŸ’µ *Ã–deme Hesap DaÄŸÄ±lÄ±mÄ±:*
+   â€¢ Kiralama Bedeli (${days} Gece): â‚º${total.toLocaleString("tr-TR")}
+${appliedCampaign ? `   â€¢ KampanyalÄ± Kiralama Bedeli: â‚º${rentalAfterDiscount.toLocaleString("tr-TR")} (Kod: ${appliedCampaign.code})\n` : ""}${servicesCost > 0 ? `   â€¢ Ekstra Hizmetler ToplamÄ±: â‚º${servicesCost.toLocaleString("tr-TR")}\n` : ""}   â€¢ Toplam Ã–deme: â‚º${finalTotalPrice.toLocaleString("tr-TR")}
+   â€¢ *Kaparo %10:* â‚º${kaparo.toLocaleString("tr-TR")}
+${prePaymentRate > 0 ? `   â€¢ *Ev Sahibi Ã–n Ã–demesi (%${prePaymentRate}):* â‚º${kesinPayment.toLocaleString("tr-TR")}\n` : ""}   â€¢ *Ã–n Rezervasyonda Ã–denecek:* â‚º${onRezOdenecek.toLocaleString("tr-TR")}
+   â€¢ *KapÄ±da Kalan Ã–deme:* â‚º${kalanKapida.toLocaleString("tr-TR")}
 
-ℹ️ *Not:* Rezervasyon sırasında sadece ön ödeme (kaparo + ev sahibi ön ödemesi + ek hizmetler) tahsil edilir, kalanı kapıda ödersiniz.
+â„¹ï¸ *Not:* Rezervasyon sÄ±rasÄ±nda sadece Ã¶n Ã¶deme (kaparo + ev sahibi Ã¶n Ã¶demesi + ek hizmetler) tahsil edilir, kalanÄ± kapÄ±da Ã¶dersiniz.
 
-Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekkürler!`;
+MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. TeÅŸekkÃ¼rler!`;
 
       const encoded = encodeURIComponent(waText);
       const url = `https://wa.me/${AGENCY_DETAILS.whatsapp.replace("+", "")}?text=${encoded}`;
@@ -1366,12 +1366,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
       id: "villa-added-" + Date.now(),
       name:
         newVillaForm.name ||
-        (newVillaForm.isBoat ? "Lüks Özel Yat" : "Özel Bungalov Evi"),
+        (newVillaForm.isBoat ? "LÃ¼ks Ã–zel Yat" : "Ã–zel Bungalov Evi"),
       title:
         newVillaForm.title ||
         (newVillaForm.isBoat
-          ? "Kaptanlı Muhteşem Yat Kiralama"
-          : "Lüks Yaşam ve Doğa Kaçamağı"),
+          ? "KaptanlÄ± MuhteÅŸem Yat Kiralama"
+          : "LÃ¼ks YaÅŸam ve DoÄŸa KaÃ§amaÄŸÄ±"),
       type: newVillaForm.isBoat ? "boat" : newVillaForm.type,
       region: newVillaForm.region,
       capacity: newVillaForm.capacity,
@@ -1387,9 +1387,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
       images: selectedImgSet,
       description:
         newVillaForm.description ||
-        "Ev sahibi tarafından paylaşılan, benzersiz konfor barındıran lüks kiralama seçeneği.",
-      badge: newVillaForm.isBoat ? "⛵ Yat Kiralama" : "Yeni İlan",
-      whatsappMessage: "Merhaba! Yeni ilanınız hakkında bilgi alabilir miyim?",
+        "Ev sahibi tarafÄ±ndan paylaÅŸÄ±lan, benzersiz konfor barÄ±ndÄ±ran lÃ¼ks kiralama seÃ§eneÄŸi.",
+      badge: newVillaForm.isBoat ? "â›µ Yat Kiralama" : "Yeni Ä°lan",
+      whatsappMessage: "Merhaba! Yeni ilanÄ±nÄ±z hakkÄ±nda bilgi alabilir miyim?",
       rating: 5.0,
       reviewCount: 1,
       hostName: "Siz (Ev Sahibi)",
@@ -1420,7 +1420,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         name: "",
         title: "",
         type: "bungalow",
-        region: "İstanbul",
+        region: "Ä°stanbul",
         capacity: 4,
         bedrooms: 2,
         bathrooms: 1,
@@ -1429,7 +1429,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         description: "",
         features: [],
         selectedExtraServices: [],
-        badge: "Yeni İlan",
+        badge: "Yeni Ä°lan",
         imagePreset: "preset1",
         slogans: ["entry", "outdoor", "peaceful"],
         prePaymentRate: 0,
@@ -1451,9 +1451,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         customExtraServices: [],
         isBoat: false,
         boatType: "Katamaran",
-        skipper: "Kaptanlı",
-        concept: "Günlük Koy Gezisi",
-        port: "Kuruçeşme Marinası, İstanbul",
+        skipper: "KaptanlÄ±",
+        concept: "GÃ¼nlÃ¼k Koy Gezisi",
+        port: "KuruÃ§eÅŸme MarinasÄ±, Ä°stanbul",
       });
     }, 2000);
   };
@@ -1602,7 +1602,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   {/* Region picker dropdown */}
                   <div className="flex flex-col gap-1 px-2 md:border-r md:border-stone-100">
                     <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest pl-1 font-display">
-                      Bölge
+                      BÃ¶lge
                     </label>
                     <div className="relative">
                       <select
@@ -1624,10 +1624,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </div>
 
-                  {/* Mekan Türü Picker (Lists housing types) */}
+                  {/* Mekan TÃ¼rÃ¼ Picker (Lists housing types) */}
                   <div className="flex flex-col gap-1 px-2 md:border-r md:border-stone-100">
                     <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest pl-1 font-display">
-                      Mekan Türü
+                      Mekan TÃ¼rÃ¼
                     </label>
                     <div className="relative">
                       <select
@@ -1635,7 +1635,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         onChange={(e) => setFilterType(e.target.value)}
                         className="w-full bg-transparent border-0 text-xs font-semibold text-stone-850 focus:outline-none cursor-pointer appearance-none py-1 pr-6"
                       >
-                        <option value="all">Ne Tür Bir Yer?</option>
+                        <option value="all">Ne TÃ¼r Bir Yer?</option>
                         {Object.entries(VILLA_TYPES_MAP).map(([key, val]) => (
                           <option
                             key={key}
@@ -1664,7 +1664,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         -
                       </button>
                       <span className="text-xs font-extrabold text-stone-800 select-none">
-                        {searchGuests > 0 ? `${searchGuests} Misafir` : "Kişi Ekle"}
+                        {searchGuests > 0 ? `${searchGuests} Misafir` : "KiÅŸi Ekle"}
                       </span>
                       <button
                         type="button"
@@ -1716,7 +1716,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }`}
                   >
                     <Home className="h-5 w-5" />
-                    <span>Tüm Evler</span>
+                    <span>TÃ¼m Evler</span>
                   </button>
 
                   {/* Category 2 */}
@@ -1742,7 +1742,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }`}
                   >
                     <Building className="h-5 w-5" />
-                    <span>Lüks Villalar</span>
+                    <span>LÃ¼ks Villalar</span>
                   </button>
 
                   {/* Category 4 */}
@@ -1781,7 +1781,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }`}
                   >
                     <Heart className="h-5 w-5 text-[#FF385C] fill-[#FF385C]" />
-                    <span>Balayı Villaları</span>
+                    <span>BalayÄ± VillalarÄ±</span>
                   </button>
                 </div>
 
@@ -1792,15 +1792,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 <div className="hidden md:flex items-center gap-2">
                   <SlidersHorizontal className="h-4 w-4 text-stone-400" />
                   <span className="text-xs text-stone-500 font-extrabold mr-2 uppercase tracking-wide">
-                    Özellik Filtrelerinde :
+                    Ã–zellik Filtrelerinde :
                   </span>
                   <div className="flex gap-1.5 font-sans">
                     {[
-                      { key: "heated_pool", label: "Havuz", icon: "♨️" },
-                      { key: "jacuzzi", label: "Jakuzi", icon: "🛁" },
-                      { key: "pet_friendly", label: "Evcil Dostu", icon: "🐾" },
-                      { key: "air_conditioning", label: "Klima", icon: "❄️" },
-                      { key: "plus_thirty", label: "+30 Donanım", icon: "🛡️" },
+                      { key: "heated_pool", label: "Havuz", icon: "â™¨ï¸" },
+                      { key: "jacuzzi", label: "Jakuzi", icon: "ğŸ›" },
+                      { key: "pet_friendly", label: "Evcil Dostu", icon: "ğŸ¾" },
+                      { key: "air_conditioning", label: "Klima", icon: "â„ï¸" },
+                      { key: "plus_thirty", label: "+30 DonanÄ±m", icon: "ğŸ›¡ï¸" },
                     ].map((item) => {
                       const active = activeAmenities.includes(item.key);
                       return (
@@ -1885,31 +1885,31 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                   <div className="flex flex-col gap-1 text-left">
                     <div className="text-rose-100/90 font-medium font-sans">
-                      Aradığınız Kriterlerle Eşleşen
+                      AradÄ±ÄŸÄ±nÄ±z Kriterlerle EÅŸleÅŸen
                     </div>
                     <div className="text-sm font-black text-white">
-                      {filteredVillas.length} İlan Listeleniyor
+                      {filteredVillas.length} Ä°lan Listeleniyor
                     </div>
                     {/* Small tag representations for active filters */}
                     <div className="flex flex-wrap gap-1.5 mt-2">
                       {filterRegion !== "Hepsi" && (
                         <span className="bg-[#780e22] text-rose-100 px-2.5 py-0.5 rounded-lg text-[10px] font-bold">
-                          📍 {filterRegion}
+                          ğŸ“ {filterRegion}
                         </span>
                       )}
                       {filterType !== "all" && (
                         <span className="bg-[#780e22] text-rose-100 px-2.5 py-0.5 rounded-lg text-[10px] font-bold">
-                          🏡 {VILLA_TYPES_MAP[filterType as keyof typeof VILLA_TYPES_MAP]?.label || filterType}
+                          ğŸ¡ {VILLA_TYPES_MAP[filterType as keyof typeof VILLA_TYPES_MAP]?.label || filterType}
                         </span>
                       )}
                       {searchGuests > 0 && (
                         <span className="bg-[#780e22] text-rose-100 px-2.5 py-0.5 rounded-lg text-[10px] font-bold">
-                          👥 {searchGuests} Kişi
+                          ğŸ‘¥ {searchGuests} KiÅŸi
                         </span>
                       )}
                       {activeAmenities.map(am => (
                         <span key={am} className="bg-[#780e22] text-rose-100 px-2.5 py-0.5 rounded-lg text-[10px] font-bold">
-                          ✨ {am === 'heated_pool' ? 'Havuzlu' : am === 'jacuzzi' ? 'Jakuzili' : am === 'pet_friendly' ? 'Evcil Dostu' : am === 'air_conditioning' ? 'Klimalı' : '+30 Donanım'}
+                          âœ¨ {am === 'heated_pool' ? 'Havuzlu' : am === 'jacuzzi' ? 'Jakuzili' : am === 'pet_friendly' ? 'Evcil Dostu' : am === 'air_conditioning' ? 'KlimalÄ±' : '+30 DonanÄ±m'}
                         </span>
                       ))}
                     </div>
@@ -1952,7 +1952,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </span>
                               {isFav && (
                                 <span className="absolute top-1 right-1 bg-[#FF385C] text-white text-[8px] p-0.5 rounded-full scale-100 animate-pulse">
-                                  ❤️
+                                  â¤ï¸
                                 </span>
                               )}
                             </div>
@@ -1960,7 +1960,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               {v.name}
                             </span>
                             <span className="text-[10px] text-rose-200/90 font-mono">
-                              ₺{v.pricePerNight.toLocaleString("tr-TR")}/gece
+                              â‚º{v.pricePerNight.toLocaleString("tr-TR")}/gece
                             </span>
                           </div>
                         );
@@ -1971,7 +1971,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
             )}
 
-            {/* Restructured Box Layout with %100 Para İade Güvencesi at the top */}
+            {/* Restructured Box Layout with %100 Para Ä°ade GÃ¼vencesi at the top */}
             <div className="space-y-6 mb-12">
               {/* Box 1 (On top/Full-width) */}
               <div className="led-flash-box bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6 transition-all hover:scale-[1.005]">
@@ -1981,10 +1981,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   </div>
                   <div>
                     <h4 className="text-base font-black text-stone-900 font-display">
-                      %100 Para İade Güvencesi
+                      %100 Para Ä°ade GÃ¼vencesi
                     </h4>
                     <p className="mt-1 text-xs text-stone-500 max-w-xl font-sans">
-                      Rezervasyon tarihinizden 30 gün öncesine kadar ücretsiz iptal hakkı ve %100 kesintisiz para iadesi sunuyoruz. Güvenle yerinizi ayırtın.
+                      Rezervasyon tarihinizden 30 gÃ¼n Ã¶ncesine kadar Ã¼cretsiz iptal hakkÄ± ve %100 kesintisiz para iadesi sunuyoruz. GÃ¼venle yerinizi ayÄ±rtÄ±n.
                     </p>
                   </div>
                 </div>
@@ -1992,7 +1992,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   onClick={() => setShowRefundModal(true)}
                   className="rounded-xl bg-[#FF385C] hover:bg-[#E02647] px-5 py-2.5 text-xs font-bold text-white transition active:scale-95 shrink-0 uppercase tracking-wider"
                 >
-                  Ücretsiz İptal Koşulları
+                  Ãœcretsiz Ä°ptal KoÅŸullarÄ±
                 </button>
               </div>
 
@@ -2004,10 +2004,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <Sparkles className="h-6 w-6" />
                   </div>
                   <h4 className="text-base font-extrabold text-stone-900 font-display">
-                    Özel Havuzlu Villalar
+                    Ã–zel Havuzlu Villalar
                   </h4>
                   <p className="mt-2 text-xs text-stone-500 leading-relaxed font-sans px-2">
-                    Kendinize ait özel havuzlu villalarımızda serinlemenin keyfini çıkarın. Mahremiyet ve konforun tadını çıkarın.
+                    Kendinize ait Ã¶zel havuzlu villalarÄ±mÄ±zda serinlemenin keyfini Ã§Ä±karÄ±n. Mahremiyet ve konforun tadÄ±nÄ± Ã§Ä±karÄ±n.
                   </p>
                 </div>
 
@@ -2020,7 +2020,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     7/24 Destek
                   </h4>
                   <p className="mt-2 text-xs text-stone-500 leading-relaxed font-sans px-2">
-                    Tatiliniz boyunca ihtiyaç duyduğunuz her an, deneyimli destek ekibimiz sizi bekliyor. Size yardımcı olmak için buradayız.
+                    Tatiliniz boyunca ihtiyaÃ§ duyduÄŸunuz her an, deneyimli destek ekibimiz sizi bekliyor. Size yardÄ±mcÄ± olmak iÃ§in buradayÄ±z.
                   </p>
                 </div>
               </div>
@@ -2041,25 +2041,25 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       <BadgePercent className="h-5 w-5" />
                     </div>
                     <h3 className="text-lg font-extrabold text-stone-900 font-display">
-                      İptal ve İade Garantisi
+                      Ä°ptal ve Ä°ade Garantisi
                     </h3>
                   </div>
                   <div className="space-y-3.5 text-xs text-stone-600 leading-relaxed font-sans">
                     <p>
-                      <strong>%100 Para İade Güvencesi:</strong> Giriş tarihinizden 30 gün öncesine kadar olan rezervasyon talebi iptallerinde, ödediğiniz ön ödeme oranının tamamını hiçbir kesinti olmaksızın hesabınıza iade ediyoruz.
+                      <strong>%100 Para Ä°ade GÃ¼vencesi:</strong> GiriÅŸ tarihinizden 30 gÃ¼n Ã¶ncesine kadar olan rezervasyon talebi iptallerinde, Ã¶dediÄŸiniz Ã¶n Ã¶deme oranÄ±nÄ±n tamamÄ±nÄ± hiÃ§bir kesinti olmaksÄ±zÄ±n hesabÄ±nÄ±za iade ediyoruz.
                     </p>
                     <p>
-                      <strong>Mücbir Sebepler & Doğal Haller:</strong> Olağanüstü doğa olayları, hastalık veya seyahat kısıtlamaları gibi beklenmeyen durumlarda, ödemeniz bir sonraki konaklamanızda kullanılmak üzere koruma altına alınır.
+                      <strong>MÃ¼cbir Sebepler & DoÄŸal Haller:</strong> OlaÄŸanÃ¼stÃ¼ doÄŸa olaylarÄ±, hastalÄ±k veya seyahat kÄ±sÄ±tlamalarÄ± gibi beklenmeyen durumlarda, Ã¶demeniz bir sonraki konaklamanÄ±zda kullanÄ±lmak Ã¼zere koruma altÄ±na alÄ±nÄ±r.
                     </p>
                     <p>
-                      Gönül rahatlığıyla erken rezervasyon ayrıcalıklarından şimdi faydalanın!
+                      GÃ¶nÃ¼l rahatlÄ±ÄŸÄ±yla erken rezervasyon ayrÄ±calÄ±klarÄ±ndan ÅŸimdi faydalanÄ±n!
                     </p>
                   </div>
                   <button
                     onClick={() => setShowRefundModal(false)}
                     className="mt-6 w-full py-3 bg-stone-900 hover:bg-stone-850 text-white rounded-xl text-xs font-bold transition active:scale-95"
                   >
-                    Anladım, Kapat
+                    AnladÄ±m, Kapat
                   </button>
                 </div>
               </div>
@@ -2073,7 +2073,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     Favorileriniz
                   </h3>
                   <span className="text-xs text-stone-400">
-                    ({favorites.length} İlgi Duyulan Ev)
+                    ({favorites.length} Ä°lgi Duyulan Ev)
                   </span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3.5">
@@ -2096,7 +2096,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           {v.name}
                         </span>
                         <span className="text-[10px] text-stone-500 font-mono">
-                          ₺{v.pricePerNight.toLocaleString("tr-TR")}/gece
+                          â‚º{v.pricePerNight.toLocaleString("tr-TR")}/gece
                         </span>
                       </div>
                     ))}
@@ -2113,12 +2113,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="text-center py-20 bg-white rounded-2xl border border-stone-200/70 p-8">
                 <BadgeAlert className="h-12 w-12 text-[#FF385C] mx-auto mb-3" />
                 <h3 className="text-lg font-bold text-stone-800">
-                  Seçtiğiniz Kriterlerde Konaklama Bulunamadı
+                  SeÃ§tiÄŸiniz Kriterlerde Konaklama BulunamadÄ±
                 </h3>
                 <p className="text-xs text-stone-500 mt-2 max-w-sm mx-auto leading-relaxed">
-                  İpuçları: Bölge filtresini 'Tüm Sapanca Köyleri' yapabilir
-                  veya diğer özellikleri genişleterek ev sahiplerinin müsait
-                  evlerine göz atabilirsiniz.
+                  Ä°puÃ§larÄ±: BÃ¶lge filtresini 'TÃ¼m Sapanca KÃ¶yleri' yapabilir
+                  veya diÄŸer Ã¶zellikleri geniÅŸleterek ev sahiplerinin mÃ¼sait
+                  evlerine gÃ¶z atabilirsiniz.
                 </p>
                 <button
                   onClick={() => {
@@ -2130,7 +2130,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   }}
                   className="mt-6 rounded-xl bg-stone-900 px-5 py-2.5 text-xs font-bold text-white transition active:scale-95"
                 >
-                  Tüm Tesisleri Tekrar Listele
+                  TÃ¼m Tesisleri Tekrar Listele
                 </button>
               </div>
             ) : (
@@ -2159,22 +2159,22 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               
               const muhafazakarVillas = activeVillas.filter(v => 
                 v.title.toLowerCase().includes("muhafazakar") || 
-                v.title.toLowerCase().includes("korunaklı") || 
+                v.title.toLowerCase().includes("korunaklÄ±") || 
                 v.description.toLowerCase().includes("muhafazakar") ||
-                (v.badge && (v.badge.toLowerCase().includes("muhafazakar") || v.badge.toLowerCase().includes("korunaklı")))
+                (v.badge && (v.badge.toLowerCase().includes("muhafazakar") || v.badge.toLowerCase().includes("korunaklÄ±")))
               ).slice(0, 3);
               const finalMuhafazakar = muhafazakarVillas.length >= 3 ? muhafazakarVillas : [...muhafazakarVillas, ...activeVillas.filter(v => !muhafazakarVillas.includes(v))].slice(0, 3);
 
               const balayiVillas = activeVillas.filter(v => 
-                v.title.toLowerCase().includes("balayı") || 
+                v.title.toLowerCase().includes("balayÄ±") || 
                 v.title.toLowerCase().includes("romantik") || 
-                v.description.toLowerCase().includes("balayı") ||
+                v.description.toLowerCase().includes("balayÄ±") ||
                 v.type === "balayi"
               ).slice(0, 3);
               const finalBalayi = balayiVillas.length >= 3 ? balayiVillas : [...balayiVillas, ...activeVillas.filter(v => !balayiVillas.includes(v))].slice(0, 3);
 
               const hemenVillas = activeVillas.filter(v => 
-                v.title.toLowerCase().includes("anında") || 
+                v.title.toLowerCase().includes("anÄ±nda") || 
                 v.title.toLowerCase().includes("hemen") || 
                 v.instantBook || 
                 v.id.toString().includes("instant") ||
@@ -2183,7 +2183,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               const finalHemen = hemenVillas.length >= 3 ? hemenVillas : [...hemenVillas, ...activeVillas.filter(v => !hemenVillas.includes(v))].slice(0, 3);
 
               const anindaVillas = activeVillas.filter(v => 
-                v.title.toLowerCase().includes("anında") || 
+                v.title.toLowerCase().includes("anÄ±nda") || 
                 v.instantBook || 
                 v.id.toString().includes("instant")
               ).slice(0, 3);
@@ -2206,7 +2206,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           Muhafazakar Villalar
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
-                          Dışarıdan görünmeyen korunaklı havuz alanlarıyla aileniz ve sevdikleriniz için tam mahremiyet
+                          DÄ±ÅŸarÄ±dan gÃ¶rÃ¼nmeyen korunaklÄ± havuz alanlarÄ±yla aileniz ve sevdikleriniz iÃ§in tam mahremiyet
                         </p>
                       </div>
                     </div>
@@ -2230,7 +2230,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Balayı Villaları */}
+                  {/* BalayÄ± VillalarÄ± */}
                   <section id="balayi-collection" className="scroll-mt-20">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="h-10 w-10 bg-rose-50 rounded-full flex items-center justify-center text-rose-500">
@@ -2242,10 +2242,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold text-stone-900 font-display">
-                          Balayı Villaları
+                          BalayÄ± VillalarÄ±
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
-                          Yeni evlenen çiftlere özel jakuzili, şömineli ve sıcak havuzlu en romantik kaçış rotaları
+                          Yeni evlenen Ã§iftlere Ã¶zel jakuzili, ÅŸÃ¶mineli ve sÄ±cak havuzlu en romantik kaÃ§Ä±ÅŸ rotalarÄ±
                         </p>
                       </div>
                     </div>
@@ -2282,7 +2282,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           Hemen Kiralanabilir Villalar
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
-                          Sezonun en hit konumlarında beklemeden hemen yerinizi ayırtabileceğiniz fırsat mülkleri
+                          Sezonun en hit konumlarÄ±nda beklemeden hemen yerinizi ayÄ±rtabileceÄŸiniz fÄ±rsat mÃ¼lkleri
                         </p>
                       </div>
                     </div>
@@ -2306,7 +2306,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Anında Rezervasyon */}
+                  {/* AnÄ±nda Rezervasyon */}
                   <section id="aninda-rezervasyon" className="scroll-mt-20">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="h-10 w-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-500">
@@ -2318,10 +2318,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold text-stone-900 font-display">
-                          Ön Onay Beklemeden Anında Rezervasyon Ayrıcalığı!
+                          Ã–n Onay Beklemeden AnÄ±nda Rezervasyon AyrÄ±calÄ±ÄŸÄ±!
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
-                          Saatlerce cevap beklemeye son! Rezervasyon talebiniz mülk sahibine anında iletilir ve onaylanır
+                          Saatlerce cevap beklemeye son! Rezervasyon talebiniz mÃ¼lk sahibine anÄ±nda iletilir ve onaylanÄ±r
                         </p>
                       </div>
                     </div>
@@ -2345,7 +2345,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Misafir Yorumları Grid */}
+                  {/* Misafir YorumlarÄ± Grid */}
                   <section id="misafir-yorumlari" className="scroll-mt-20">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="h-10 w-10 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600">
@@ -2353,7 +2353,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold text-stone-900 font-display">
-                          Misafir Yorumları
+                          Misafir YorumlarÄ±
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
                           {reviewsSubtitle}
@@ -2390,7 +2390,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Sıkça Sorulan Sorular FAQ Section */}
+                  {/* SÄ±kÃ§a Sorulan Sorular FAQ Section */}
                   <section id="sss-accordion-section" className="bg-stone-950 text-stone-100 p-8 sm:p-12 rounded-3xl border border-stone-900 shadow-xl scroll-mt-20 text-left">
                     <div className="flex items-center gap-3 mb-8">
                       <div className="h-10 w-10 bg-stone-900 rounded-full flex items-center justify-center text-[#FF385C] border border-[#FF385C]/35">
@@ -2398,7 +2398,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold tracking-tight text-white font-display">
-                          Sıkça Sorulan Sorular
+                          SÄ±kÃ§a Sorulan Sorular
                         </h3>
                         <p className="text-xs text-stone-400 font-sans">
                           {faqSubtitle}
@@ -2429,7 +2429,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Özel Evler Section */}
+                  {/* Ã–zel Evler Section */}
                   <section id="ozel-evler" className="bg-stone-50 border border-stone-150 p-8 sm:p-12 rounded-3xl shadow-xs scroll-mt-20 text-left">
                     <div className="flex items-center gap-3 mb-8">
                       <div className="h-10 w-10 bg-white rounded-full border border-stone-150 flex items-center justify-center text-[#FF385C] shadow-sm">
@@ -2437,7 +2437,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold text-stone-900 font-display">
-                          Özel Evler Listesi
+                          Ã–zel Evler Listesi
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
                           {area1Subtitle}
@@ -2463,7 +2463,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </section>
 
-                  {/* Yararlı Bilgiler Section */}
+                  {/* YararlÄ± Bilgiler Section */}
                   <section id="yararli-bilgiler" className="scroll-mt-20 text-left">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="h-10 w-10 bg-[#FF385C]/10 rounded-full flex items-center justify-center text-[#FF385C]">
@@ -2475,10 +2475,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <h3 className="text-xl font-extrabold text-stone-900 font-display">
-                          Kiralık Villa ve Bungalov Seçenekleri ile İzole ve Konforlu Bir Tatil
+                          KiralÄ±k Villa ve Bungalov SeÃ§enekleri ile Ä°zole ve Konforlu Bir Tatil
                         </h3>
                         <p className="text-xs text-stone-500 font-sans">
-                          Sıcak, özgür ve güvenli bir konaklama rehberi
+                          SÄ±cak, Ã¶zgÃ¼r ve gÃ¼venli bir konaklama rehberi
                         </p>
                       </div>
                     </div>
@@ -2487,78 +2487,78 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       
                       {/* Intro */}
                       <p className="text-sm text-stone-700 leading-relaxed font-medium">
-                        Klasik otel tatillerinin kalabalık, gürültülü ve katı kurallarla dolu atmosferi yerini artık özgürlüğe bırakıyor. Günümüzde tatilciler; çiftlerden kalabalık ailelere, arkadaş gruplarından kafa dinlemek isteyen bireysel gezginlere kadar herkes, kendi kurallarını koyabileceği bir alan arıyor. İşte tam bu noktada <strong>villabungalovtatil.com.tr</strong> olarak, hayalinizdeki konforlu ve mahremiyet odaklı tatili ayağınıza getiriyoruz. Lüks bir kiralık villa keyfi ya da doğanın kalbinde sıcak bir bungalov deneyimi... Aradığınız huzur ve özgürlük burada başlıyor.
+                        Klasik otel tatillerinin kalabalÄ±k, gÃ¼rÃ¼ltÃ¼lÃ¼ ve katÄ± kurallarla dolu atmosferi yerini artÄ±k Ã¶zgÃ¼rlÃ¼ÄŸe bÄ±rakÄ±yor. GÃ¼nÃ¼mÃ¼zde tatilciler; Ã§iftlerden kalabalÄ±k ailelere, arkadaÅŸ gruplarÄ±ndan kafa dinlemek isteyen bireysel gezginlere kadar herkes, kendi kurallarÄ±nÄ± koyabileceÄŸi bir alan arÄ±yor. Ä°ÅŸte tam bu noktada <strong>villabungalovtatil.com.tr</strong> olarak, hayalinizdeki konforlu ve mahremiyet odaklÄ± tatili ayaÄŸÄ±nÄ±za getiriyoruz. LÃ¼ks bir kiralÄ±k villa keyfi ya da doÄŸanÄ±n kalbinde sÄ±cak bir bungalov deneyimi... AradÄ±ÄŸÄ±nÄ±z huzur ve Ã¶zgÃ¼rlÃ¼k burada baÅŸlÄ±yor.
                       </p>
 
-                      {/* Neden Villa ve Bungalov Kiralamalısınız */}
+                      {/* Neden Villa ve Bungalov KiralamalÄ±sÄ±nÄ±z */}
                       <div className="pt-4 border-t border-stone-200">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-4 font-display">
-                          Neden Villa ve Bungalov Kiralamalısınız?
+                          Neden Villa ve Bungalov KiralamalÄ±sÄ±nÄ±z?
                         </h4>
                         <p className="mb-4">
-                          Geleneksel konaklama alternatifleri yerine özel bir villa veya bungalov tercih etmek, tatilinizi tamamen kişiselleştirmenizi sağlar. İşte öne çıkan avantajlar:
+                          Geleneksel konaklama alternatifleri yerine Ã¶zel bir villa veya bungalov tercih etmek, tatilinizi tamamen kiÅŸiselleÅŸtirmenizi saÄŸlar. Ä°ÅŸte Ã¶ne Ã§Ä±kan avantajlar:
                         </p>
                         
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
                           <div className="bg-white p-5 rounded-2xl border border-stone-150 shadow-xs">
-                            <span className="text-[#FF385C] text-lg font-black block mb-2">1. Kişiselleştirilmiş Tatil Özgürlüğü</span>
+                            <span className="text-[#FF385C] text-lg font-black block mb-2">1. KiÅŸiselleÅŸtirilmiÅŸ Tatil Ã–zgÃ¼rlÃ¼ÄŸÃ¼</span>
                             <ul className="space-y-3.5 text-stone-500">
                               <li>
-                                <strong className="text-stone-800 block">Kendi Programınızı Yapın:</strong>
-                                Yemek saatleri, havuz kullanım vakitleri ya da uyandığınız an tamamen size ait. Otellerdeki gibi kuyruğa girmek veya kahvaltı saatini kaçırma stresi yok.
+                                <strong className="text-stone-800 block">Kendi ProgramÄ±nÄ±zÄ± YapÄ±n:</strong>
+                                Yemek saatleri, havuz kullanÄ±m vakitleri ya da uyandÄ±ÄŸÄ±nÄ±z an tamamen size ait. Otellerdeki gibi kuyruÄŸa girmek veya kahvaltÄ± saatini kaÃ§Ä±rma stresi yok.
                               </li>
                               <li>
-                                <strong className="text-stone-800 block">Geniş Gruplar İçin İdeal:</strong>
-                                Kalabalık aileler ve arkadaş grupları ortak alanlarda eğlenirken, her odanın kendine ait banyo ve yaşam alanı sunması sayesinde mahremiyet korunur.
+                                <strong className="text-stone-800 block">GeniÅŸ Gruplar Ä°Ã§in Ä°deal:</strong>
+                                KalabalÄ±k aileler ve arkadaÅŸ gruplarÄ± ortak alanlarda eÄŸlenirken, her odanÄ±n kendine ait banyo ve yaÅŸam alanÄ± sunmasÄ± sayesinde mahremiyet korunur.
                               </li>
                               <li>
-                                <strong className="text-stone-800 block">Romantik Kaçamaklar:</strong>
-                                Jakuzili, şömineli bungalovlar veya panoramik deniz manzaralı villalar, baş başa kalmak isteyen çiftler için eşsiz bir atmosfer sunar.
+                                <strong className="text-stone-800 block">Romantik KaÃ§amaklar:</strong>
+                                Jakuzili, ÅŸÃ¶mineli bungalovlar veya panoramik deniz manzaralÄ± villalar, baÅŸ baÅŸa kalmak isteyen Ã§iftler iÃ§in eÅŸsiz bir atmosfer sunar.
                               </li>
                             </ul>
                           </div>
 
                           <div className="bg-white p-5 rounded-2xl border border-stone-150 shadow-xs">
-                            <span className="text-[#FF385C] text-lg font-black block mb-2">2. Maksimum Mahremiyet ve Size Özel Alanlar</span>
+                            <span className="text-[#FF385C] text-lg font-black block mb-2">2. Maksimum Mahremiyet ve Size Ã–zel Alanlar</span>
                             <ul className="space-y-3.5 text-stone-500">
                               <li>
                                 <strong className="text-stone-800 block">Tamamen Size Ait:</strong>
-                                Özel havuz, geniş bahçe ve evin tüm bölümleri yalnızca sizin ve sevdiklerinizin kullanımındadır.
+                                Ã–zel havuz, geniÅŸ bahÃ§e ve evin tÃ¼m bÃ¶lÃ¼mleri yalnÄ±zca sizin ve sevdiklerinizin kullanÄ±mÄ±ndadÄ±r.
                               </li>
                               <li>
-                                <strong className="text-stone-800 block">Özgürce Eğlenin:</strong>
-                                Başkalarını rahatsız etme endişesi taşımadan müzik dinleyebilir, havuz başı partileri verebilir ya da sadece doğanın sessizliğini dinleyebilirsiniz.
+                                <strong className="text-stone-800 block">Ã–zgÃ¼rce EÄŸlenin:</strong>
+                                BaÅŸkalarÄ±nÄ± rahatsÄ±z etme endiÅŸesi taÅŸÄ±madan mÃ¼zik dinleyebilir, havuz baÅŸÄ± partileri verebilir ya da sadece doÄŸanÄ±n sessizliÄŸini dinleyebilirsiniz.
                               </li>
                             </ul>
                           </div>
 
                           <div className="bg-white p-5 rounded-2xl border border-stone-150 shadow-xs">
-                            <span className="text-[#FF385C] text-lg font-black block mb-2">3. Ekonomik ve Bütçe Dostu Çözümler</span>
+                            <span className="text-[#FF385C] text-lg font-black block mb-2">3. Ekonomik ve BÃ¼tÃ§e Dostu Ã‡Ã¶zÃ¼mler</span>
                             <ul className="space-y-3.5 text-stone-500">
                               <li>
-                                <strong className="text-stone-800 block">Maliyet Paylaşımı:</strong>
-                                Büyük gruplarla yapılan villa kiralamalarında, kişi başına düşen maliyet lüks otellere kıyasla çok daha ekonomiktir.
+                                <strong className="text-stone-800 block">Maliyet PaylaÅŸÄ±mÄ±:</strong>
+                                BÃ¼yÃ¼k gruplarla yapÄ±lan villa kiralamalarÄ±nda, kiÅŸi baÅŸÄ±na dÃ¼ÅŸen maliyet lÃ¼ks otellere kÄ±yasla Ã§ok daha ekonomiktir.
                               </li>
                               <li>
-                                <strong className="text-stone-800 block">Mutfak Özgürlüğü:</strong>
-                                Tam donanımlı mutfağınızda, yerel pazarlardan taze malzemeler alarak kendi yemeğinizi hazırlayabilir, restoran masraflarını minimuma indirebilirsiniz.
+                                <strong className="text-stone-800 block">Mutfak Ã–zgÃ¼rlÃ¼ÄŸÃ¼:</strong>
+                                Tam donanÄ±mlÄ± mutfaÄŸÄ±nÄ±zda, yerel pazarlardan taze malzemeler alarak kendi yemeÄŸinizi hazÄ±rlayabilir, restoran masraflarÄ±nÄ± minimuma indirebilirsiniz.
                               </li>
                               <li>
-                                <strong className="text-stone-800 block">Uzun Dönem Fırsatları:</strong>
-                                Haftalık veya aylık konaklamalarda villabungalovtatil.com.tr'ye özel uzun dönem indirimlerinden yararlanabilirsiniz.
+                                <strong className="text-stone-800 block">Uzun DÃ¶nem FÄ±rsatlarÄ±:</strong>
+                                HaftalÄ±k veya aylÄ±k konaklamalarda villabungalovtatil.com.tr'ye Ã¶zel uzun dÃ¶nem indirimlerinden yararlanabilirsiniz.
                               </li>
                             </ul>
                           </div>
                         </div>
                       </div>
 
-                      {/* Tarzınıza Uygun Lokasyon ve Özellikleri */}
+                      {/* TarzÄ±nÄ±za Uygun Lokasyon ve Ã–zellikleri */}
                       <div className="pt-4 border-t border-stone-200">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-2 font-display">
-                          Tarzınıza Uygun Lokasyon ve Villa Özellikleri
+                          TarzÄ±nÄ±za Uygun Lokasyon ve Villa Ã–zellikleri
                         </h4>
                         <p className="mb-4 text-stone-500">
-                          Tatilden beklentiniz ne olursa olsun, portföyümüzde size uygun bir seçenek mutlaka var.
+                          Tatilden beklentiniz ne olursa olsun, portfÃ¶yÃ¼mÃ¼zde size uygun bir seÃ§enek mutlaka var.
                         </p>
 
                         <div className="overflow-x-auto bg-white rounded-2xl border border-stone-200">
@@ -2566,108 +2566,108 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             <thead>
                               <tr className="bg-stone-50 border-b border-stone-150 text-[10px] font-bold text-stone-500 uppercase tracking-wider">
                                 <th className="p-4 font-display">Tatil Konsepti</th>
-                                <th className="p-4 font-display">Öne Çıkan Özellikler</th>
-                                <th className="p-4 font-display">Aktivite Seçenekleri</th>
+                                <th className="p-4 font-display">Ã–ne Ã‡Ä±kan Ã–zellikler</th>
+                                <th className="p-4 font-display">Aktivite SeÃ§enekleri</th>
                               </tr>
                             </thead>
                             <tbody className="text-[11px] text-stone-600 divide-y divide-stone-150">
                               <tr>
                                 <td className="p-4 font-bold text-stone-900 font-display">Sahil &amp; Deniz</td>
-                                <td className="p-4">Denize sıfır veya yakın, panoramik manzara</td>
-                                <td className="p-4">Su sporları, plaj keyfi, tekne turları</td>
+                                <td className="p-4">Denize sÄ±fÄ±r veya yakÄ±n, panoramik manzara</td>
+                                <td className="p-4">Su sporlarÄ±, plaj keyfi, tekne turlarÄ±</td>
                               </tr>
                               <tr>
-                                <td className="p-4 font-bold text-stone-900 font-display">Doğa &amp; Orman</td>
+                                <td className="p-4 font-bold text-stone-900 font-display">DoÄŸa &amp; Orman</td>
                                 <td className="p-4">Bungalov evler, temiz hava, izole konum</td>
                                 <td className="p-4">Trekking, bisiklet, meditasyon ve yoga</td>
                               </tr>
                               <tr>
-                                <td className="p-4 font-bold text-stone-900 font-display">Şehir Merkezine Yakın</td>
-                                <td className="p-4">Restoran, market ve gece hayatına kolay erişim</td>
-                                <td className="p-4">Kültür turları, yerel lezzet keşifleri, alışveriş</td>
+                                <td className="p-4 font-bold text-stone-900 font-display">Åehir Merkezine YakÄ±n</td>
+                                <td className="p-4">Restoran, market ve gece hayatÄ±na kolay eriÅŸim</td>
+                                <td className="p-4">KÃ¼ltÃ¼r turlarÄ±, yerel lezzet keÅŸifleri, alÄ±ÅŸveriÅŸ</td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
                       </div>
 
-                      {/* Konforunuzu Artıran Detaylar */}
+                      {/* Konforunuzu ArtÄ±ran Detaylar */}
                       <div className="pt-4 border-t border-stone-200">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-4 font-display">
-                          Konforunuzu Artıran Detaylar
+                          Konforunuzu ArtÄ±ran Detaylar
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           <div className="bg-white/60 p-4 rounded-xl border border-stone-200/60">
-                            <h5 className="font-bold text-stone-900 mb-1">Isıtmalı ve Kapalı Havuzlar</h5>
-                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">Dört mevsim tatil yapmak isteyenler için kış aylarında da havuz keyfi sunan seçenekler.</p>
+                            <h5 className="font-bold text-stone-900 mb-1">IsÄ±tmalÄ± ve KapalÄ± Havuzlar</h5>
+                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">DÃ¶rt mevsim tatil yapmak isteyenler iÃ§in kÄ±ÅŸ aylarÄ±nda da havuz keyfi sunan seÃ§enekler.</p>
                           </div>
                           <div className="bg-white/60 p-4 rounded-xl border border-stone-200/60">
-                            <h5 className="font-bold text-stone-900 mb-1">Geniş Bahçe ve Barbekü</h5>
-                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">Çocuk oyun alanları, evcil hayvan dostu bahçeler ve keyifli akşam yemekleri için barbekü alanları.</p>
+                            <h5 className="font-bold text-stone-900 mb-1">GeniÅŸ BahÃ§e ve BarbekÃ¼</h5>
+                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">Ã‡ocuk oyun alanlarÄ±, evcil hayvan dostu bahÃ§eler ve keyifli akÅŸam yemekleri iÃ§in barbekÃ¼ alanlarÄ±.</p>
                           </div>
                           <div className="bg-white/60 p-4 rounded-xl border border-stone-200/60">
-                            <h5 className="font-bold text-stone-900 mb-1">Lüks Detaylar</h5>
-                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">Şömineli sıcak dağ evleri, jakuzili süit odalar ve geniş seyir terasları.</p>
+                            <h5 className="font-bold text-stone-900 mb-1">LÃ¼ks Detaylar</h5>
+                            <p className="text-stone-500 font-sans text-[11px] leading-relaxed">ÅÃ¶mineli sÄ±cak daÄŸ evleri, jakuzili sÃ¼it odalar ve geniÅŸ seyir teraslarÄ±.</p>
                           </div>
                         </div>
                       </div>
 
-                      {/* Güvenli Rezervasyon İçin Dikkat Etmeniz Gerekenler */}
+                      {/* GÃ¼venli Rezervasyon Ä°Ã§in Dikkat Etmeniz Gerekenler */}
                       <div className="pt-4 border-t border-stone-200">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-4 font-display">
-                          Güvenli Rezervasyon İçin Dikkat Etmeniz Gerekenler
+                          GÃ¼venli Rezervasyon Ä°Ã§in Dikkat Etmeniz Gerekenler
                         </h4>
                         <p className="mb-4">
-                          Kiralık villa ve bungalov sektöründe doğru adımları atmak, tatilinizin kusursuz geçmesi için kritiktir:
+                          KiralÄ±k villa ve bungalov sektÃ¶rÃ¼nde doÄŸru adÄ±mlarÄ± atmak, tatilinizin kusursuz geÃ§mesi iÃ§in kritiktir:
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-stone-500">
                           <div className="flex gap-2 items-start">
-                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">•</span>
+                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">â€¢</span>
                             <div>
-                              <strong className="text-stone-800">Güvenilirlik Her Şeydir:</strong> Onaylanmış ev sahipleri, müşteri yorumları doğrulanmış ve şeffaf iptal koşulları sunan platformları tercih edin. <strong>villabungalovtatil.com.tr</strong> olarak tüm portföyümüzü düzenli denetimlerden geçiriyor, size güvenli bir kiralama süreci sunmak için çabalıyoruz.
+                              <strong className="text-stone-800">GÃ¼venilirlik Her Åeydir:</strong> OnaylanmÄ±ÅŸ ev sahipleri, mÃ¼ÅŸteri yorumlarÄ± doÄŸrulanmÄ±ÅŸ ve ÅŸeffaf iptal koÅŸullarÄ± sunan platformlarÄ± tercih edin. <strong>villabungalovtatil.com.tr</strong> olarak tÃ¼m portfÃ¶yÃ¼mÃ¼zÃ¼ dÃ¼zenli denetimlerden geÃ§iriyor, size gÃ¼venli bir kiralama sÃ¼reci sunmak iÃ§in Ã§abalÄ±yoruz.
                             </div>
                           </div>
                           <div className="flex gap-2 items-start">
-                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">•</span>
+                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">â€¢</span>
                             <div>
-                              <strong className="text-stone-800">Erken Rezervasyon:</strong> Özellikle İstanbul ve Marmara Bölgesi her mevsimde, yaz aylarında da Ege ve Akdeniz bölgelerindeki popüler villalar yüksek sezonda hızla dolmaktadır. Erken rezervasyon hem yerinizi garantiler hem de fiyat avantajı sağlar.
+                              <strong className="text-stone-800">Erken Rezervasyon:</strong> Ã–zellikle Ä°stanbul ve Marmara BÃ¶lgesi her mevsimde, yaz aylarÄ±nda da Ege ve Akdeniz bÃ¶lgelerindeki popÃ¼ler villalar yÃ¼ksek sezonda hÄ±zla dolmaktadÄ±r. Erken rezervasyon hem yerinizi garantiler hem de fiyat avantajÄ± saÄŸlar.
                             </div>
                           </div>
                           <div className="flex gap-2 items-start">
-                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">•</span>
+                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">â€¢</span>
                             <div>
-                              <strong className="text-stone-800">Ulaşım ve Lojistik:</strong> Villanın otopark durumunu, havaalanı transfer imkanlarını ve market, eczane, hastane gibi temel ihtiyaç noktalarına olan mesafesini önceden inceleyin.
+                              <strong className="text-stone-800">UlaÅŸÄ±m ve Lojistik:</strong> VillanÄ±n otopark durumunu, havaalanÄ± transfer imkanlarÄ±nÄ± ve market, eczane, hastane gibi temel ihtiyaÃ§ noktalarÄ±na olan mesafesini Ã¶nceden inceleyin.
                             </div>
                           </div>
                           <div className="flex gap-2 items-start">
-                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">•</span>
+                            <span className="text-[#FF385C] font-bold shrink-0 mt-0.5">â€¢</span>
                             <div>
-                              <strong className="text-stone-800">Evcil Hayvan İzni:</strong> Patili dostunuzla seyahat edecekseniz, "evcil hayvan dostu" filtrelerimizi kullanarak uygun evleri listeleyebilirsiniz.
+                              <strong className="text-stone-800">Evcil Hayvan Ä°zni:</strong> Patili dostunuzla seyahat edecekseniz, "evcil hayvan dostu" filtrelerimizi kullanarak uygun evleri listeleyebilirsiniz.
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Uzaktan Çalışanlar (Workation) İçin Yeni Nesil Tatil */}
+                      {/* Uzaktan Ã‡alÄ±ÅŸanlar (Workation) Ä°Ã§in Yeni Nesil Tatil */}
                       <div className="pt-4 border-t border-stone-200">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-2 font-display">
-                          Uzaktan Çalışanlar (WORKATION) İçin Yeni Nesil Tatil
+                          Uzaktan Ã‡alÄ±ÅŸanlar (WORKATION) Ä°Ã§in Yeni Nesil Tatil
                         </h4>
                         <p className="text-stone-500">
-                          Günümüzde iş ve tatili birleştirmek artık çok kolay. Yüksek hızlı internet altyapısına ve sessiz çalışma alanlarına sahip villa ve bungalovlarımız, uzaktan çalışan profesyoneller için mükemmel bir ofis ortamı sunuyor. Doğaya karşı kahvenizi yudumlarken toplantılarınıza katılabilir, mesai bitiminde havuzun tadını çıkarabilirsiniz.
+                          GÃ¼nÃ¼mÃ¼zde iÅŸ ve tatili birleÅŸtirmek artÄ±k Ã§ok kolay. YÃ¼ksek hÄ±zlÄ± internet altyapÄ±sÄ±na ve sessiz Ã§alÄ±ÅŸma alanlarÄ±na sahip villa ve bungalovlarÄ±mÄ±z, uzaktan Ã§alÄ±ÅŸan profesyoneller iÃ§in mÃ¼kemmel bir ofis ortamÄ± sunuyor. DoÄŸaya karÅŸÄ± kahvenizi yudumlarken toplantÄ±larÄ±nÄ±za katÄ±labilir, mesai bitiminde havuzun tadÄ±nÄ± Ã§Ä±karabilirsiniz.
                         </p>
                       </div>
 
-                      {/* Hayalinizdeki Tatili Şimdi Planlayın! */}
+                      {/* Hayalinizdeki Tatili Åimdi PlanlayÄ±n! */}
                       <div className="p-6 bg-rose-500/5 rounded-2xl border border-rose-500/10">
                         <h4 className="text-base font-extrabold text-[#FF385C] uppercase tracking-wider mb-2 font-display">
-                          Hayalinizdeki Tatili Şimdi Planlayın!
+                          Hayalinizdeki Tatili Åimdi PlanlayÄ±n!
                         </h4>
                         <p className="text-[13px] text-stone-700 font-medium font-display leading-relaxed">
-                          Kiralık villa ve bungalov tatili, her anı sizin tarafınızdan tasarlanmış bir yaşam deneyimidir. Sevdiklerinizle unutulmaz anılar biriktirmek, şehrin stresinden uzaklaşmak ve tamamen size ait bir alanda dinlenmek için daha fazla beklemeyin.
+                          KiralÄ±k villa ve bungalov tatili, her anÄ± sizin tarafÄ±nÄ±zdan tasarlanmÄ±ÅŸ bir yaÅŸam deneyimidir. Sevdiklerinizle unutulmaz anÄ±lar biriktirmek, ÅŸehrin stresinden uzaklaÅŸmak ve tamamen size ait bir alanda dinlenmek iÃ§in daha fazla beklemeyin.
                         </p>
                         <p className="mt-3 text-[13px] text-stone-700 leading-relaxed">
-                          Hemen <strong>villabungalovtatil.com.tr</strong> adresini ziyaret edin; bütçenize, zevkinize ve ihtiyacınıza en uygun villayı gelişmiş filtreleme seçeneklerimizle saniyeler içinde bulun!
+                          Hemen <strong>villabungalovtatil.com.tr</strong> adresini ziyaret edin; bÃ¼tÃ§enize, zevkinize ve ihtiyacÄ±nÄ±za en uygun villayÄ± geliÅŸmiÅŸ filtreleme seÃ§eneklerimizle saniyeler iÃ§inde bulun!
                         </p>
                       </div>
 
@@ -2802,7 +2802,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         />
       )}
 
-      {/* ----------------- EV SAHİBİ PANELİ / HOST PANEL ----------------- */}
+      {/* ----------------- EV SAHÄ°BÄ° PANELÄ° / HOST PANEL ----------------- */}
       {currentRole === "host" && (
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 flex-1">
           {/* Mustard-Black Top bar styling */}
@@ -2813,11 +2813,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
               <div>
                 <span className="block text-[9px] font-black text-amber-400 uppercase tracking-widest leading-none mb-1">
-                  EV SAHİBİ YÖNETİM PANELİ
+                  EV SAHÄ°BÄ° YÃ–NETÄ°M PANELÄ°
                 </span>
                 <h1 className="text-xl font-extrabold tracking-tight text-white leading-none">
-                  Hoş Geldiniz,{" "}
-                  {currentHost ? currentHost.name.replace(" (Bungalov Sahibi)", "") : "Ahmet Yılmaz"}
+                  HoÅŸ Geldiniz,{" "}
+                  {currentHost ? currentHost.name.replace(" (Bungalov Sahibi)", "") : "Ahmet YÄ±lmaz"}
                 </h1>
               </div>
             </div>
@@ -2827,7 +2827,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="flex items-center gap-2 rounded-2xl bg-stone-900 border border-stone-800 py-2 px-3.5 text-xs text-amber-400">
                 <Clock className="h-4 w-4 animate-spin shrink-0 text-amber-500" />
                 <span className="font-semibold text-stone-300">
-                  Güvenli Oturum:{" "}
+                  GÃ¼venli Oturum:{" "}
                 </span>
                 <span className="font-mono font-bold text-amber-500 bg-amber-500/10 py-0.5 px-1.5 rounded-lg">
                   {Math.floor(sessionTimeout / 60)
@@ -2838,9 +2838,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 <button
                   onClick={() => setSessionTimeout(900)}
                   className="ml-2 hover:text-white font-black underline uppercase tracking-wider text-[9px] cursor-pointer"
-                  title="Güvenli oturum süresini uzat"
+                  title="GÃ¼venli oturum sÃ¼resini uzat"
                 >
-                  Süreyi Uzat
+                  SÃ¼reyi Uzat
                 </button>
               </div>
 
@@ -2870,13 +2870,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
               <div>
                 <span className="block text-[11px] text-stone-400 font-bold uppercase tracking-wider">
-                  İlan Kazancınız
+                  Ä°lan KazancÄ±nÄ±z
                 </span>
                 <span className="font-mono text-lg font-extrabold text-stone-900">
-                  ₺{totalHostRevenueCapacity.toLocaleString("tr-TR")}
+                  â‚º{totalHostRevenueCapacity.toLocaleString("tr-TR")}
                 </span>
                 <span className="block text-[9px] text-stone-400 mt-0.5">
-                  Onaylanan ön ödemeler
+                  Onaylanan Ã¶n Ã¶demeler
                 </span>
               </div>
             </div>
@@ -2893,7 +2893,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   {bookings.filter((b) => b.status === "pending").length} Talep
                 </span>
                 <span className="block text-[9px] text-stone-400 mt-0.5">
-                  Müşteri geri dönüş bekliyor
+                  MÃ¼ÅŸteri geri dÃ¶nÃ¼ÅŸ bekliyor
                 </span>
               </div>
             </div>
@@ -2904,13 +2904,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
               <div>
                 <span className="block text-[11px] text-stone-400 font-bold uppercase tracking-wider">
-                  Aktif İlanlarınız
+                  Aktif Ä°lanlarÄ±nÄ±z
                 </span>
                 <span className="font-mono text-lg font-extrabold text-stone-900">
-                  {villas.filter(v => v.isActive !== false && currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).length} İlan
+                  {villas.filter(v => v.isActive !== false && currentHost && (v.hostName === currentHost.name.replace(" (Bungalov Sahibi)", "") || v.hostId === currentHost.id)).length} Ä°lan
                 </span>
                 <span className="block text-[9px] text-[#10B981] mt-0.5 font-bold">
-                  Kiralama yayında aktif
+                  Kiralama yayÄ±nda aktif
                 </span>
               </div>
             </div>
@@ -2921,13 +2921,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
               <div>
                 <span className="block text-[11px] text-stone-400 font-bold uppercase tracking-wider">
-                  Değerlendirme Puanı
+                  DeÄŸerlendirme PuanÄ±
                 </span>
                 <span className="font-mono text-lg font-extrabold text-stone-900">
-                  ★ 4.96
+                  â˜… 4.96
                 </span>
                 <span className="block text-[9px] text-stone-400 mt-0.5">
-                  Mükemmel Ev Sahibi rozeti
+                  MÃ¼kemmel Ev Sahibi rozeti
                 </span>
               </div>
             </div>
@@ -2936,32 +2936,32 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
           {/* Quick Anchor Navigation Bar */}
           <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 shadow-xs mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-sans animate-fade-in">
             <span className="text-xs text-stone-400 font-extrabold uppercase tracking-wider block">
-              ⚡ HIZLI ERİŞİM:
+              âš¡ HIZLI ERÄ°ÅÄ°M:
             </span>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => document.getElementById("host-rezervasyonlar")?.scrollIntoView({ behavior: "smooth" })}
                 className="flex items-center gap-2 rounded-xl bg-amber-500/10 text-amber-800 hover:bg-amber-500 hover:text-stone-950 font-black px-4 py-2.5 text-xs transition active:scale-95 cursor-pointer shadow-xs border border-amber-500/10"
               >
-                <span>📅 Rezervasyonlar</span>
+                <span>ğŸ“… Rezervasyonlar</span>
               </button>
               <button
                 onClick={() => document.getElementById("host-ilanlar")?.scrollIntoView({ behavior: "smooth" })}
                 className="flex items-center gap-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-extrabold px-4 py-2.5 text-xs transition active:scale-95 cursor-pointer shadow-xs border border-stone-200/50"
               >
-                <span>🏢 İlanlarınız</span>
+                <span>ğŸ¢ Ä°lanlarÄ±nÄ±z</span>
               </button>
               <button
                 onClick={() => setShowAddVillaModal(true)}
                 className="flex items-center gap-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-extrabold px-4 py-2.5 text-xs transition active:scale-95 cursor-pointer shadow-xs border border-emerald-200/50"
               >
-                <span>➕ Yeni Ev Ekle</span>
+                <span>â• Yeni Ev Ekle</span>
               </button>
               <button
                 onClick={() => document.getElementById("host-kampanyalar")?.scrollIntoView({ behavior: "smooth" })}
                 className="flex items-center gap-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-extrabold px-4 py-2.5 text-xs transition active:scale-95 cursor-pointer shadow-xs border border-stone-200/50"
               >
-                <span>🏷️ Kampanyalarım</span>
+                <span>ğŸ·ï¸ KampanyalarÄ±m</span>
               </button>
               <button
                 onClick={() => {
@@ -2978,7 +2978,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 }}
                 className="flex items-center gap-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-[#FF385C] font-extrabold px-4 py-2.5 text-xs transition active:scale-95 cursor-pointer shadow-xs border border-rose-200/50"
               >
-                <span>🏷️ Yeni Kampanya Ekle</span>
+                <span>ğŸ·ï¸ Yeni Kampanya Ekle</span>
               </button>
             </div>
           </div>
@@ -2987,13 +2987,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               {/* Booking Requests Specific to your houses */}
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs" id="host-rezervasyonlar">
                 <h2 className="text-lg font-extrabold text-stone-900 font-display flex items-center gap-2 mb-4">
-                  <span>📅</span> Tesislerinize Gelen Misafir Rezervasyon Talepleri
+                  <span>ğŸ“…</span> Tesislerinize Gelen Misafir Rezervasyon Talepleri
                 </h2>
 
                 {bookings.length === 0 ? (
                   <div className="text-center py-10 text-stone-400 text-xs">
-                    Henüz konuklardan gelen bir rezervasyon talebi
-                    bulunmamaktadır.
+                    HenÃ¼z konuklardan gelen bir rezervasyon talebi
+                    bulunmamaktadÄ±r.
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -3021,7 +3021,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             )}
                             {b.status === "confirmed" && (
                               <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold uppercase">
-                                Onaylandı
+                                OnaylandÄ±
                               </span>
                             )}
                             {b.status === "cancelled" && (
@@ -3033,7 +3033,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   <>
                                     <HelpCircle className="h-4 w-4 text-stone-400 cursor-help" />
                                     <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-stone-800 text-white text-[10px] p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-normal normal-case font-normal text-center">
-                                      <span className="block font-bold mb-0.5 text-stone-300">İptal Gerekçesi:</span>
+                                      <span className="block font-bold mb-0.5 text-stone-300">Ä°ptal GerekÃ§esi:</span>
                                       {b.cancelReason}
                                       <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></div>
                                     </div>
@@ -3047,31 +3047,31 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 py-2 border-t border-stone-100 mt-2 text-[11px] text-stone-600">
                           <div>
                             <span className="block text-stone-400 text-[10px]">
-                              TARİHLER
+                              TARÄ°HLER
                             </span>
                             <strong>
-                              {b.checkIn} Giriş / {b.checkOut} Çıkış (
+                              {b.checkIn} GiriÅŸ / {b.checkOut} Ã‡Ä±kÄ±ÅŸ (
                               {b.totalDays} Gece)
                             </strong>
                           </div>
                           <div>
                             <span className="block text-stone-400 text-[10px]">
-                              MİSAFİR SAYISI
+                              MÄ°SAFÄ°R SAYISI
                             </span>
                             <strong>{b.guestsCount} Misafir</strong>
                           </div>
                           <div>
                             <span className="block text-stone-400 text-[10px]">
-                              İLETİŞİM HARİTASI
+                              Ä°LETÄ°ÅÄ°M HARÄ°TASI
                             </span>
                             <strong>{b.guestPhone}</strong>
                           </div>
                           <div className="col-span-1 sm:col-span-3 pt-1">
                             <span className="block text-stone-400 text-[10px]">
-                              TAHMİNİ KAZANÇ (BRÜT)
+                              TAHMÄ°NÄ° KAZANÃ‡ (BRÃœT)
                             </span>
                             <strong className="text-stone-850 font-semibold text-xs">
-                              ₺{b.totalPrice.toLocaleString("tr-TR")}
+                              â‚º{b.totalPrice.toLocaleString("tr-TR")}
                             </strong>
                           </div>
                         </div>
@@ -3106,13 +3106,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs" id="host-kampanyalar">
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-100 font-sans">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl">🏷️</span>
+                    <span className="text-xl">ğŸ·ï¸</span>
                     <div>
                       <h2 className="text-sm font-black text-stone-900 font-display uppercase tracking-wider leading-none">
-                        Kampanyalarım
+                        KampanyalarÄ±m
                       </h2>
                       <span className="text-[10px] text-stone-400 mt-1 block">
-                        Kupon ve promosyon kodlarım
+                        Kupon ve promosyon kodlarÄ±m
                       </span>
                     </div>
                   </div>
@@ -3137,7 +3137,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                 {campaigns.length === 0 ? (
                   <div className="text-center py-10 text-stone-400 text-xs font-sans">
-                    Henüz tanımlanmış bir kampanya bulunamadı. Hemen yeni bir promosyon kodu tanımlayabilirsiniz.
+                    HenÃ¼z tanÄ±mlanmÄ±ÅŸ bir kampanya bulunamadÄ±. Hemen yeni bir promosyon kodu tanÄ±mlayabilirsiniz.
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -3174,13 +3174,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                     ? "bg-emerald-100/80 text-emerald-700 hover:bg-rose-50 hover:text-rose-600 font-sans"
                                     : "bg-stone-200 text-stone-605 hover:bg-emerald-100/80 hover:text-emerald-700 font-sans"
                                 }`}
-                                title={camp.isActive ? "Kampanyayı Kapat" : "Kampanyayı Aç"}
+                                title={camp.isActive ? "KampanyayÄ± Kapat" : "KampanyayÄ± AÃ§"}
                               >
                                 {camp.isActive ? "Aktif" : "Pasif"}
                               </button>
                               <button
                                 onClick={() => {
-                                  if (confirm(`"${camp.name}" kampanyasını silmek istiyor musunuz?`)) {
+                                  if (confirm(`"${camp.name}" kampanyasÄ±nÄ± silmek istiyor musunuz?`)) {
                                     const updated = campaigns.filter((c) => c.id !== camp.id);
                                     saveCampaignsState(updated);
                                   }
@@ -3195,24 +3195,24 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                           <div className="space-y-1.5 text-[11px] text-stone-600 pt-2 border-t border-dashed border-stone-200">
                             <div className="flex justify-between font-medium">
-                              <span>İndirim Oranı/Tutarı:</span>
+                              <span>Ä°ndirim OranÄ±/TutarÄ±:</span>
                               <strong className="text-stone-850">
                                 {camp.discountType === "percentage"
                                   ? `%${camp.discountValue}`
-                                  : `₺${camp.discountValue.toLocaleString("tr-TR")}`}
+                                  : `â‚º${camp.discountValue.toLocaleString("tr-TR")}`}
                               </strong>
                             </div>
                             <div className="flex justify-between font-medium">
-                              <span>Geçerli Tesis:</span>
+                              <span>GeÃ§erli Tesis:</span>
                               <strong className="text-stone-850 truncate max-w-[125px]">
                                 {camp.targetVillaId === "all"
-                                  ? "Tüm Konutlar 🏡"
-                                  : associatedVilla?.name || "Özel Konut"}
+                                  ? "TÃ¼m Konutlar ğŸ¡"
+                                  : associatedVilla?.name || "Ã–zel Konut"}
                               </strong>
                             </div>
                             {camp.startDate && camp.endDate && (
                               <div className="flex justify-between font-sans text-[10px] text-stone-400">
-                                <span>Tarih Aralığı:</span>
+                                <span>Tarih AralÄ±ÄŸÄ±:</span>
                                 <span>
                                   {camp.startDate} / {camp.endDate}
                                 </span>
@@ -3226,18 +3226,18 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 )}
               </div>
 
-              {/* 3. İlanlarınız (Listings) block placed gracefully at bottom of host stack */}
+              {/* 3. Ä°lanlarÄ±nÄ±z (Listings) block placed gracefully at bottom of host stack */}
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-xs" id="host-ilanlar">
                 <div className="flex items-center justify-between mb-6 pb-3 border-b border-stone-100 font-display">
                   <h2 className="text-lg font-extrabold text-[#111] flex items-center gap-2">
-                    <span>🏢</span> Yayındaki İlanlarınız / Tesisleriniz
+                    <span>ğŸ¢</span> YayÄ±ndaki Ä°lanlarÄ±nÄ±z / Tesisleriniz
                   </h2>
                   <button
                     onClick={() => setShowAddVillaModal(true)}
                     className="flex items-center gap-1.5 rounded-xl bg-[#FF385C] hover:bg-[#E02647] text-white font-bold px-4 py-2 text-xs transition active:scale-95 shadow-md shadow-rose-500/10 cursor-pointer"
                   >
                     <PlusCircle className="h-4 w-4" />
-                    <span>Yeni İlan Ekle</span>
+                    <span>Yeni Ä°lan Ekle</span>
                   </button>
                 </div>
 
@@ -3259,20 +3259,20 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               {v.name}
                             </span>
                             <span className="text-[9px] font-extrabold uppercase bg-stone-200 text-stone-700 px-1.5 py-0.5 rounded">
-                              {VILLA_TYPES_MAP[v.type]?.icon || "🏡"}{" "}
+                              {VILLA_TYPES_MAP[v.type]?.icon || "ğŸ¡"}{" "}
                               {VILLA_TYPES_MAP[v.type]?.label || "Konut"}
                             </span>
                             {v.isBoat && (
                               <span className="text-[9px] font-extrabold uppercase bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded">
-                                ⛵ Tekne
+                                â›µ Tekne
                               </span>
                             )}
                           </div>
                           <span className="block text-[11px] text-stone-400 mt-1 pb-0.5">
-                            {v.region} • ★ {v.rating} ({v.reviewCount} Değerlendirme)
+                            {v.region} â€¢ â˜… {v.rating} ({v.reviewCount} DeÄŸerlendirme)
                           </span>
                           <span className="block text-[11px] font-bold text-[#FF385C]">
-                            Gecelik Kiralama Bedeli: ₺{v.pricePerNight.toLocaleString("tr-TR")}
+                            Gecelik Kiralama Bedeli: â‚º{v.pricePerNight.toLocaleString("tr-TR")}
                           </span>
                         </div>
                       </div>
@@ -3284,35 +3284,35 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           rel="noopener noreferrer"
                           className="bg-sky-50 border border-sky-150 hover:bg-sky-100 text-sky-700 hover:text-sky-900 rounded-xl px-3 py-2 text-xs font-black transition flex items-center gap-1 shrink-0"
                         >
-                          Sitede Gör 🔗
+                          Sitede GÃ¶r ğŸ”—
                         </a>
                         <button
                           onClick={() => setEditingVilla(v)}
                           className="bg-amber-50 border border-amber-150 hover:bg-amber-100 text-amber-700 hover:text-amber-900 rounded-xl px-3 py-2 text-xs font-black transition flex items-center gap-1 shrink-0 cursor-pointer"
                         >
-                          İlanı Düzenle 📝
+                          Ä°lanÄ± DÃ¼zenle ğŸ“
                         </button>
                         <button
                           onClick={() => setTierEditingVilla(v)}
                           className="bg-white border border-stone-250 hover:border-[#D6D3D1] hover:bg-stone-100 text-stone-800 rounded-xl px-3 py-2 text-xs font-black transition cursor-pointer shrink-0 flex items-center gap-1"
                         >
-                          📅 Kademeli Fiyat Gir
+                          ğŸ“… Kademeli Fiyat Gir
                         </button>
                         <button
                           onClick={() => handleToggleActive(v.id, v.isActive)}
                           className="bg-stone-100 border border-stone-200 hover:bg-stone-200 text-stone-700 rounded-xl px-3 py-2 text-xs font-black transition cursor-pointer shrink-0 flex items-center gap-1"
                         >
-                          {v.isActive === false ? '▶ İlanı Başlat' : '⏸ İlanı Durdur'}
+                          {v.isActive === false ? 'â–¶ Ä°lanÄ± BaÅŸlat' : 'â¸ Ä°lanÄ± Durdur'}
                         </button>
                         <button
                           onClick={() => {
-                            if(window.confirm('İlanı tamamen silmek istediğinize emin misiniz?')) {
+                            if(window.confirm('Ä°lanÄ± tamamen silmek istediÄŸinize emin misiniz?')) {
                               handleDeleteVilla(v.id);
                             }
                           }}
                           className="bg-rose-50 hover:bg-[#FF385C] text-[#FF385C] hover:text-white rounded-xl px-3 py-2 text-xs font-black transition cursor-pointer shrink-0 border border-rose-100"
                         >
-                          🗑 İlanı Sil
+                          ğŸ—‘ Ä°lanÄ± Sil
                         </button>
                       </div>
                     </div>
@@ -3324,7 +3324,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         </main>
       )}
 
-      {/* ----------------- ADMİN PANELİ / ADMIN CONTROL ROOM ----------------- */}
+      {/* ----------------- ADMÄ°N PANELÄ° / ADMIN CONTROL ROOM ----------------- */}
       {currentRole === "admin" && (
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 flex-1">
           {/* Admin Blue Themed Control Header Bar */}
@@ -3335,11 +3335,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
               <div>
                 <span className="block text-[9px] font-black text-blue-200 uppercase tracking-widest leading-none mb-1">
-                  ADMİNİSTRATOR YETKİLİ KONTROL KABİNİ
+                  ADMÄ°NÄ°STRATOR YETKÄ°LÄ° KONTROL KABÄ°NÄ°
                 </span>
                 <h1 className="text-xl font-extrabold tracking-tight text-white leading-none">
-                  Sistem Yöneticisi:{" "}
-                  {currentAdmin ? currentAdmin.name : "Baş Yönetici"}
+                  Sistem YÃ¶neticisi:{" "}
+                  {currentAdmin ? currentAdmin.name : "BaÅŸ YÃ¶netici"}
                 </h1>
               </div>
             </div>
@@ -3349,7 +3349,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="flex items-center gap-2 rounded-2xl bg-blue-950 border border-blue-800 py-2 px-3.5 text-xs text-blue-200">
                 <Clock className="h-4 w-4 animate-spin shrink-0 text-blue-400" />
                 <span className="font-semibold text-blue-100">
-                  Oturum Şifreleme:{" "}
+                  Oturum Åifreleme:{" "}
                 </span>
                 <span className="font-mono font-bold text-white bg-blue-500/25 py-0.5 px-1.5 rounded-lg">
                   {Math.floor(sessionTimeout / 60)
@@ -3360,9 +3360,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 <button
                   onClick={() => setSessionTimeout(900)}
                   className="ml-2 hover:text-white font-black underline uppercase tracking-wider text-[9px] cursor-pointer"
-                  title="Güvenli yönetici oturum süresini uzat"
+                  title="GÃ¼venli yÃ¶netici oturum sÃ¼resini uzat"
                 >
-                  Süreyi Uzat
+                  SÃ¼reyi Uzat
                 </button>
               </div>
 
@@ -3370,7 +3370,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 onClick={() => {
                   if (
                     confirm(
-                      "Yönetim panelinden çıkmak istediğinize emin misiniz?",
+                      "YÃ¶netim panelinden Ã§Ä±kmak istediÄŸinize emin misiniz?",
                     )
                   ) {
                     handleLogout("admin");
@@ -3379,7 +3379,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 className="flex items-center gap-1.5 rounded-2xl bg-white hover:bg-stone-150 text-blue-900 font-extrabold px-4 py-2 text-xs transition active:scale-95 cursor-pointer shadow-md"
               >
                 <LogOut className="h-3.5 w-3.5" />
-                <span>Güvenli Oturum Kapat</span>
+                <span>GÃ¼venli Oturum Kapat</span>
               </button>
             </div>
           </div>
@@ -3389,12 +3389,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             <div className="bg-stone-950 text-white p-5 rounded-2xl shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">
-                  Platform Brüt İşlemleri
+                  Platform BrÃ¼t Ä°ÅŸlemleri
                 </span>
                 <Wallet className="h-4.5 w-4.5 text-emerald-400" />
               </div>
               <span className="block font-mono text-xl font-bold">
-                ₺
+                â‚º
                 {bookings
                   .reduce(
                     (sum, b) =>
@@ -3404,22 +3404,22 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   .toLocaleString("tr-TR")}
               </span>
               <span className="text-[9px] text-stone-400 block mt-1">
-                Sistem üzerinden ödenen toplam ciro
+                Sistem Ã¼zerinden Ã¶denen toplam ciro
               </span>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">
-                  Tüm Tesis Hacmi
+                  TÃ¼m Tesis Hacmi
                 </span>
                 <Building className="h-4.5 w-4.5 text-[#FF385C]" />
               </div>
               <span className="block font-mono text-xl font-bold">
-                {villas.length} Aktif Mülk
+                {villas.length} Aktif MÃ¼lk
               </span>
               <span className="text-[9px] text-stone-400 block mt-1">
-                Farklı ev sahipleri tarafından sunulan
+                FarklÄ± ev sahipleri tarafÄ±ndan sunulan
               </span>
             </div>
 
@@ -3434,7 +3434,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {bookings.length} Talep
               </span>
               <span className="text-[9px] text-stone-400 block mt-1">
-                Oluşturulan ön rezervasyon seyahatleri
+                OluÅŸturulan Ã¶n rezervasyon seyahatleri
               </span>
             </div>
 
@@ -3449,14 +3449,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {bookings.filter((b) => b.status === "pending").length} Onay
               </span>
               <span className="text-[9px] text-stone-400 block mt-1">
-                Anında eylem gerektiren operasyon
+                AnÄ±nda eylem gerektiren operasyon
               </span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             <button onClick={() => navigateTo("/admin/users")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
-              <Users className="h-5 w-5 text-blue-400" /> Kullanıcılar
+              <Users className="h-5 w-5 text-blue-400" /> KullanÄ±cÄ±lar
             </button>
             <button onClick={() => navigateTo("/admin/hosts")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
               <UserCheck className="h-5 w-5 text-emerald-400" /> Ev Sahipleri
@@ -3465,7 +3465,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <BadgeAlert className="h-5 w-5 text-amber-400" /> Kampanyalar
             </button>
             <button onClick={() => navigateTo("/admin/pictures")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
-              <ImageIcon className="h-5 w-5 text-[#FF385C]" /> Görseller
+              <ImageIcon className="h-5 w-5 text-[#FF385C]" /> GÃ¶rseller
             </button>
             <button onClick={() => navigateTo("/admin")} className="bg-blue-900 text-white p-4 rounded-2xl hover:bg-blue-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-blue-800 hover:border-blue-600">
               <ShieldCheck className="h-5 w-5 text-blue-300" /> Admin Paneli
@@ -3477,12 +3477,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             {/* Global Reservation queue system for Admin */}
             <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
               <h3 className="text-base font-bold text-stone-950 mb-4 font-display">
-                Rezervasyon Onay Kuyruğu
+                Rezervasyon Onay KuyruÄŸu
               </h3>
 
               {bookings.length === 0 ? (
                 <div className="text-center py-10 text-stone-400 text-xs">
-                  Sistemde henüz kayıtlı rezervasyon işlemi bulunmamaktadır.
+                  Sistemde henÃ¼z kayÄ±tlÄ± rezervasyon iÅŸlemi bulunmamaktadÄ±r.
                 </div>
               ) : (
                 <div className="overflow-x-auto">
@@ -3490,15 +3490,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <thead>
                       <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
                         <th className="pb-3 font-semibold">Rezervasyon Kod</th>
-                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Tesis AdÄ±</th>
                         <th className="pb-3 font-semibold">Misafir Detay</th>
-                        <th className="pb-3 font-semibold">Süre</th>
+                        <th className="pb-3 font-semibold">SÃ¼re</th>
                         <th className="pb-3 font-semibold">Tutar</th>
                         <th className="pb-3 font-semibold text-center">
                           Durum
                         </th>
                         <th className="pb-3 font-semibold text-center">
-                          İşlem
+                          Ä°ÅŸlem
                         </th>
                       </tr>
                     </thead>
@@ -3519,14 +3519,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           </td>
                           <td className="py-4">
                             <span>
-                              {b.checkIn} → {b.checkOut}
+                              {b.checkIn} â†’ {b.checkOut}
                             </span>
                             <span className="block text-[10px] text-stone-400 font-medium">
                               ({b.totalDays} Gece)
                             </span>
                           </td>
                           <td className="py-4 font-mono font-bold text-stone-900">
-                            ₺{b.totalPrice.toLocaleString("tr-TR")}
+                            â‚º{b.totalPrice.toLocaleString("tr-TR")}
                           </td>
                           <td className="py-4 text-center">
                             {b.status === "pending" && (
@@ -3536,19 +3536,19 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             )}
                             {b.status === "confirmed" && (
                               <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-1 rounded font-bold">
-                                Onaylandı
+                                OnaylandÄ±
                               </span>
                             )}
                             {b.status === "cancelled" && (
                               <div className="flex items-center justify-center gap-1 group relative">
                                 <span className="bg-rose-100 text-rose-800 text-[10px] px-2 py-1 rounded font-bold">
-                                  İptal
+                                  Ä°ptal
                                 </span>
                                 {b.cancelReason && (
                                   <>
                                     <HelpCircle className="h-4 w-4 text-stone-400 cursor-help" />
                                     <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-stone-800 text-white text-[10px] p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-normal font-normal text-left">
-                                      <span className="block font-bold mb-0.5 text-stone-300">İptal Gerekçesi:</span>
+                                      <span className="block font-bold mb-0.5 text-stone-300">Ä°ptal GerekÃ§esi:</span>
                                       {b.cancelReason}
                                       <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></div>
                                     </div>
@@ -3589,24 +3589,24 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
             {/* Quick Admin Actions & Platform state control */}
             
-              {/* İlan Onay ve Vitrin Yönetimi Panel */}
+              {/* Ä°lan Onay ve Vitrin YÃ¶netimi Panel */}
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
                 <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
                   <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                  <span>İlan Onay & Vitrin Yönetimi</span>
+                  <span>Ä°lan Onay & Vitrin YÃ¶netimi</span>
                 </h3>
                 <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
-                  Ev sahipleri tarafından eklenen ilanları onaylayın veya reddedin. İlanları vitrin kategorilerine ekleyin.
+                  Ev sahipleri tarafÄ±ndan eklenen ilanlarÄ± onaylayÄ±n veya reddedin. Ä°lanlarÄ± vitrin kategorilerine ekleyin.
                 </p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
                       <tr className="border-b border-stone-200 text-stone-400 uppercase tracking-wider text-[10px]">
-                        <th className="pb-3 font-semibold">Tesis Adı</th>
+                        <th className="pb-3 font-semibold">Tesis AdÄ±</th>
                         <th className="pb-3 font-semibold">Ev Sahibi</th>
                         <th className="pb-3 font-semibold text-center">Durum</th>
-                        <th className="pb-3 font-semibold text-center">İlan Onayı / Düzenle</th>
-                        <th className="pb-3 font-semibold text-center">Vitrin Seçimi</th>
+                        <th className="pb-3 font-semibold text-center">Ä°lan OnayÄ± / DÃ¼zenle</th>
+                        <th className="pb-3 font-semibold text-center">Vitrin SeÃ§imi</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-stone-100">
@@ -3625,11 +3625,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           <td className="py-3 text-stone-500">{v.hostName || "Bilinmiyor"}</td>
                           <td className="py-3 text-center">
                             {v.approvalStatus === "approved" ? (
-                              <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold">Yayında</span>
+                              <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold">YayÄ±nda</span>
+                            ) : v.approvalStatus === "pending_edit" ? (
+                              <span className="bg-amber-200 text-amber-800 px-2 py-1 rounded text-[10px] font-bold">DÃ¼zenleme OnayÄ± Bekliyor</span>
                             ) : v.approvalStatus === "rejected" ? (
                               <span className="bg-rose-100 text-rose-700 px-2 py-1 rounded text-[10px] font-bold">Reddedildi</span>
                             ) : (
-                              <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded text-[10px] font-bold">Onay Bekliyor</span>
+                              <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded text-[10px] font-bold">Yeni Ä°lan Onay Bekliyor</span>
                             )}
                           </td>
                           <td className="py-3 text-center">
@@ -3676,7 +3678,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               )}
                               <button
                                 onClick={async () => {
-                                  if (confirm("Bu ilanı tamamen silmek istediğinize emin misiniz?")) {
+                                  if (confirm("Bu ilanÄ± tamamen silmek istediÄŸinize emin misiniz?")) {
                                     const updatedList = villas.filter(villa => villa.id !== v.id);
                                     saveVillasState(updatedList);
                                     try {
@@ -3694,7 +3696,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                 }}
                                 className="px-2 py-1 bg-blue-50 text-blue-600 rounded font-medium hover:bg-blue-100 transition-colors text-[10px]"
                               >
-                                Düzenle
+                                DÃ¼zenle
                               </button>
                             </div>
                           </td>
@@ -3721,7 +3723,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                     }}
                                     className="rounded text-rose-500 focus:ring-rose-500 h-3 w-3" 
                                   />
-                                  Balayı
+                                  BalayÄ±
                                 </label>
                                 <label className="flex items-center gap-1 cursor-pointer text-[10px] font-medium text-stone-600">
                                   <input 
@@ -3747,7 +3749,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                 </label>
                               </div>
                             ) : (
-                              <span className="text-[10px] text-stone-400 italic">Önce Onaylayın</span>
+                              <span className="text-[10px] text-stone-400 italic">Ã–nce OnaylayÄ±n</span>
                             )}
                           </td>
                         </tr>
@@ -3761,16 +3763,16 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
                 <h3 className="text-sm font-bold text-stone-950 mb-1 font-display flex items-center gap-1.5 text-blue-900 uppercase">
                   <Sparkles className="h-4 w-4 text-[#FF385C]" />
-                  <span>Anasayfa Vitrin Yönetimi</span>
+                  <span>Anasayfa Vitrin YÃ¶netimi</span>
                 </h3>
                 <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
-                  Sitenin anasayfasındaki sloganı, alt metni ve hero arka plan görselini anında buradan güncelleyebilirsiniz.
+                  Sitenin anasayfasÄ±ndaki sloganÄ±, alt metni ve hero arka plan gÃ¶rselini anÄ±nda buradan gÃ¼ncelleyebilirsiniz.
                 </p>
 
                 <div className="space-y-3">
                   <div>
                     <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1">
-                      Üst Küçük Slogan (Sparkle)
+                      Ãœst KÃ¼Ã§Ã¼k Slogan (Sparkle)
                     </label>
                     <input
                       type="text"
@@ -3786,7 +3788,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                   <div>
                     <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1">
-                      Ana Manşet Başlığı
+                      Ana ManÅŸet BaÅŸlÄ±ÄŸÄ±
                     </label>
                     <input
                       type="text"
@@ -3796,13 +3798,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         localStorage.setItem("villabungalov_hero_title", e.target.value);
                       }}
                       className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold text-stone-850 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                      placeholder="Başlık girin..."
+                      placeholder="BaÅŸlÄ±k girin..."
                     />
                   </div>
 
                   <div>
                     <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1">
-                      Açıklama Alt Metni
+                      AÃ§Ä±klama Alt Metni
                     </label>
                     <textarea
                       rows={3}
@@ -3812,13 +3814,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         localStorage.setItem("villabungalov_hero_desc", e.target.value);
                       }}
                       className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold text-stone-855 focus:ring-1 focus:ring-blue-500 focus:outline-none resize-none leading-relaxed"
-                      placeholder="Açıklama alt metni girin..."
+                      placeholder="AÃ§Ä±klama alt metni girin..."
                     />
                   </div>
 
                   <div>
                     <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1">
-                      Zemin Arka Plan Görseli (URL)
+                      Zemin Arka Plan GÃ¶rseli (URL)
                     </label>
                     <input
                       type="text"
@@ -3831,13 +3833,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       placeholder="https://..."
                     />
                     <span className="text-[9px] text-[#FF385C] block mt-1 font-semibold">
-                      *Değişiklikler anında anasayfaya yansır ve kalıcı kaydedilir.
+                      *DeÄŸiÅŸiklikler anÄ±nda anasayfaya yansÄ±r ve kalÄ±cÄ± kaydedilir.
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* ⚡ MAJESTIC SUPER ADMIN CMS SITE EDITOR ⚡ */}
+              {/* âš¡ MAJESTIC SUPER ADMIN CMS SITE EDITOR âš¡ */}
           <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 sm:p-8 mb-8 text-left" id="super-admin-cms-editor">
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-5 border-b border-stone-200 pb-5 mb-6">
               <div className="flex items-center gap-3">
@@ -3846,10 +3848,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 </div>
                 <div>
                   <h2 className="text-lg font-extrabold text-stone-900 font-display flex items-center gap-2">
-                    Süper Admin Canlı İçerik Yönetim Modülü (CMS)
+                    SÃ¼per Admin CanlÄ± Ä°Ã§erik YÃ¶netim ModÃ¼lÃ¼ (CMS)
                   </h2>
                   <p className="text-xs text-stone-500 font-sans mt-0.5">
-                    Tüm anasayfa başlıklarını, logoları, bilgilendirme alanlarını ve yorumları anında tasarlayın ve kalıcı olarak güncelleyin.
+                    TÃ¼m anasayfa baÅŸlÄ±klarÄ±nÄ±, logolarÄ±, bilgilendirme alanlarÄ±nÄ± ve yorumlarÄ± anÄ±nda tasarlayÄ±n ve kalÄ±cÄ± olarak gÃ¼ncelleyin.
                   </p>
                 </div>
               </div>
@@ -3859,16 +3861,16 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {cmsUnsaved ? (
                   <span className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-800 text-[10px] px-3 py-1.5 rounded-full font-bold">
                     <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
-                     Yayınlanmamış Değişiklikler Var!
+                     YayÄ±nlanmamÄ±ÅŸ DeÄŸiÅŸiklikler Var!
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-800 text-[10px] px-3 py-1.5 rounded-full font-bold">
                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                     Sitede Tüm Veriler Güncel &amp; Canlı
+                     Sitede TÃ¼m Veriler GÃ¼ncel &amp; CanlÄ±
                   </span>
                 )}
 
-                {/* Kaydet & Yayınla Button! */}
+                {/* Kaydet & YayÄ±nla Button! */}
                 <button
                   onClick={handleCmsPublish}
                   disabled={cmsPublishing}
@@ -3883,12 +3885,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   {cmsPublishing ? (
                     <>
                       <div className="h-4 w-4 border-2 border-stone-400 border-t-transparent rounded-full animate-spin" />
-                      Yayınlanıyor...
+                      YayÄ±nlanÄ±yor...
                     </>
                   ) : (
                     <>
                       <Check className="h-4 w-4" />
-                      Kaydet &amp; Canlı Yayınla
+                      Kaydet &amp; CanlÄ± YayÄ±nla
                     </>
                   )}
                 </button>
@@ -3903,9 +3905,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-extrabold text-emerald-950 font-sans">Canlı Yayına Alındı!</h4>
+                    <h4 className="text-xs font-extrabold text-emerald-950 font-sans">CanlÄ± YayÄ±na AlÄ±ndÄ±!</h4>
                     <p className="text-[11px] text-emerald-700 font-sans mt-0.5 leading-normal">
-                      Tüm metin değişiklikleriniz, logolar, misafir yorumları ve alan şablonları başarıyla kaydedildi ve yayına alındı!
+                      TÃ¼m metin deÄŸiÅŸiklikleriniz, logolar, misafir yorumlarÄ± ve alan ÅŸablonlarÄ± baÅŸarÄ±yla kaydedildi ve yayÄ±na alÄ±ndÄ±!
                     </p>
                   </div>
                 </div>
@@ -3921,13 +3923,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {/* Left sidebar menu */}
               <div className="lg:col-span-1 border-r border-stone-200/80 pr-2 space-y-1.5">
-                <span className="block text-[10px] uppercase font-black tracking-widest text-stone-400 mb-2 pl-2">Yönetim Menüsü</span>
+                <span className="block text-[10px] uppercase font-black tracking-widest text-stone-400 mb-2 pl-2">YÃ¶netim MenÃ¼sÃ¼</span>
                 {[
-                  { key: "Misafir Yorumları", label: "Misafir Yorumları" },
-                  { key: "Görsel", label: "Görsel" },
-                  { key: "Görsel Alt menüler", label: "Görsel Alt menüler" },
-                  { key: "üst bar", label: "üst bar" },
-                  { key: "manşet", label: "manşet" },
+                  { key: "Misafir YorumlarÄ±", label: "Misafir YorumlarÄ±" },
+                  { key: "GÃ¶rsel", label: "GÃ¶rsel" },
+                  { key: "GÃ¶rsel Alt menÃ¼ler", label: "GÃ¶rsel Alt menÃ¼ler" },
+                  { key: "Ã¼st bar", label: "Ã¼st bar" },
+                  { key: "manÅŸet", label: "manÅŸet" },
                   { key: "SSS", label: "SSS" },
                   { key: "Alan 1", label: "Alan 1" },
                   { key: "Alan 2", label: "Alan 2" },
@@ -3944,26 +3946,26 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }`}
                   >
                     <span>{item.label}</span>
-                    <span className="opacity-40">→</span>
+                    <span className="opacity-40">â†’</span>
                   </button>
                 ))}
               </div>
 
               {/* Right forms workspace */}
               <div className="lg:col-span-3 min-h-[400px]">
-                {/* 1. MİSAFİR YORUMLARI TAB */}
-                {adminActiveTab === "Misafir Yorumları" && (
+                {/* 1. MÄ°SAFÄ°R YORUMLARI TAB */}
+                {adminActiveTab === "Misafir YorumlarÄ±" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Misafir Yorumları Alan Yönetimi</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Misafir YorumlarÄ± Alan YÃ¶netimi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Müşteri memnuniyetini gösteren yorumları düzenleyin veya yenilerini ekleyin.
+                        MÃ¼ÅŸteri memnuniyetini gÃ¶steren yorumlarÄ± dÃ¼zenleyin veya yenilerini ekleyin.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Misafir Yorumları Alt Başlık Tanıtım Yazısı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Misafir YorumlarÄ± Alt BaÅŸlÄ±k TanÄ±tÄ±m YazÄ±sÄ±</label>
                         <input
                           type="text"
                           value={reviewsSubtitle}
@@ -3978,15 +3980,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                       <div className="border-t border-stone-200/80 pt-4">
                         <div className="flex items-center justify-between mb-3">
-                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider">Aktif Gerçek Yorumlar Listesi</label>
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider">Aktif GerÃ§ek Yorumlar Listesi</label>
                           <button
                             onClick={() => {
                               const newList = [
                                 ...reviewsData,
                                 {
                                   name: "Yorumcu " + (reviewsData.length + 1) + ".",
-                                  comment: "Rüya gibi harika bir bungalov konaklamasıydı. Tertemizdi, konumu çok sessiz ve doğanın içindeydi. Kesinlikle çok memnun kaldık.",
-                                  property: "Elite Jakuzili Isıtmalı Sınıfı"
+                                  comment: "RÃ¼ya gibi harika bir bungalov konaklamasÄ±ydÄ±. Tertemizdi, konumu Ã§ok sessiz ve doÄŸanÄ±n iÃ§indeydi. Kesinlikle Ã§ok memnun kaldÄ±k.",
+                                  property: "Elite Jakuzili IsÄ±tmalÄ± SÄ±nÄ±fÄ±"
                                 }
                               ];
                               setReviewsData(newList);
@@ -3994,7 +3996,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             }}
                             className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-xl transition"
                           >
-                            + Yeni Gerçek Yorum Ekle
+                            + Yeni GerÃ§ek Yorum Ekle
                           </button>
                         </div>
 
@@ -4017,7 +4019,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                  <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Misafir İsmi</label>
+                                  <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Misafir Ä°smi</label>
                                   <input
                                     type="text"
                                     value={rev.name}
@@ -4031,7 +4033,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   />
                                 </div>
                                 <div>
-                                  <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Yorum Yaptığı Konut / İlan Sınıfı</label>
+                                  <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Yorum YaptÄ±ÄŸÄ± Konut / Ä°lan SÄ±nÄ±fÄ±</label>
                                   <input
                                     type="text"
                                     value={rev.property}
@@ -4047,7 +4049,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </div>
 
                               <div>
-                                <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Yorum İçeriği</label>
+                                <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Yorum Ä°Ã§eriÄŸi</label>
                                 <textarea
                                   rows={2}
                                   value={rev.comment}
@@ -4068,19 +4070,19 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   </div>
                 )}
 
-                {/* 2. GÖRSEL TAB */}
-                {adminActiveTab === "Görsel" && (
+                {/* 2. GÃ–RSEL TAB */}
+                {adminActiveTab === "GÃ¶rsel" && (
                   <div className="space-y-5">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Görsel Vitrin &amp; Manşet Alanı</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">GÃ¶rsel Vitrin &amp; ManÅŸet AlanÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Sitenin en üstündeki büyük tanıtım manşetinin metinlerini ve arkasındaki görseli dilediğiniz zaman değiştirin.
+                        Sitenin en Ã¼stÃ¼ndeki bÃ¼yÃ¼k tanÄ±tÄ±m manÅŸetinin metinlerini ve arkasÄ±ndaki gÃ¶rseli dilediÄŸiniz zaman deÄŸiÅŸtirin.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Küçük Üst Başlık (Slogan)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">KÃ¼Ã§Ã¼k Ãœst BaÅŸlÄ±k (Slogan)</label>
                         <input
                           type="text"
                           value={heroSlogan}
@@ -4093,7 +4095,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Büyük Manşet Başlığı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">BÃ¼yÃ¼k ManÅŸet BaÅŸlÄ±ÄŸÄ±</label>
                         <input
                           type="text"
                           value={heroTitle}
@@ -4106,7 +4108,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Detaylı Açıklama Paragrafı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">DetaylÄ± AÃ§Ä±klama ParagrafÄ±</label>
                         <textarea
                           rows={3}
                           value={heroDescription}
@@ -4119,7 +4121,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Zemin Arka Plan Görsel Adresi (URL)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Zemin Arka Plan GÃ¶rsel Adresi (URL)</label>
                         <input
                           type="text"
                           value={heroBgImage}
@@ -4130,12 +4132,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-4 py-2.5 text-xs font-mono text-stone-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         />
                         <div className="mt-3 bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
-                          <span className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1.5">Mükemmel Alternatif Görseller (Hızlı Uygula)</span>
+                          <span className="block text-[9px] font-bold text-stone-400 uppercase tracking-wider mb-1.5">MÃ¼kemmel Alternatif GÃ¶rseller (HÄ±zlÄ± Uygula)</span>
                           <div className="flex gap-2">
                             {[
-                              { label: "Doğa Bungalov", url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1390334924456893789/original/2aeae359-92fb-4ae5-b617-3df76973c1c3.jpeg?im_w=1200" },
-                              { label: "Sapanca Göl Manzarası", url: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=1200" },
-                              { label: "Lüks Havuzlu Villa", url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1200" }
+                              { label: "DoÄŸa Bungalov", url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1390334924456893789/original/2aeae359-92fb-4ae5-b617-3df76973c1c3.jpeg?im_w=1200" },
+                              { label: "Sapanca GÃ¶l ManzarasÄ±", url: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=1200" },
+                              { label: "LÃ¼ks Havuzlu Villa", url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1200" }
                             ].map((bg, idx) => (
                               <button
                                 key={idx}
@@ -4155,24 +4157,24 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   </div>
                 )}
 
-                {/* 3. GÖRSEL ALT MENÜLER TAB */}
-                {adminActiveTab === "Görsel Alt menüler" && (
+                {/* 3. GÃ–RSEL ALT MENÃœLER TAB */}
+                {adminActiveTab === "GÃ¶rsel Alt menÃ¼ler" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Görsel Alt Menü Yapılandırması</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">GÃ¶rsel Alt MenÃ¼ YapÄ±landÄ±rmasÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Aşağıdaki alt menülerin her biri, web sayfasının farklı bir donanımını ve görsel şablonlarını yönetmenizi sağlar.
+                        AÅŸaÄŸÄ±daki alt menÃ¼lerin her biri, web sayfasÄ±nÄ±n farklÄ± bir donanÄ±mÄ±nÄ± ve gÃ¶rsel ÅŸablonlarÄ±nÄ± yÃ¶netmenizi saÄŸlar.
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
-                        { title: "üst bar", desc: "En tepe duyuru metnini düzenleyin", target: "üst bar" },
-                        { title: "manşet", desc: "Logo başlığı ve sloganını kontrol edin", target: "manşet" },
-                        { title: "SSS (Sıkça Sorulan Sorular)", desc: "Soruların ve cevapların tamamına müdahale edin", target: "SSS" },
-                        { title: "Alan 1 (Özel Evler)", desc: "Kategorize özel arama anahtar linklerini yönetin", target: "Alan 1" },
-                        { title: "Alan 2 (Kiralık Villa v..)", desc: "Metinleri, rehber ve tabloları revize edin", target: "Alan 2" },
-                        { title: "Alan 3 (Direkt Karşılıklı)", desc: "Peer-to-peer Airbnb modelinin tüm alanları", target: "Alan 3" }
+                        { title: "Ã¼st bar", desc: "En tepe duyuru metnini dÃ¼zenleyin", target: "Ã¼st bar" },
+                        { title: "manÅŸet", desc: "Logo baÅŸlÄ±ÄŸÄ± ve sloganÄ±nÄ± kontrol edin", target: "manÅŸet" },
+                        { title: "SSS (SÄ±kÃ§a Sorulan Sorular)", desc: "SorularÄ±n ve cevaplarÄ±n tamamÄ±na mÃ¼dahale edin", target: "SSS" },
+                        { title: "Alan 1 (Ã–zel Evler)", desc: "Kategorize Ã¶zel arama anahtar linklerini yÃ¶netin", target: "Alan 1" },
+                        { title: "Alan 2 (KiralÄ±k Villa v..)", desc: "Metinleri, rehber ve tablolarÄ± revize edin", target: "Alan 2" },
+                        { title: "Alan 3 (Direkt KarÅŸÄ±lÄ±klÄ±)", desc: "Peer-to-peer Airbnb modelinin tÃ¼m alanlarÄ±", target: "Alan 3" }
                       ].map((sub, i) => (
                         <button
                           key={i}
@@ -4183,25 +4185,25 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             <span className="block text-xs font-extrabold text-[#FF385C] uppercase font-display mb-1.5">{sub.title}</span>
                             <p className="text-[11px] text-stone-500 font-sans leading-relaxed">{sub.desc}</p>
                           </div>
-                          <span className="text-[10px] font-black text-blue-600 hover:underline mt-4 block">Alt Menüyü Aç →</span>
+                          <span className="text-[10px] font-black text-blue-600 hover:underline mt-4 block">Alt MenÃ¼yÃ¼ AÃ§ â†’</span>
                         </button>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* 4. ÜST BAR TAB */}
-                {adminActiveTab === "üst bar" && (
+                {/* 4. ÃœST BAR TAB */}
+                {adminActiveTab === "Ã¼st bar" && (
                   <div className="space-y-5">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">En Üst Duyuru Barı</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">En Ãœst Duyuru BarÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Ziyaretçileri karşılayan kırmızı şerit üzerindeki duyuru yazısı.
+                        ZiyaretÃ§ileri karÅŸÄ±layan kÄ±rmÄ±zÄ± ÅŸerit Ã¼zerindeki duyuru yazÄ±sÄ±.
                       </p>
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-2">Duyuru / Tanıtım Metni</label>
+                      <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-2">Duyuru / TanÄ±tÄ±m Metni</label>
                       <input
                         type="text"
                         value={topBarText}
@@ -4210,25 +4212,25 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           localStorage.setItem("villabungalov_topbar_text", e.target.value);
                         }}
                         className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-4 py-3 text-xs text-stone-800 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-500"
-                        placeholder="Örn: Türkiye'nin En Seçkin Villa ve Bungalov Evleri Tek Adreste!"
+                        placeholder="Ã–rn: TÃ¼rkiye'nin En SeÃ§kin Villa ve Bungalov Evleri Tek Adreste!"
                       />
                     </div>
                   </div>
                 )}
 
-                {/* 5. MANŞET TAB */}
-                {adminActiveTab === "manşet" && (
+                {/* 5. MANÅET TAB */}
+                {adminActiveTab === "manÅŸet" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Logo ve Marka Slogan Ayarları</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Logo ve Marka Slogan AyarlarÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Sitedeki ana logo metnini ve altındaki küçük yardımcı sloganı dilediğiniz gibi düzenleyin. Değişiklik Navbar ve Footer alanlarına otomatik uygulanır.
+                        Sitedeki ana logo metnini ve altÄ±ndaki kÃ¼Ã§Ã¼k yardÄ±mcÄ± sloganÄ± dilediÄŸiniz gibi dÃ¼zenleyin. DeÄŸiÅŸiklik Navbar ve Footer alanlarÄ±na otomatik uygulanÄ±r.
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Logo Ana Başlığı (Üst Kısım)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Logo Ana BaÅŸlÄ±ÄŸÄ± (Ãœst KÄ±sÄ±m)</label>
                         <input
                           type="text"
                           value={logoTitle}
@@ -4239,12 +4241,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           placeholder="VillaBungalovTatil"
                         />
                         <span className="text-[9px] text-stone-400 mt-1 block leading-relaxed">
-                          Yazı içinde 'Bungalov' geçiyorsa sistem onu otomatik yeşil vurgulu yapar!
+                          YazÄ± iÃ§inde 'Bungalov' geÃ§iyorsa sistem onu otomatik yeÅŸil vurgulu yapar!
                         </span>
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Logo Alt Sloganı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Logo Alt SloganÄ±</label>
                         <input
                           type="text"
                           value={logoSubtitle}
@@ -4252,7 +4254,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             handleLogoChange(logoTitle, e.target.value);
                           }}
                           className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-4 py-2.5 text-xs text-stone-800 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-500"
-                          placeholder="Harika Evler Muhteşem Tatiller"
+                          placeholder="Harika Evler MuhteÅŸem Tatiller"
                         />
                       </div>
                     </div>
@@ -4263,15 +4265,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {adminActiveTab === "SSS" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Sıkça Sorulan Sorular (SSS) Yönetimi</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">SÄ±kÃ§a Sorulan Sorular (SSS) YÃ¶netimi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Kullanıcıları bilgilendiren accordion sorularını ve alt yazısını buradan özgürce düzenleyin.
+                        KullanÄ±cÄ±larÄ± bilgilendiren accordion sorularÄ±nÄ± ve alt yazÄ±sÄ±nÄ± buradan Ã¶zgÃ¼rce dÃ¼zenleyin.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Bölüm Alt Başlığı (Subtitle)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">BÃ¶lÃ¼m Alt BaÅŸlÄ±ÄŸÄ± (Subtitle)</label>
                         <input
                           type="text"
                           value={faqSubtitle}
@@ -4291,8 +4293,8 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               const newList = [
                                 ...faqList,
                                 {
-                                  q: "Isıtmalı dış havuzlar fiyata dahil mi?",
-                                  a: "Evet, ilanlarımızda ısıtmalı havuzlu olarak belirtilen tüm mülklerde ısıtma hizmetimiz fiyata dahildir."
+                                  q: "IsÄ±tmalÄ± dÄ±ÅŸ havuzlar fiyata dahil mi?",
+                                  a: "Evet, ilanlarÄ±mÄ±zda Ä±sÄ±tmalÄ± havuzlu olarak belirtilen tÃ¼m mÃ¼lklerde Ä±sÄ±tma hizmetimiz fiyata dahildir."
                                 }
                               ];
                               setFaqList(newList);
@@ -4317,7 +4319,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   }}
                                   className="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline"
                                 >
-                                  Bu Soruyu Kaldır
+                                  Bu Soruyu KaldÄ±r
                                 </button>
                               </div>
 
@@ -4337,7 +4339,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </div>
 
                               <div>
-                                <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">Açıklayıcı Cevap Metni</label>
+                                <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">AÃ§Ä±klayÄ±cÄ± Cevap Metni</label>
                                 <textarea
                                   rows={2}
                                   value={faq.a}
@@ -4362,15 +4364,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {adminActiveTab === "Alan 1" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 1 - Özel Evler Listesi</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 1 - Ã–zel Evler Listesi</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Kullanıcıları özel filtrelere yönlendiren arama linklerinin başlıklarını dilediğiniz gibi kontrol edin. "Başlık + Cari Yıl" (Örn: {new Date().getFullYear()}) dinamiği kod seviyesinde otomatik işlemeye devam eder.
+                        KullanÄ±cÄ±larÄ± Ã¶zel filtrelere yÃ¶nlendiren arama linklerinin baÅŸlÄ±klarÄ±nÄ± dilediÄŸiniz gibi kontrol edin. "BaÅŸlÄ±k + Cari YÄ±l" (Ã–rn: {new Date().getFullYear()}) dinamiÄŸi kod seviyesinde otomatik iÅŸlemeye devam eder.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">Bölüm Alt Başlığı (Subtitle)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">BÃ¶lÃ¼m Alt BaÅŸlÄ±ÄŸÄ± (Subtitle)</label>
                         <input
                           type="text"
                           value={area1Subtitle}
@@ -4387,7 +4389,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider">Aktif Filtre Linkleri Listesi</label>
                           <button
                             onClick={() => {
-                              const newList = [...area1Titles, "Muhteşem Doğa Manzaralı Isıtmalı Havuzlu Evler"];
+                              const newList = [...area1Titles, "MuhteÅŸem DoÄŸa ManzaralÄ± IsÄ±tmalÄ± Havuzlu Evler"];
                               setArea1Titles(newList);
                               localStorage.setItem("villabungalov_area1_titles", JSON.stringify(newList));
                             }}
@@ -4401,7 +4403,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           {area1Titles.map((titleText, idx) => (
                             <div key={idx} className="bg-stone-50 p-3 rounded-2xl border border-stone-200/80 flex items-center gap-3">
                               <div className="flex-1">
-                                <span className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Link Adı #{idx + 1}</span>
+                                <span className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5">Link AdÄ± #{idx + 1}</span>
                                 <input
                                   type="text"
                                   value={titleText}
@@ -4421,7 +4423,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   localStorage.setItem("villabungalov_area1_titles", JSON.stringify(filtered));
                                 }}
                                 className="text-stone-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50/50 transition self-end"
-                                title="Kaldır"
+                                title="KaldÄ±r"
                               >
                                 <X className="h-4.5 w-4.5" />
                               </button>
@@ -4437,15 +4439,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {adminActiveTab === "Alan 2" && (
                   <div className="space-y-5">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 2 - Genel Kiralık Villa &amp; Bungalov Tanıtımı</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 2 - Genel KiralÄ±k Villa &amp; Bungalov TanÄ±tÄ±mÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Müşterileri izole ve konforlu tatil hakkında bilgilendiren geniş makale alanının başlığı, alt başlığı ve başlangıç paragrafı.
+                        MÃ¼ÅŸterileri izole ve konforlu tatil hakkÄ±nda bilgilendiren geniÅŸ makale alanÄ±nÄ±n baÅŸlÄ±ÄŸÄ±, alt baÅŸlÄ±ÄŸÄ± ve baÅŸlangÄ±Ã§ paragrafÄ±.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Büyük Bölüm Başlığı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">BÃ¼yÃ¼k BÃ¶lÃ¼m BaÅŸlÄ±ÄŸÄ±</label>
                         <input
                           type="text"
                           value={area2Title}
@@ -4458,7 +4460,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Küçük Alt Başlık</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">KÃ¼Ã§Ã¼k Alt BaÅŸlÄ±k</label>
                         <input
                           type="text"
                           value={area2Subtitle}
@@ -4471,7 +4473,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Giriş Paragrafı (Rehber Makale)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">GiriÅŸ ParagrafÄ± (Rehber Makale)</label>
                         <textarea
                           rows={4}
                           value={area2Intro}
@@ -4490,15 +4492,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {adminActiveTab === "Alan 3" && (
                   <div className="space-y-5">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 3 - Direkt Karşılıklı Güvenli Ev Sahibi Anlaşmaları</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 3 - Direkt KarÅŸÄ±lÄ±klÄ± GÃ¼venli Ev Sahibi AnlaÅŸmalarÄ±</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Aracı yüksek komisyonlar olmadan seyahat felsefesini açıklayan Airbnb esintili anket/banner alanının metinleri, butonu ve görseli.
+                        AracÄ± yÃ¼ksek komisyonlar olmadan seyahat felsefesini aÃ§Ä±klayan Airbnb esintili anket/banner alanÄ±nÄ±n metinleri, butonu ve gÃ¶rseli.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Bölüm Başlığı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">BÃ¶lÃ¼m BaÅŸlÄ±ÄŸÄ±</label>
                         <input
                           type="text"
                           value={area3Title}
@@ -4511,7 +4513,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Bölüm Açıklama Yazısı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">BÃ¶lÃ¼m AÃ§Ä±klama YazÄ±sÄ±</label>
                         <textarea
                           rows={3}
                           value={area3Text}
@@ -4525,7 +4527,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton Yazısı</label>
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton YazÄ±sÄ±</label>
                           <input
                             type="text"
                             value={area3ButtonText}
@@ -4538,7 +4540,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         </div>
 
                         <div>
-                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton Yönlendirme Adresi (Link / WhatsApp)</label>
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton YÃ¶nlendirme Adresi (Link / WhatsApp)</label>
                           <input
                             type="text"
                             value={area3ButtonUrl}
@@ -4552,7 +4554,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Sağ Taraf Arka Plan Görseli (URL)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">SaÄŸ Taraf Arka Plan GÃ¶rseli (URL)</label>
                         <input
                           type="text"
                           value={area3ImageUrl}
@@ -4571,17 +4573,17 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {adminActiveTab === "Alan 4" && (
                   <div className="space-y-5">
                     <div>
-                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 4 - Serbest Kampanyalı Ek Alan</h3>
+                      <h3 className="text-sm font-black text-stone-900 font-display">Alan 4 - Serbest KampanyalÄ± Ek Alan</h3>
                       <p className="text-[11px] text-stone-400 leading-normal">
-                        Gelecekte sisteme dilediğiniz zaman entegre edebileceğiniz, anasayfanın en altında görünecek bağımsız lüks tanıtım bloğunun tüm yönetimi.
+                        Gelecekte sisteme dilediÄŸiniz zaman entegre edebileceÄŸiniz, anasayfanÄ±n en altÄ±nda gÃ¶rÃ¼necek baÄŸÄ±msÄ±z lÃ¼ks tanÄ±tÄ±m bloÄŸunun tÃ¼m yÃ¶netimi.
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div className="bg-blue-50/50 p-4 rounded-3xl border border-blue-100 flex items-center justify-between">
                         <div>
-                          <span className="block text-xs font-bold text-blue-900">Alanı Aktifleştir</span>
-                          <span className="block text-[10px] text-stone-400 mt-0.5">Bu yeni alan anasayfanızın en altında listelensin mi?</span>
+                          <span className="block text-xs font-bold text-blue-900">AlanÄ± AktifleÅŸtir</span>
+                          <span className="block text-[10px] text-stone-400 mt-0.5">Bu yeni alan anasayfanÄ±zÄ±n en altÄ±nda listelensin mi?</span>
                         </div>
                         <input
                           type="checkbox"
@@ -4595,7 +4597,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Üst Küçük Kategori Adı (Örn: AKTİVİTELER)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Ãœst KÃ¼Ã§Ã¼k Kategori AdÄ± (Ã–rn: AKTÄ°VÄ°TELER)</label>
                         <input
                           type="text"
                           value={area4Subtitle}
@@ -4608,7 +4610,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Blok Başlığı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Blok BaÅŸlÄ±ÄŸÄ±</label>
                         <input
                           type="text"
                           value={area4Title}
@@ -4621,7 +4623,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Blok Detaylı Yazısı</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Blok DetaylÄ± YazÄ±sÄ±</label>
                         <textarea
                           rows={3}
                           value={area4Text}
@@ -4635,7 +4637,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton Yazısı</label>
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Buton YazÄ±sÄ±</label>
                           <input
                             type="text"
                             value={area4ButtonText}
@@ -4662,7 +4664,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Görsel Adresi (URL)</label>
+                        <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">GÃ¶rsel Adresi (URL)</label>
                         <input
                           type="text"
                           value={area4ImageUrl}
@@ -4685,10 +4687,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs font-sans">
                 <h3 className="text-sm font-bold text-[#FF385C] mb-1 font-display flex items-center gap-1.5 uppercase">
                   <Phone className="h-4 w-4 text-emerald-500" />
-                  <span>İletişim &amp; Sosyal Medya Yönetimi</span>
+                  <span>Ä°letiÅŸim &amp; Sosyal Medya YÃ¶netimi</span>
                 </h3>
                 <p className="text-[11px] text-stone-500 leading-relaxed mb-4">
-                  Sitede yer alan doğrudan iletişim ve sosyal medya kanallarını (Ekranın sağ altındaki robot butonunda listelenir) ekleyebilir, değiştirebilir veya silebilirsiniz.
+                  Sitede yer alan doÄŸrudan iletiÅŸim ve sosyal medya kanallarÄ±nÄ± (EkranÄ±n saÄŸ altÄ±ndaki robot butonunda listelenir) ekleyebilir, deÄŸiÅŸtirebilir veya silebilirsiniz.
                 </p>
 
                 <div className="space-y-4">
@@ -4705,9 +4707,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             handleUpdateSocialChannels(filtered);
                           }}
                           className="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline"
-                          title="Bu kanalı kaldır"
+                          title="Bu kanalÄ± kaldÄ±r"
                         >
-                          SİL
+                          SÄ°L
                         </button>
                       </div>
 
@@ -4735,7 +4737,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">Kanal Başlığı / Etiket</label>
+                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">Kanal BaÅŸlÄ±ÄŸÄ± / Etiket</label>
                           <input
                             type="text"
                             value={chan.label}
@@ -4744,14 +4746,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               handleUpdateSocialChannels(updated);
                             }}
                             className="w-full bg-white border border-stone-200 rounded-lg px-2 py-1 text-xs text-stone-850 focus:outline-none"
-                            placeholder="Örn: 7/24 Teknik Destek"
+                            placeholder="Ã–rn: 7/24 Teknik Destek"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2">
                         <div>
-                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">Görünen Değer</label>
+                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">GÃ¶rÃ¼nen DeÄŸer</label>
                           <input
                             type="text"
                             value={chan.value}
@@ -4760,12 +4762,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               handleUpdateSocialChannels(updated);
                             }}
                             className="w-full bg-white border border-stone-200 rounded-lg px-2 py-1 text-[11px] font-mono text-stone-800 focus:outline-none"
-                            placeholder="Örn: +90 541 246..."
+                            placeholder="Ã–rn: +90 541 246..."
                           />
                         </div>
 
                         <div>
-                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">Yönlendirme Linki (URL)</label>
+                          <label className="block text-[8px] font-bold text-stone-400 uppercase mb-0.5 font-sans">YÃ¶nlendirme Linki (URL)</label>
                           <input
                             type="text"
                             value={chan.url}
@@ -4774,7 +4776,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               handleUpdateSocialChannels(updated);
                             }}
                             className="w-full bg-white border border-stone-200 rounded-lg px-2 py-1 text-[11px] text-stone-600 font-mono focus:outline-none"
-                            placeholder="Örn: https://wa.me/90541..."
+                            placeholder="Ã–rn: https://wa.me/90541..."
                           />
                         </div>
                       </div>
@@ -4787,7 +4789,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       const newChan = {
                         id: Math.random().toString(36).substring(2, 9),
                         type: 'WhatsApp',
-                        label: 'Yeni Destek Kanalı',
+                        label: 'Yeni Destek KanalÄ±',
                         value: '+90 000 000 00 00',
                         url: 'https://wa.me/900000000000'
                       };
@@ -4795,34 +4797,34 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }}
                     className="w-full border-2 border-dashed border-stone-200 hover:border-[#FF385C] rounded-2xl p-3 text-stone-500 hover:text-[#FF385C] text-xs font-bold transition flex items-center justify-center gap-1.5"
                   >
-                    <span>+ Yeni İletişim / Sosyal Medya Kanalı Ekle</span>
+                    <span>+ Yeni Ä°letiÅŸim / Sosyal Medya KanalÄ± Ekle</span>
                   </button>
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
                 <h3 className="text-base font-bold text-stone-950 mb-4 font-display">
-                  Yönetici Tanılama ve Tesis Ekleme
+                  YÃ¶netici TanÄ±lama ve Tesis Ekleme
                 </h3>
               <p className="text-xs text-stone-500 leading-relaxed mb-6">
-                Süper yönetici olarak tüm platform envanterini anında yönetin.
+                SÃ¼per yÃ¶netici olarak tÃ¼m platform envanterini anÄ±nda yÃ¶netin.
               </p>
 
               <div className="space-y-4">
                 {/* Admin Quick Options */}
                 <div className="bg-stone-50 p-4 rounded-xl space-y-3">
                   <h4 className="text-xs font-bold text-stone-850">
-                    Tüm İlanları Sıfırla
+                    TÃ¼m Ä°lanlarÄ± SÄ±fÄ±rla
                   </h4>
                   <p className="text-[11px] text-stone-400">
-                    Tüm ilanları ve rezervasyon verilerini silebilecek ve
-                    fabrika ayarlarına çekebileceksiniz.
+                    TÃ¼m ilanlarÄ± ve rezervasyon verilerini silebilecek ve
+                    fabrika ayarlarÄ±na Ã§ekebileceksiniz.
                   </p>
                   <button
                     onClick={() => {
                       if (
                         confirm(
-                          "Uyan! Tüm yerel eklemeleri ve simülasyon rezervasyonları silmek ve ilk duruma sıfırlamak istiyor musunuz?",
+                          "Uyan! TÃ¼m yerel eklemeleri ve simÃ¼lasyon rezervasyonlarÄ± silmek ve ilk duruma sÄ±fÄ±rlamak istiyor musunuz?",
                         )
                       ) {
                         localStorage.removeItem("airbnb_villas");
@@ -4831,23 +4833,23 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         setVillas(VILLA_DATA);
                         setBookings([]);
                         setFavorites([]);
-                        alert("Platform ilk durumuna başarıyla döndürüldü.");
+                        alert("Platform ilk durumuna baÅŸarÄ±yla dÃ¶ndÃ¼rÃ¼ldÃ¼.");
                       }
                     }}
                     className="w-full bg-stone-900 text-white hover:bg-stone-800 text-xs font-bold py-2 rounded-xl"
                   >
-                    Platform Verilerini Sıfırla
+                    Platform Verilerini SÄ±fÄ±rla
                   </button>
                 </div>
 
                 {/* Simulated bookings generator */}
                 <div className="bg-stone-50 p-4 rounded-xl space-y-3">
                   <h4 className="text-xs font-bold text-stone-850">
-                    Simülasyon Rezervasyonu Yarat
+                    SimÃ¼lasyon Rezervasyonu Yarat
                   </h4>
                   <p className="text-[11px] text-stone-400">
-                    Analizler ve host kazanç tablolarını test etmek için yapay
-                    zeka ile otomatik test verisi oluşturur.
+                    Analizler ve host kazanÃ§ tablolarÄ±nÄ± test etmek iÃ§in yapay
+                    zeka ile otomatik test verisi oluÅŸturur.
                   </p>
                   <button
                     onClick={() => {
@@ -4874,7 +4876,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         villaId: randomVilla.id,
                         villaName: randomVilla.name,
                         villaImage: randomVilla.images[0],
-                        guestName: randomName + " Geliştirici",
+                        guestName: randomName + " GeliÅŸtirici",
                         guestPhone:
                           "0555 " +
                           Math.floor(1000000 + Math.random() * 9000000),
@@ -4965,7 +4967,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         className="h-full w-full object-cover transition-transform hover:scale-[1.01]"
                       />
                       <span className="absolute bottom-3 left-3 rounded-lg bg-stone-950/80 text-white text-[10px] font-bold px-2 py-0.5">
-                        Fotoğraf {selectedDetailImageIndex + 1} /{" "}
+                        FotoÄŸraf {selectedDetailImageIndex + 1} /{" "}
                         {selectedVilla.images.length}
                       </span>
                     </div>
@@ -4992,16 +4994,16 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     </div>
                   </div>
 
-                  {/* Informational security text without TÜRSAB */}
+                  {/* Informational security text without TÃœRSAB */}
                   <div className="mt-6 bg-stone-50 p-4 rounded-xl text-xs space-y-1.5 text-stone-600 border border-stone-100">
                     <h5 className="font-bold text-stone-800 flex items-center gap-1">
                       <ShieldCheck className="h-4 w-4 text-[#FF385C]" />
-                      Doğrudan Ev Sahibi Teyidi
+                      DoÄŸrudan Ev Sahibi Teyidi
                     </h5>
                     <p>
-                      Bu konut, ev sahibi tarafından doğrudan doğrulanmış olup;
-                      temizlik standartları ve havuz ısıtmaları Villa Bungalov
-                      Tatil güvencesiyle kontrol edilmiştir.
+                      Bu konut, ev sahibi tarafÄ±ndan doÄŸrudan doÄŸrulanmÄ±ÅŸ olup;
+                      temizlik standartlarÄ± ve havuz Ä±sÄ±tmalarÄ± Villa Bungalov
+                      Tatil gÃ¼vencesiyle kontrol edilmiÅŸtir.
                     </p>
                   </div>
                 </div>
@@ -5014,7 +5016,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       <span className="text-[10px] font-extrabold uppercase bg-rose-50 text-[#FF385C] border border-rose-100 px-2.5 py-0.5 rounded-md">
                         {selectedVilla.type === "bungalow"
                           ? "Bungalov"
-                          : "Lüks Villa"}
+                          : "LÃ¼ks Villa"}
                       </span>
                       <span className="flex items-center gap-1 text-[11px] font-semibold text-stone-500">
                         <MapPin className="h-3 w-3 text-[#FF385C]" />
@@ -5053,7 +5055,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <div className="my-4 grid grid-cols-4 gap-2 bg-stone-50/70 rounded-xl p-3 text-center text-xs text-stone-600 font-semibold">
                       <div>
                         <span className="block text-[9px] text-stone-400 font-bold">
-                          KAPASİTE
+                          KAPASÄ°TE
                         </span>
                         <span className="text-stone-800 text-[11px]">
                           {selectedVilla.capacity} Misafir
@@ -5077,7 +5079,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                       </div>
                       <div>
                         <span className="block text-[9px] text-rose-500 font-extrabold uppercase">
-                          MİN. STAY
+                          MÄ°N. STAY
                         </span>
                         <span className="text-rose-700 text-[11px] font-black">
                           {selectedVilla.minNights || 2} Gece
@@ -5087,7 +5089,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                     {/* Description detailed panel */}
                     <h4 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1.5 font-sans">
-                      Açıklama
+                      AÃ§Ä±klama
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed mb-4 max-h-36 overflow-y-auto no-scrollbar">
                       {selectedVilla.description}
@@ -5095,7 +5097,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                     {/* All Features mapped as tag bubbles */}
                     <h4 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2 font-sans">
-                      Sunulan Donanımlar
+                      Sunulan DonanÄ±mlar
                     </h4>
                     <div className="grid grid-cols-2 gap-2 mb-4 text-xs text-stone-700">
                       {selectedVilla.features.map((feat) => {
@@ -5115,13 +5117,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                     {/* Extra services details section */}
                     <h4 className="text-[11px] font-extrabold text-stone-400 tracking-wider mb-2 font-display">
-                      EV SAHİBİ EKSTRA HİZMETLERİ
+                      EV SAHÄ°BÄ° EKSTRA HÄ°ZMETLERÄ°
                     </h4>
                     <div className="mb-6 animate-in fade-in duration-300">
                       {(selectedVilla.extraServices || []).length === 0 ? (
                         <p className="text-[11px] text-[#A6A6A6] font-sans italic">
-                          Bu konut için ev sahibi henüz bir ekstra yemek veya
-                          transfer hizmeti tanımlamadı.
+                          Bu konut iÃ§in ev sahibi henÃ¼z bir ekstra yemek veya
+                          transfer hizmeti tanÄ±mlamadÄ±.
                         </p>
                       ) : (
                         <div className="bg-stone-50 border border-stone-200/85 p-4 rounded-2xl">
@@ -5133,7 +5135,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   className="text-stone-800 text-[12px] sm:text-[13px] font-extrabold flex items-center gap-2"
                                 >
                                   <span className="text-[#FF385C] font-black shrink-0 text-md">
-                                    •
+                                    â€¢
                                   </span>
                                   <span className="text-stone-900">
                                     {srv.name}
@@ -5151,10 +5153,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   <div className="border-t border-stone-100 pt-5 flex items-center justify-between">
                     <div>
                       <span className="block text-[10px] text-stone-400 font-semibold uppercase">
-                        Gecelik Fiyatı
+                        Gecelik FiyatÄ±
                       </span>
                       <span className="font-mono text-md sm:text-lg font-black text-stone-900">
-                        ₺{selectedVilla.pricePerNight.toLocaleString("tr-TR")}
+                        â‚º{selectedVilla.pricePerNight.toLocaleString("tr-TR")}
                         <span className="text-[10px] sm:text-xs text-stone-400 font-normal">
                           {" "}
                           / gece
@@ -5165,13 +5167,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <div className="flex flex-wrap items-center gap-1.5">
                       <button
                         onClick={() => {
-                          const msg = `Merhaba, *${selectedVilla.name}* (${selectedVilla.region}) eviniz hakkında detaylı bilgi almak istiyorum.`;
+                          const msg = `Merhaba, *${selectedVilla.name}* (${selectedVilla.region}) eviniz hakkÄ±nda detaylÄ± bilgi almak istiyorum.`;
                           const url = `https://wa.me/${AGENCY_DETAILS.whatsapp.replace("+", "")}?text=${encodeURIComponent(msg)}`;
                           window.open(url, "_blank");
                         }}
                         className="rounded-xl border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 px-3 py-2.5 text-xs font-bold transition active:scale-95 flex items-center gap-1 shrink-0"
                       >
-                        <span>💬</span> <span>WhatsAPP ile Sor</span>
+                        <span>ğŸ’¬</span> <span>WhatsAPP ile Sor</span>
                       </button>
 
                       <button
@@ -5186,7 +5188,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         }}
                         className="rounded-xl border border-stone-250 bg-white hover:bg-stone-55 text-stone-800 px-3 py-2.5 text-xs font-extrabold active:scale-95 transition whitespace-nowrap shrink-0"
                       >
-                        Detaylı İncele
+                        DetaylÄ± Ä°ncele
                       </button>
 
                       <button
@@ -5231,23 +5233,23 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     <Check className="h-8 w-8 text-emerald-600 stroke-[3px]" />
                   </div>
                   <h3 className="text-lg font-bold text-stone-900">
-                    Talebiniz Alındı!
+                    Talebiniz AlÄ±ndÄ±!
                   </h3>
                   <p className="text-xs text-stone-500 mt-2 max-w-xs mx-auto leading-relaxed">
-                    Ön rezervasyon isteğiniz başarıyla oluşturuldu. Ev sahibine
-                    iletilmek üzere WhatsApp yönlendirmeniz hazırlanıyor...
+                    Ã–n rezervasyon isteÄŸiniz baÅŸarÄ±yla oluÅŸturuldu. Ev sahibine
+                    iletilmek Ã¼zere WhatsApp yÃ¶nlendirmeniz hazÄ±rlanÄ±yor...
                   </p>
 
                   <div className="mt-6 p-4 bg-emerald-50/30 rounded-2xl border border-emerald-100 text-left text-xs space-y-1.5 text-stone-600 font-medium">
                     <p>
-                      • <strong>Konut:</strong> {quickBookVilla.name}
+                      â€¢ <strong>Konut:</strong> {quickBookVilla.name}
                     </p>
                     <p>
-                      • <strong>Tarihler:</strong> {bookingForm.checkIn} /{" "}
+                      â€¢ <strong>Tarihler:</strong> {bookingForm.checkIn} /{" "}
                       {bookingForm.checkOut}
                     </p>
                     <p>
-                      • <strong>Ad Soyad:</strong> {bookingForm.name}
+                      â€¢ <strong>Ad Soyad:</strong> {bookingForm.name}
                     </p>
                   </div>
                 </div>
@@ -5255,11 +5257,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 <div>
                   <h3 className="text-lg font-extrabold text-stone-900 tracking-tight flex items-center gap-2 font-display">
                     <Calendar className="h-5 w-5 text-stone-950" />
-                    Ön Rezervasyon Talebi
+                    Ã–n Rezervasyon Talebi
                   </h3>
                   <p className="text-xs text-stone-500 mt-1 mb-6">
-                    Seçtiğiniz <strong>{quickBookVilla.name}</strong> için kolay
-                    iletişim bilgilerinizi giriniz.
+                    SeÃ§tiÄŸiniz <strong>{quickBookVilla.name}</strong> iÃ§in kolay
+                    iletiÅŸim bilgilerinizi giriniz.
                   </p>
 
                   <form
@@ -5290,14 +5292,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                         if (!nameInput || !tcInput || !phoneInput) {
                           alert(
-                            "Lütfen tüm zorunlu üyelik ve iletişim alanlarını doldurunuz.",
+                            "LÃ¼tfen tÃ¼m zorunlu Ã¼yelik ve iletiÅŸim alanlarÄ±nÄ± doldurunuz.",
                           );
                           return;
                         }
 
                         if (tcInput.length !== 11 || !/^\d+$/.test(tcInput)) {
                           alert(
-                            "Lütfen geçerli bir 11 haneli T.C. Kimlik Numarası giriniz.",
+                            "LÃ¼tfen geÃ§erli bir 11 haneli T.C. Kimlik NumarasÄ± giriniz.",
                           );
                           return;
                         }
@@ -5322,7 +5324,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         }));
 
                         alert(
-                          "Üyeliğiniz ve T.C. Kimlik beyanınız başarıyla kaydedildi! Şimdi rezervasyonunuzu onaylamaya hazırsınız.",
+                          "ÃœyeliÄŸiniz ve T.C. Kimlik beyanÄ±nÄ±z baÅŸarÄ±yla kaydedildi! Åimdi rezervasyonunuzu onaylamaya hazÄ±rsÄ±nÄ±z.",
                         );
                         return;
                       }
@@ -5333,12 +5335,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     {!currentUser ? (
                       <div className="bg-rose-50/50 p-4 rounded-2xl border border-rose-100 space-y-3.5 my-3">
                         <span className="text-[10px] font-extrabold uppercase bg-rose-150 text-[#FF385C] border border-rose-200 px-2.5 py-0.5 rounded-md inline-block">
-                          KİMLİK BİLDİRİMİ GEREKLİ
+                          KÄ°MLÄ°K BÄ°LDÄ°RÄ°MÄ° GEREKLÄ°
                         </span>
                         <p className="text-[11px] text-stone-605 leading-relaxed font-semibold">
-                          Yasal mevzuat gereği (KBBS) tüm konaklayanların T.C.
-                          Kimlik Numarası kaydı zorunludur. Devam etmek için
-                          lütfen bilgilerinizi bir defaya mahsus beyan edin:
+                          Yasal mevzuat gereÄŸi (KBBS) tÃ¼m konaklayanlarÄ±n T.C.
+                          Kimlik NumarasÄ± kaydÄ± zorunludur. Devam etmek iÃ§in
+                          lÃ¼tfen bilgilerinizi bir defaya mahsus beyan edin:
                         </p>
 
                         <div className="space-y-2.5">
@@ -5351,14 +5353,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               type="text"
                               name="regName"
                               required
-                              placeholder="Örn: Ahmet Yılmaz"
+                              placeholder="Ã–rn: Ahmet YÄ±lmaz"
                               className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs focus:outline-none focus:border-[#FF385C]"
                             />
                           </div>
 
                           <div>
                             <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wide mb-1">
-                              T.C. KİMLİK NUMARANIZ{" "}
+                              T.C. KÄ°MLÄ°K NUMARANIZ{" "}
                               <span className="text-red-500">*</span>
                             </label>
                             <input
@@ -5366,7 +5368,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               name="regTc"
                               required
                               maxLength={11}
-                              placeholder="11 haneli kimlik numarası"
+                              placeholder="11 haneli kimlik numarasÄ±"
                               className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs text-stone-850 focus:outline-none focus:border-[#FF385C] font-mono"
                             />
                           </div>
@@ -5387,7 +5389,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             </div>
                             <div>
                               <label className="block text-[9px] font-bold text-stone-400 uppercase tracking-wide mb-1">
-                                E-POSTA ADRESİ
+                                E-POSTA ADRESÄ°
                               </label>
                               <input
                                 type="email"
@@ -5403,7 +5405,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           type="submit"
                           className="w-full rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-extrabold py-2.5 text-xs transition active:scale-95 mt-2"
                         >
-                          KİMLİK BİLGİLERİNİ KAYDET
+                          KÄ°MLÄ°K BÄ°LGÄ°LERÄ°NÄ° KAYDET
                         </button>
                       </div>
                     ) : (
@@ -5431,22 +5433,22 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         <div className="grid grid-cols-2 gap-2.5 mt-4">
                           <div className="text-left bg-stone-50 p-3 rounded-2xl border border-stone-200 shadow-3xs">
                             <span className="block text-[11px] font-extrabold text-stone-400 uppercase mb-0.5">
-                              Giriş Tarihi
+                              GiriÅŸ Tarihi
                             </span>
                             <span className="text-[13px] sm:text-sm font-black text-stone-850 font-mono">
                               {bookingForm.checkIn
                                 ? formatTurkishDate(bookingForm.checkIn)
-                                : "Seçiniz"}
+                                : "SeÃ§iniz"}
                             </span>
                           </div>
                           <div className="text-left bg-stone-50 p-3 rounded-2xl border border-stone-200 shadow-3xs">
                             <span className="block text-[11px] font-extrabold text-stone-400 uppercase mb-0.5">
-                              Çıkış Tarihi
+                              Ã‡Ä±kÄ±ÅŸ Tarihi
                             </span>
                             <span className="text-[13px] sm:text-sm font-black text-[#FF385C] font-mono">
                               {bookingForm.checkOut
                                 ? formatTurkishDate(bookingForm.checkOut)
-                                : "Seçiniz"}
+                                : "SeÃ§iniz"}
                             </span>
                           </div>
                         </div>
@@ -5492,17 +5494,17 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                           const turkishMonths = [
                             "Ocak",
-                            "Şubat",
+                            "Åubat",
                             "Mart",
                             "Nisan",
-                            "Mayıs",
+                            "MayÄ±s",
                             "Haziran",
                             "Temmuz",
-                            "Ağustos",
-                            "Eylül",
+                            "AÄŸustos",
+                            "EylÃ¼l",
                             "Ekim",
-                            "Kasım",
-                            "Aralık",
+                            "KasÄ±m",
+                            "AralÄ±k",
                           ];
 
                           const isDateBooked = (dateStr: string) => {
@@ -5590,7 +5592,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                               {/* Weekdays names */}
                               <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-black text-stone-400 uppercase">
-                                {["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pz"].map(
+                                {["Pt", "Sa", "Ã‡a", "Pe", "Cu", "Ct", "Pz"].map(
                                   (w, idx) => (
                                     <div key={idx} className="py-1">
                                       {w}
@@ -5658,21 +5660,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               <div className="text-[10px] text-center text-stone-500 font-sans border-t border-stone-100 pt-2 flex flex-col gap-1">
                                 {!bookingForm.checkIn && (
                                   <span className="text-stone-400 font-medium">
-                                    💡 Lütfen Giriş Tarihi seçmek için
-                                    yukarıdaki günlerden birine tıklayın.
+                                    ğŸ’¡ LÃ¼tfen GiriÅŸ Tarihi seÃ§mek iÃ§in
+                                    yukarÄ±daki gÃ¼nlerden birine tÄ±klayÄ±n.
                                   </span>
                                 )}
                                 {bookingForm.checkIn &&
                                   !bookingForm.checkOut && (
                                     <span className="text-[#FF385C] font-extrabold animate-pulse">
-                                      👉 Şimdi lütfen Çıkış Tarihiniz olacak
-                                      günü seçiniz.
+                                      ğŸ‘‰ Åimdi lÃ¼tfen Ã‡Ä±kÄ±ÅŸ Tarihiniz olacak
+                                      gÃ¼nÃ¼ seÃ§iniz.
                                     </span>
                                   )}
                                 {bookingForm.checkIn &&
                                   bookingForm.checkOut && (
                                     <span className="text-[15px] sm:text-[16px] text-emerald-900 font-extrabold bg-emerald-50 border-2 border-emerald-350 px-4 py-2.5 rounded-2xl animate-fade-in block my-2 shadow-xs text-center leading-relaxed">
-                                      ✓{" "}
+                                      âœ“{" "}
                                       {
                                         getCalculatePriceInfo(
                                           quickBookVilla,
@@ -5680,7 +5682,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                           bookingForm.checkOut,
                                         ).days
                                       }{" "}
-                                      Gece Rezervasyon Aralığı Seçildi!
+                                      Gece Rezervasyon AralÄ±ÄŸÄ± SeÃ§ildi!
                                     </span>
                                   )}
                               </div>
@@ -5688,15 +5690,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           );
                         })()}
 
-                        {/* Kademeli fiyat uygulaması bilgisi ve Minimum stay condition info box */}
+                        {/* Kademeli fiyat uygulamasÄ± bilgisi ve Minimum stay condition info box */}
                         <div className="space-y-2 font-sans pt-1">
                           <p className="text-[11px] font-bold text-stone-600 leading-snug">
-                            kademeli fiyat uygulaması olabilir ev sahibi farklı tarihlerde farklı fiyatlar uygulayabilir..
+                            kademeli fiyat uygulamasÄ± olabilir ev sahibi farklÄ± tarihlerde farklÄ± fiyatlar uygulayabilir..
                           </p>
                           <div className="text-[12px] text-blue-800 bg-blue-50 border border-blue-150 px-3.5 py-3 rounded-2xl font-bold flex items-start gap-2 shadow-xs">
-                            <span className="text-blue-550 text-[14px]">ℹ️</span>
+                            <span className="text-blue-550 text-[14px]">â„¹ï¸</span>
                             <span>
-                              En az konaklama kuralı: Bu ev için en az {quickBookVilla.minNights || 2} gece seçilmelidir.
+                              En az konaklama kuralÄ±: Bu ev iÃ§in en az {quickBookVilla.minNights || 2} gece seÃ§ilmelidir.
                             </span>
                           </div>
                         </div>
@@ -5712,11 +5714,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           if (days > 0 && days < minN) {
                             return (
                               <div className="text-[11px] text-rose-600 bg-rose-50 border border-rose-200 px-3 py-2.5 rounded-xl font-black">
-                                ⚠️ Yetersiz Süre: Ev sahibi bu ev için en az{" "}
-                                {minN} gece konaklama şartı koymuştur. Sizin
-                                seçiminiz {days} gece. Rezervasyonu
-                                tamamlayabilmek için lütfen en az {minN} gece
-                                olacak şekilde bir tarih aralığı seçiniz.
+                                âš ï¸ Yetersiz SÃ¼re: Ev sahibi bu ev iÃ§in en az{" "}
+                                {minN} gece konaklama ÅŸartÄ± koymuÅŸtur. Sizin
+                                seÃ§iminiz {days} gece. Rezervasyonu
+                                tamamlayabilmek iÃ§in lÃ¼tfen en az {minN} gece
+                                olacak ÅŸekilde bir tarih aralÄ±ÄŸÄ± seÃ§iniz.
                               </div>
                             );
                           }
@@ -5726,7 +5728,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         {/* Guests selection and additional items */}
                         <div>
                           <label className="block text-[11px] font-extrabold text-stone-405 uppercase tracking-wide mb-1.5">
-                            MİSAFİR SAYISI{" "}
+                            MÄ°SAFÄ°R SAYISI{" "}
                             <span className="text-red-500">*</span>
                           </label>
                           <select
@@ -5748,7 +5750,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                 value={num}
                                 className="font-sans font-bold"
                               >
-                                {num} Kişi (Konaklayacak)
+                                {num} KiÅŸi (Konaklayacak)
                               </option>
                             ))}
                           </select>
@@ -5758,7 +5760,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         {bookingForm.guestsCount > 1 && (
                           <div className="space-y-2.5 bg-stone-50/70 p-3.5 rounded-2xl border border-stone-150">
                             <span className="text-[11px] font-extrabold text-stone-500 uppercase tracking-wider block">
-                              DİĞER KONAKLAYACAK MİSAFİR BEYANLARI
+                              DÄ°ÄER KONAKLAYACAK MÄ°SAFÄ°R BEYANLARI
                             </span>
 
                             {(() => {
@@ -5772,17 +5774,17 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               if (filled < needed) {
                                 return (
                                   <div className="text-[11px] text-rose-700 bg-rose-50 border border-rose-100 rounded-xl p-2.5 font-bold leading-normal">
-                                    ⚠️ Diğer konaklayacak {needed - filled}{" "}
-                                    kişiyi henüz seçmediniz! Lütfen aşağıdaki
-                                    listeden seçim yapın veya yeni refakatçi
+                                    âš ï¸ DiÄŸer konaklayacak {needed - filled}{" "}
+                                    kiÅŸiyi henÃ¼z seÃ§mediniz! LÃ¼tfen aÅŸaÄŸÄ±daki
+                                    listeden seÃ§im yapÄ±n veya yeni refakatÃ§i
                                     ekleyin.
                                   </div>
                                 );
                               }
                               return (
                                 <div className="text-[11px] text-emerald-850 bg-emerald-50 border border-emerald-150 rounded-xl p-2.5 font-bold">
-                                  ✓ Harika! Tüm konaklayacak refakatçiler
-                                  başarıyla belirlendi.
+                                  âœ“ Harika! TÃ¼m konaklayacak refakatÃ§iler
+                                  baÅŸarÄ±yla belirlendi.
                                 </div>
                               );
                             })()}
@@ -5798,7 +5800,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               return (
                                 <div key={companionIdx} className="space-y-1">
                                   <label className="block text-[11px] text-stone-650 font-extrabold">
-                                    Refakatçi {companionIdx + 2} Kimlik Seçimi:
+                                    RefakatÃ§i {companionIdx + 2} Kimlik SeÃ§imi:
                                   </label>
                                   <select
                                     value={selectedVal}
@@ -5818,13 +5820,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-[13px] text-stone-850 font-semibold focus:outline-none focus:border-[#FF385C]"
                                   >
                                     <option value="" className="font-semibold">
-                                      -- Seçeceğiniz Kişi --
+                                      -- SeÃ§eceÄŸiniz KiÅŸi --
                                     </option>
                                     <option
                                       value="later"
                                       className="font-semibold text-[#FF385C]"
                                     >
-                                      Daha sonra eklenecek (Kayıt Sonrası)
+                                      Daha sonra eklenecek (KayÄ±t SonrasÄ±)
                                     </option>
                                     {companions.map((comp) => (
                                       <option
@@ -5849,19 +5851,19 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   }
                                   className="text-[11px] text-[#FF385C] hover:underline font-extrabold flex items-center gap-1 cursor-pointer"
                                 >
-                                  + Listeye Yeni Refakatçi (Eş, Çocuk vb.)
-                                  Tanımla
+                                  + Listeye Yeni RefakatÃ§i (EÅŸ, Ã‡ocuk vb.)
+                                  TanÄ±mla
                                 </button>
                               ) : (
                                 <div className="bg-stone-100/80 p-3 text-[12px] rounded-2xl border border-stone-200 text-stone-700 space-y-2.5">
                                   <div className="font-extrabold text-[10px] text-stone-400 uppercase">
-                                    Hızlı Refakatçi Girişi
+                                    HÄ±zlÄ± RefakatÃ§i GiriÅŸi
                                   </div>
                                   <div className="grid grid-cols-2 gap-2">
                                     <div>
                                       <input
                                         type="text"
-                                        placeholder="Ad Soyadı"
+                                        placeholder="Ad SoyadÄ±"
                                         value={inlineCompanionName}
                                         onChange={(e) =>
                                           setInlineCompanionName(e.target.value)
@@ -5892,7 +5894,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                       }}
                                       className="px-2.5 py-1.5 text-stone-500 font-extrabold hover:underline cursor-pointer"
                                     >
-                                      İptal
+                                      Ä°ptal
                                     </button>
                                     <button
                                       type="button"
@@ -5902,7 +5904,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                           inlineCompanionTc.length !== 11
                                         ) {
                                           alert(
-                                            "Lütfen ad soyadı doldurun ve 11 haneli T.C. Kimlik numarasını doğru girin.",
+                                            "LÃ¼tfen ad soyadÄ± doldurun ve 11 haneli T.C. Kimlik numarasÄ±nÄ± doÄŸru girin.",
                                           );
                                           return;
                                         }
@@ -5958,14 +5960,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         {/* Interactive Extra Services Selection */}
                         <div className="space-y-2">
                           <label className="block text-xs font-black text-[#FF385C] tracking-wider">
-                            EKSTRA HİZMETLERİ SEÇİMİ
+                            EKSTRA HÄ°ZMETLERÄ° SEÃ‡Ä°MÄ°
                           </label>
                           <div className="bg-stone-50 border border-stone-200 p-3.5 rounded-2xl space-y-3">
                             {(quickBookVilla.extraServices || []).length ===
                             0 ? (
                               <p className="text-[11px] text-[#A6A6A6] font-sans italic">
-                                Bu konut için ev sahibi henüz bir ekstra yemek,
-                                gezi veya transfer hizmeti tanımlamadı.
+                                Bu konut iÃ§in ev sahibi henÃ¼z bir ekstra yemek,
+                                gezi veya transfer hizmeti tanÄ±mlamadÄ±.
                               </p>
                             ) : (
                               <div className="space-y-2.5 font-sans">
@@ -5977,8 +5979,8 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                     srv.type === "per_person_daily" ||
                                     srv.type === "per_person_flat";
                                   const explanation = isPersonBased
-                                    ? `(Kişi Başı ₺${srv.price.toLocaleString("tr-TR")} • Toplam: ₺${(srv.price * bookingForm.guestsCount).toLocaleString("tr-TR")} x ${currentQty})`
-                                    : `(Paket ₺${srv.price.toLocaleString("tr-TR")} x ${currentQty})`;
+                                    ? `(KiÅŸi BaÅŸÄ± â‚º${srv.price.toLocaleString("tr-TR")} â€¢ Toplam: â‚º${(srv.price * bookingForm.guestsCount).toLocaleString("tr-TR")} x ${currentQty})`
+                                    : `(Paket â‚º${srv.price.toLocaleString("tr-TR")} x ${currentQty})`;
 
                                   return (
                                     <div
@@ -6051,25 +6053,25 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           </div>
                         </div>
 
-                        {/* 🏷️ Promosyon Kodu / Kampanya Uygulama Paneli */}
+                        {/* ğŸ·ï¸ Promosyon Kodu / Kampanya Uygulama Paneli */}
                         <div className="mt-4 border border-stone-200 bg-stone-50/50 rounded-2xl p-4">
                           <span className="text-[10px] sm:text-[11px] font-extrabold text-[#FF385C] uppercase tracking-wider block mb-2 font-display">
-                            🏷️ Promosyon / Kampanya Kodunuz varsa yazınız..
+                            ğŸ·ï¸ Promosyon / Kampanya Kodunuz varsa yazÄ±nÄ±z..
                           </span>
                           
                           {appliedCampaign ? (
                             <div className="flex items-center justify-between bg-emerald-55/15 border border-emerald-200 p-2.5 rounded-xl font-sans">
                               <div>
                                 <span className="block text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
-                                  KUPON UYGULANDI 🎉
+                                  KUPON UYGULANDI ğŸ‰
                                 </span>
                                 <span className="text-xs font-bold text-stone-850">
                                   {appliedCampaign.code} ({appliedCampaign.name})
                                 </span>
                                 <span className="block text-[10px] text-emerald-600 font-bold mt-0.5">
                                   {appliedCampaign.discountType === "percentage" 
-                                    ? `-%${appliedCampaign.discountValue} İndirim`
-                                    : `-₺${appliedCampaign.discountValue.toLocaleString("tr-TR")} Sabit İndirim`}
+                                    ? `-%${appliedCampaign.discountValue} Ä°ndirim`
+                                    : `-â‚º${appliedCampaign.discountValue.toLocaleString("tr-TR")} Sabit Ä°ndirim`}
                                 </span>
                               </div>
                               <button
@@ -6077,7 +6079,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                 onClick={() => setAppliedCampaign(null)}
                                 className="text-[10px] uppercase font-black tracking-wider text-rose-600 hover:text-rose-800 transition px-2.5 py-1 bg-white hover:bg-rose-50 border border-stone-200 rounded-lg shrink-0 cursor-pointer"
                               >
-                                İptal Et
+                                Ä°ptal Et
                               </button>
                             </div>
                           ) : (
@@ -6090,14 +6092,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                     setCouponCodeInput(e.target.value.toUpperCase());
                                     setCouponError("");
                                   }}
-                                  placeholder="Kodunuzu Yazınız"
+                                  placeholder="Kodunuzu YazÄ±nÄ±z"
                                   className="flex-1 rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs font-bold font-mono placeholder-stone-405 focus:outline-none focus:border-[#FF385C]"
                                 />
                                 <button
                                   type="button"
                                   onClick={() => {
                                     if (!couponCodeInput.trim()) {
-                                      setCouponError("Lütfen bir promosyon kodu giriniz.");
+                                      setCouponError("LÃ¼tfen bir promosyon kodu giriniz.");
                                       return;
                                     }
                                     const match = campaigns.find(
@@ -6106,12 +6108,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                         c.isActive
                                     );
                                     if (!match) {
-                                      setCouponError("Geçersiz veya süresi geçmiş promosyon kodu.");
+                                      setCouponError("GeÃ§ersiz veya sÃ¼resi geÃ§miÅŸ promosyon kodu.");
                                       return;
                                     }
                                     // Make sure targets either this villa or all villas
                                     if (match.targetVillaId !== "all" && match.targetVillaId !== quickBookVilla.id) {
-                                      setCouponError("Bu kupon bu konut için geçerli değildir.");
+                                      setCouponError("Bu kupon bu konut iÃ§in geÃ§erli deÄŸildir.");
                                       return;
                                     }
                                     setAppliedCampaign(match);
@@ -6124,7 +6126,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               </div>
                               {couponError && (
                                 <span className="block text-[10px] text-rose-600 font-bold mt-1.5 font-sans">
-                                  ⚠️ {couponError}
+                                  âš ï¸ {couponError}
                                 </span>
                               )}
                             </div>
@@ -6195,28 +6197,28 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               <div className="flex justify-between items-center text-[10px] font-bold text-stone-400 tracking-wide border-b border-stone-250 pb-1.5">
                                 <span>HESAPLAMA TABLOSU</span>
                                 <span className="font-mono">
-                                  Süre: {days} Gece
+                                  SÃ¼re: {days} Gece
                                 </span>
                               </div>
                               <div className="flex justify-between">
                                 <span>Kiralama Bedeli ({days} Gece):</span>
                                 <span className={`font-bold ${appliedCampaign ? "line-through text-stone-400" : "text-stone-850"}`}>
-                                  ₺{total.toLocaleString("tr-TR")}
+                                  â‚º{total.toLocaleString("tr-TR")}
                                 </span>
                               </div>
                               {appliedCampaign && (
                                 <div className="flex justify-between text-emerald-800 font-bold bg-emerald-500/5 p-1 rounded">
-                                  <span>↳ Kupon İndirimi ({appliedCampaign.code}):</span>
+                                  <span>â†³ Kupon Ä°ndirimi ({appliedCampaign.code}):</span>
                                   <span>
-                                    -₺{campaignDiscountAmount.toLocaleString("tr-TR")}
+                                    -â‚º{campaignDiscountAmount.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
                               )}
                               {appliedCampaign && (
                                 <div className="flex justify-between font-bold text-stone-850 pt-0.5 border-b border-stone-200/50 pb-1">
-                                  <span>Kampanyalı Kira Bedeli:</span>
+                                  <span>KampanyalÄ± Kira Bedeli:</span>
                                   <span className="text-emerald-700 font-mono">
-                                    ₺{rentalAfterDiscount.toLocaleString("tr-TR")}
+                                    â‚º{rentalAfterDiscount.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
                               )}
@@ -6227,77 +6229,77 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                 >
                                   <span>+ {srv.name}:</span>
                                   <span className="font-semibold text-emerald-800">
-                                    ₺{srv.cost.toLocaleString("tr-TR")}
+                                    â‚º{srv.cost.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
                               ))}
 
                               <div className="border-t border-stone-200 pt-2 flex justify-between font-bold text-sm text-stone-900">
-                                <span>Toplam Ödeme:</span>
+                                <span>Toplam Ã–deme:</span>
                                 <span className="font-mono text-stone-950 text-base">
-                                  ₺{finalTotal.toLocaleString("tr-TR")}
+                                  â‚º{finalTotal.toLocaleString("tr-TR")}
                                 </span>
                               </div>
 
                               <div className="space-y-1.5 pt-1.5 border-t border-dashed border-stone-200">
                                 <div className="flex justify-between items-center text-rose-600 bg-rose-50/50 p-2 rounded-xl border border-rose-105 font-bold">
                                   <span>
-                                    Ön Rezervasyon Kaparo %10 (Ön Ödeme):
+                                    Ã–n Rezervasyon Kaparo %10 (Ã–n Ã–deme):
                                   </span>
                                   <span className="font-mono">
-                                    ₺{kaparo.toLocaleString("tr-TR")}
+                                    â‚º{kaparo.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
 
                                 {prePaymentRate > 0 && (
                                   <div className="flex justify-between items-center text-amber-700 bg-amber-50/55 p-2 rounded-xl border border-amber-105 font-bold">
                                     <span>
-                                      Kesin Rezervasyon ile ödeme %
-                                      {prePaymentRate} (Ön Ödeme):
+                                      Kesin Rezervasyon ile Ã¶deme %
+                                      {prePaymentRate} (Ã–n Ã–deme):
                                     </span>
                                     <span className="font-mono">
-                                      ₺{kesinPayment.toLocaleString("tr-TR")}
+                                      â‚º{kesinPayment.toLocaleString("tr-TR")}
                                     </span>
                                   </div>
                                 )}
 
                                 <div className="flex justify-between items-center text-stone-700 bg-stone-100/50 p-2 rounded-xl border border-stone-200 font-bold">
                                   <span>
-                                    Kapıda Kalan (%{remainingPercent} Kalan):
+                                    KapÄ±da Kalan (%{remainingPercent} Kalan):
                                   </span>
                                   <span className="font-mono">
-                                    ₺{kalanKapida.toLocaleString("tr-TR")}
+                                    â‚º{kalanKapida.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
 
                                 {servicesCost > 0 && (
                                   <div className="flex justify-between items-center text-emerald-800 bg-emerald-55/10 p-2 rounded-xl border border-emerald-150 font-semibold">
-                                    <span>Ek Hizmetler Toplamı:</span>
+                                    <span>Ek Hizmetler ToplamÄ±:</span>
                                     <span className="font-mono">
-                                      ₺{servicesCost.toLocaleString("tr-TR")}
+                                      â‚º{servicesCost.toLocaleString("tr-TR")}
                                     </span>
                                   </div>
                                 )}
 
                                 <div className="flex justify-between items-center text-white bg-stone-900 p-2.5 rounded-xl font-black mt-2 text-xs shadow-sm">
-                                  <span>Ön Rezervasyonda Ödenecek:</span>
+                                  <span>Ã–n Rezervasyonda Ã–denecek:</span>
                                   <span className="font-mono text-sm text-[#FF385C]">
-                                    ₺{onRezOdenecek.toLocaleString("tr-TR")}
+                                    â‚º{onRezOdenecek.toLocaleString("tr-TR")}
                                   </span>
                                 </div>
                               </div>
 
                               <div className="pt-2 flex items-start gap-1 p-2 bg-rose-50/30 rounded-xl border border-rose-100/40 text-[10px] text-stone-500 font-sans leading-relaxed">
                                 <span className="text-rose-500 font-black shrink-0 font-mono">
-                                  ℹ️
+                                  â„¹ï¸
                                 </span>
                                 <span>
-                                  Rezervasyon sırasında sadece %10 Kaparo
-                                  ödemesi tahsil edilir, kalanı kapıda
-                                  ödersiniz. Ön rezervasyon ile tahsil edilen
-                                  %10 rezervasyon ev sahibi tarafından
-                                  onaylanmazsa tarafınıza iade edilir,
-                                  mağduriyet yaşamazsınız. Ek hizmetler önden
+                                  Rezervasyon sÄ±rasÄ±nda sadece %10 Kaparo
+                                  Ã¶demesi tahsil edilir, kalanÄ± kapÄ±da
+                                  Ã¶dersiniz. Ã–n rezervasyon ile tahsil edilen
+                                  %10 rezervasyon ev sahibi tarafÄ±ndan
+                                  onaylanmazsa tarafÄ±nÄ±za iade edilir,
+                                  maÄŸduriyet yaÅŸamazsÄ±nÄ±z. Ek hizmetler Ã¶nden
                                   tahsil edilir.
                                 </span>
                               </div>
@@ -6320,7 +6322,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             }
                             if (filled < needed) {
                               warnings.push(
-                                `⚠️ Diğer konaklayacak ${needed - filled} kişiyi eklemediniz! Bildirim mevzuatı gereği tüm misafir seçimi zorunludur.`,
+                                `âš ï¸ DiÄŸer konaklayacak ${needed - filled} kiÅŸiyi eklemediniz! Bildirim mevzuatÄ± gereÄŸi tÃ¼m misafir seÃ§imi zorunludur.`,
                               );
                             }
                           }
@@ -6334,7 +6336,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           const minN = quickBookVilla.minNights || 2;
                           if (days > 0 && days < minN) {
                             warnings.push(
-                              `⚠️ Seçiminiz ${days} gece. Bu ev sahibi için asgari konaklama süresi ${minN} gecedir.`,
+                              `âš ï¸ SeÃ§iminiz ${days} gece. Bu ev sahibi iÃ§in asgari konaklama sÃ¼resi ${minN} gecedir.`,
                             );
                           }
 
@@ -6352,7 +6354,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           });
                           if (hasOverlap) {
                             warnings.push(
-                              `⚠️ Seçili tarihler arasında dolu/rezervasyonu yapılmış günler bulunmaktadır.`,
+                              `âš ï¸ SeÃ§ili tarihler arasÄ±nda dolu/rezervasyonu yapÄ±lmÄ±ÅŸ gÃ¼nler bulunmaktadÄ±r.`,
                             );
                           }
 
@@ -6361,8 +6363,8 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                           return (
                             <div className="bg-rose-50 border-2 border-rose-300 text-rose-850 text-[12px] sm:text-[13px] p-4 rounded-2xl space-y-2 font-bold my-4 shadow-sm animate-pulse-subtle">
                               <div className="font-black text-[11px] sm:text-xs uppercase text-rose-950 tracking-wider flex items-center gap-1 border-b border-rose-200 pb-1.5 mb-1.5">
-                                <span>⚠️</span>
-                                <span>Ön Rezervasyon Tamamlama Uyarıları:</span>
+                                <span>âš ï¸</span>
+                                <span>Ã–n Rezervasyon Tamamlama UyarÄ±larÄ±:</span>
                               </div>
                               {warnings.map((w, wIdx) => (
                                 <div
@@ -6370,7 +6372,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                                   className="flex items-start gap-2 leading-relaxed"
                                 >
                                   <span className="shrink-0 text-red-600">
-                                    •
+                                    â€¢
                                   </span>
                                   <span>{w}</span>
                                 </div>
@@ -6386,15 +6388,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                             className="w-full flex items-center justify-center gap-2.5 rounded-2xl bg-[#FF385C] hover:bg-rose-600 py-4 text-[14px] font-black text-white transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
                           >
                             <Calendar className="h-5 w-5" />
-                            <span>Ön Rezervasyonu Tamamla</span>
+                            <span>Ã–n Rezervasyonu Tamamla</span>
                           </button>
                         </div>
 
                         <div className="flex items-center gap-1.5 justify-center text-[10px] text-stone-400">
                           <Lock className="h-3.5 w-3.5" />
                           <span>
-                            Rezervasyon talebiniz doğrudan ev sahibine
-                            aktarılır.
+                            Rezervasyon talebiniz doÄŸrudan ev sahibine
+                            aktarÄ±lÄ±r.
                           </span>
                         </div>
                       </>
@@ -6418,7 +6420,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         >
           <div className="flex items-center justify-between text-white py-2 px-4 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
             <span className="text-xs font-mono tracking-widest font-black uppercase">
-              {zoomVilla.name} • RESİM {zoomImageIndex + 1} /{" "}
+              {zoomVilla.name} â€¢ RESÄ°M {zoomImageIndex + 1} /{" "}
               {zoomVilla.images.length}
             </span>
             <button
@@ -6448,7 +6450,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 );
               }}
               className="absolute left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/30 backdrop-blur-sm active:scale-90 transition shadow-md"
-              title="Önceki Görsel"
+              title="Ã–nceki GÃ¶rsel"
             >
               <ChevronLeft className="h-7 w-7" />
             </button>
@@ -6477,15 +6479,15 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 );
               }}
               className="absolute right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/30 backdrop-blur-sm active:scale-90 transition shadow-md"
-              title="Sonraki Görsel"
+              title="Sonraki GÃ¶rsel"
             >
               <ChevronRight className="h-7 w-7" />
             </button>
           </div>
 
           <div className="text-center text-white/50 text-[10px] pb-4">
-            Gezinmek için yanlardaki okları kullanabilirsiniz. Kapatmak için X
-            butonuna basın.
+            Gezinmek iÃ§in yanlardaki oklarÄ± kullanabilirsiniz. Kapatmak iÃ§in X
+            butonuna basÄ±n.
           </div>
         </div>
       )}
@@ -6503,7 +6505,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
       {/* ==================== INTERACTIVE NAV MODALS & OVERLAYS ==================== */}
 
-      {/* 1. GİRİŞ POP-UP MODALI (Kullanıcı, Ev Sahibi, Admin Girişleri) */}
+      {/* 1. GÄ°RÄ°Å POP-UP MODALI (KullanÄ±cÄ±, Ev Sahibi, Admin GiriÅŸleri) */}
       {activeLoginPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl w-full max-w-sm border border-stone-200 shadow-2xl relative overflow-hidden animate-in zoom-in duration-150">
@@ -6518,11 +6520,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               }`}
             >
               <span className="block text-[9px] font-black uppercase tracking-widest text-white/70">
-                GÜVENLİ ERİŞİM PORTALI
+                GÃœVENLÄ° ERÄ°ÅÄ°M PORTALI
               </span>
               <h3 className="text-base font-extrabold font-display mt-0.5">
-                {activeLoginPopup === "guest" && "Kullanıcı Girişi"}
-                {activeLoginPopup === "host" && "Ev Sahibi Girişi"}
+                {activeLoginPopup === "guest" && "KullanÄ±cÄ± GiriÅŸi"}
+                {activeLoginPopup === "host" && "Ev Sahibi GiriÅŸi"}
               </h3>
             </div>
 
@@ -6532,7 +6534,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 const pStr = inputPhone.replace(/\s+/g, "");
                 const pass = inputPassword;
                 if (!pStr || !pass) {
-                  alert("Lütfen alanları giriniz.");
+                  alert("LÃ¼tfen alanlarÄ± giriniz.");
                   return;
                 }
 
@@ -6543,7 +6545,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   pass === "123456"
                 ) {
                   authed = {
-                    name: "Hakan Yalçın",
+                    name: "Hakan YalÃ§Ä±n",
                     phone: "0555 555 55 55",
                     tcNo: "33122144322",
                     email: "hakan@gmail.com",
@@ -6554,7 +6556,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   pass === "123456"
                 ) {
                   authed = {
-                    name: "Ahmet Yılmaz",
+                    name: "Ahmet YÄ±lmaz",
                     phone: "0532 532 32 32",
                     tcNo: "44211234566",
                   };
@@ -6564,7 +6566,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   pass === "123456"
                 ) {
                   authed = {
-                    name: "Zeynep Kaya (Baş Yönetici)",
+                    name: "Zeynep Kaya (BaÅŸ YÃ¶netici)",
                     phone: "0544 544 44 44",
                     tcNo: "99122343211",
                   };
@@ -6615,7 +6617,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   setInputPassword("");
                 } else {
                   alert(
-                    "Giriş başarısız! Girilen telefon veya şifre uyuşmuyor. Lütfen kayıtlı bilgileriniz ile tekrar deneyin.",
+                    "GiriÅŸ baÅŸarÄ±sÄ±z! Girilen telefon veya ÅŸifre uyuÅŸmuyor. LÃ¼tfen kayÄ±tlÄ± bilgileriniz ile tekrar deneyin.",
                   );
                 }
               }}
@@ -6655,14 +6657,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div>
                 <div className="flex justify-between items-center mb-1.5">
                   <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide">
-                    Şifre <span className="text-red-500">*</span>
+                    Åifre <span className="text-red-500">*</span>
                   </label>
                   <button
                     type="button"
                     onClick={() => {
                       if (
                         confirm(
-                          "Şifre sıfırlama talebiniz başarıyla oluşturulmuştur. Kayıtlı cep telefonu numaranıza tek kullanımlık geçici şifre SMS olarak iletilecektir.",
+                          "Åifre sÄ±fÄ±rlama talebiniz baÅŸarÄ±yla oluÅŸturulmuÅŸtur. KayÄ±tlÄ± cep telefonu numaranÄ±za tek kullanÄ±mlÄ±k geÃ§ici ÅŸifre SMS olarak iletilecektir.",
                         )
                       ) {
                         setInputPassword("123456");
@@ -6670,7 +6672,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     }}
                     className="text-[10px] text-stone-400 hover:text-stone-800 underline font-medium"
                   >
-                    Şifremi Unuttum?
+                    Åifremi Unuttum?
                   </button>
                 </div>
                 <div className="relative">
@@ -6679,7 +6681,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     required
                     value={inputPassword}
                     onChange={(e) => setInputPassword(e.target.value)}
-                    placeholder="•••••••••••••••••"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3.5 py-2.5 text-xs text-stone-850 font-sans focus:outline-none focus:ring-1 focus:ring-stone-400 focus:border-stone-400"
                   />
                   <button
@@ -6687,7 +6689,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     onClick={() => setInputShowPass(!inputShowPass)}
                     className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] uppercase font-black text-stone-400 hover:text-stone-700"
                   >
-                    {inputShowPass ? "Gizle" : "Göster"}
+                    {inputShowPass ? "Gizle" : "GÃ¶ster"}
                   </button>
                 </div>
               </div>
@@ -6703,14 +6705,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         : "bg-blue-800 hover:bg-blue-700"
                   }`}
                 >
-                  GİRİŞ YAP
+                  GÄ°RÄ°Å YAP
                 </button>
               </div>
 
 
 
               <div className="text-center text-[11px] text-stone-500 pt-1 border-t border-stone-100">
-                <span>Hesabınız yok mu? </span>
+                <span>HesabÄ±nÄ±z yok mu? </span>
                 <button
                   type="button"
                   onClick={() => {
@@ -6734,7 +6736,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               }}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
@@ -6754,12 +6756,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               }`}
             >
               <span className="block text-[9px] font-black uppercase tracking-widest text-white/70">
-                ÜYELİK BAŞVURU MERKEZİ
+                ÃœYELÄ°K BAÅVURU MERKEZÄ°
               </span>
               <h3 className="text-base font-extrabold font-display mt-0.5">
-                {activeRegisterPopup === "guest" && "Kullanıcı Kayıt Formu"}
-                {activeRegisterPopup === "host" && "Ev Sahibi Başvuru Kaydı"}
-                {activeRegisterPopup === "admin" && "Yönetici Sicil Kaydı"}
+                {activeRegisterPopup === "guest" && "KullanÄ±cÄ± KayÄ±t Formu"}
+                {activeRegisterPopup === "host" && "Ev Sahibi BaÅŸvuru KaydÄ±"}
+                {activeRegisterPopup === "admin" && "YÃ¶netici Sicil KaydÄ±"}
               </h3>
             </div>
 
@@ -6768,11 +6770,11 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 e.preventDefault();
                 const pStr = regPhone.replace(/\s+/g, "");
                 if (!regName.trim() || !pStr || !regPass || !regPassConfirm) {
-                  alert("Lütfen tüm zorunlu alanları doldurunuz.");
+                  alert("LÃ¼tfen tÃ¼m zorunlu alanlarÄ± doldurunuz.");
                   return;
                 }
                 if (regPass !== regPassConfirm) {
-                  alert("Şifreler uyuşmuyor!");
+                  alert("Åifreler uyuÅŸmuyor!");
                   return;
                 }
 
@@ -6801,7 +6803,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 localStorage.setItem(listKey, JSON.stringify(existing));
 
                 alert(
-                  "Cihaz tescil kaydınız başarıyla tamamlanmıştır! Giriş yapabilirsiniz.",
+                  "Cihaz tescil kaydÄ±nÄ±z baÅŸarÄ±yla tamamlanmÄ±ÅŸtÄ±r! GiriÅŸ yapabilirsiniz.",
                 );
                 const origRole = activeRegisterPopup;
                 setActiveRegisterPopup(null);
@@ -6818,21 +6820,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             >
               <div>
                 <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1">
-                  Adınız Soyadınız <span className="text-red-500">*</span>
+                  AdÄ±nÄ±z SoyadÄ±nÄ±z <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   required
                   value={regName}
                   onChange={(e) => setRegName(e.target.value)}
-                  placeholder="Örn: Hakan Yalçın"
+                  placeholder="Ã–rn: Hakan YalÃ§Ä±n"
                   className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs text-stone-850 font-sans focus:outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1">
-                  🔒 Cep Telefon Numaranız{" "}
+                  ğŸ”’ Cep Telefon NumaranÄ±z{" "}
                   <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -6871,7 +6873,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     type="email"
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
-                    placeholder="hakan@örnek.com"
+                    placeholder="hakan@Ã¶rnek.com"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs text-stone-850 font-sans focus:outline-none"
                   />
                 </div>
@@ -6880,28 +6882,28 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               <div className="grid grid-cols-2 gap-2.5">
                 <div>
                   <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1">
-                    Şifre <span className="text-red-500">*</span>
+                    Åifre <span className="text-red-500">*</span>
                   </label>
                   <input
                     type={regShowPass ? "text" : "password"}
                     required
                     value={regPass}
                     onChange={(e) => setRegPass(e.target.value)}
-                    placeholder="•••••••••"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs text-stone-850 font-sans focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1">
-                    Şifre Tekrar <span className="text-red-500">*</span>
+                    Åifre Tekrar <span className="text-red-500">*</span>
                   </label>
                   <input
                     type={regShowPass ? "text" : "password"}
                     required
                     value={regPassConfirm}
                     onChange={(e) => setRegPassConfirm(e.target.value)}
-                    placeholder="•••••••••"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-2 text-xs text-stone-850 font-sans focus:outline-none"
                   />
                 </div>
@@ -6920,7 +6922,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   htmlFor="regShow"
                   className="text-[10px] font-bold text-stone-500 uppercase cursor-pointer"
                 >
-                  Şifreyi Göster
+                  Åifreyi GÃ¶ster
                 </label>
               </div>
 
@@ -6940,7 +6942,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
 
               <div className="text-center text-[11px] text-stone-500 pt-1 border-t border-stone-100">
-                <span>Zaten hesabınız var mı? </span>
+                <span>Zaten hesabÄ±nÄ±z var mÄ±? </span>
                 <button
                   type="button"
                   onClick={() => {
@@ -6950,7 +6952,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                   }}
                   className="text-stone-900 border-b border-stone-900 font-extrabold hover:text-[#FF385C]"
                 >
-                  Buradan Giriş Yapın
+                  Buradan GiriÅŸ YapÄ±n
                 </button>
               </div>
             </form>
@@ -6966,26 +6968,26 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               }}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
       )}
 
-      {/* 3. INTERACTIVE CITIES (ŞEHİRLER) MODAL */}
+      {/* 3. INTERACTIVE CITIES (ÅEHÄ°RLER) MODAL */}
       {showCitiesModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl w-full max-w-2xl border border-stone-200 shadow-2xl p-6 relative overflow-hidden animate-in zoom-in duration-150">
             <div className="mb-5">
               <span className="text-[9px] font-black uppercase text-[#FF385C] tracking-widest block">
-                SAPANCA BÖLGELERİ VE CIVARI
+                SAPANCA BÃ–LGELERÄ° VE CIVARI
               </span>
               <h3 className="text-lg font-black text-stone-950 font-display">
-                Tesis Bulunan Popüler Konumlar
+                Tesis Bulunan PopÃ¼ler Konumlar
               </h3>
               <p className="text-xs text-stone-500 mt-1">
-                İstediğiniz bölgeyi seçerek hemen o bölgedeki popüler bungalov
-                ve villaları listeleme paneline taşıyın.
+                Ä°stediÄŸiniz bÃ¶lgeyi seÃ§erek hemen o bÃ¶lgedeki popÃ¼ler bungalov
+                ve villalarÄ± listeleme paneline taÅŸÄ±yÄ±n.
               </p>
             </div>
 
@@ -6993,22 +6995,22 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               {[
                 {
                   name: "Sapanca Merkez",
-                  desc: "Sahil yürüme yolları, kafeler ve göl manzaralı bungalov turları.",
+                  desc: "Sahil yÃ¼rÃ¼me yollarÄ±, kafeler ve gÃ¶l manzaralÄ± bungalov turlarÄ±.",
                   bg: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=300",
                 },
                 {
-                  name: "Kırkpınar",
-                  desc: "Tarihi çınarlı sokaklar, nezih bahçeli villalar ve geniş araziler.",
+                  name: "KÄ±rkpÄ±nar",
+                  desc: "Tarihi Ã§Ä±narlÄ± sokaklar, nezih bahÃ§eli villalar ve geniÅŸ araziler.",
                   bg: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&q=80&w=300",
                 },
                 {
-                  name: "Maşukiye",
-                  desc: "Gürül gürül akan şelaleler, alabalık nehirleri ve dağ etekleri.",
+                  name: "MaÅŸukiye",
+                  desc: "GÃ¼rÃ¼l gÃ¼rÃ¼l akan ÅŸelaleler, alabalÄ±k nehirleri ve daÄŸ etekleri.",
                   bg: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=300",
                 },
                 {
-                  name: "Yanık",
-                  desc: "Sessiz doğa, sakin ortam ve doğa ile bütünleşmiş geniş göl çiftlikleri.",
+                  name: "YanÄ±k",
+                  desc: "Sessiz doÄŸa, sakin ortam ve doÄŸa ile bÃ¼tÃ¼nleÅŸmiÅŸ geniÅŸ gÃ¶l Ã§iftlikleri.",
                   bg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=300",
                 },
               ].map((loc, index) => {
@@ -7064,7 +7066,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 }}
                 className="rounded-xl border border-stone-200 text-stone-600 font-extrabold px-4 py-2 text-xs hover:bg-stone-50 transition cursor-pointer"
               >
-                Tümünü Göster ve Kapat
+                TÃ¼mÃ¼nÃ¼ GÃ¶ster ve Kapat
               </button>
             </div>
 
@@ -7072,26 +7074,26 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               onClick={() => setShowCitiesModal(false)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
       )}
 
-      {/* 4. KİRALIK TEKNE ARA MODALI */}
+      {/* 4. KÄ°RALIK TEKNE ARA MODALI */}
       {showBoatsModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl w-full max-w-xl border border-stone-200 shadow-2xl p-6 relative overflow-hidden animate-in zoom-in duration-150">
             <div className="mb-5 flex items-center gap-2">
               <div className="h-10 w-10 text-amber-500 bg-amber-50 rounded-xl flex items-center justify-center font-bold">
-                ⛵
+                â›µ
               </div>
               <div>
                 <span className="text-[9px] font-black uppercase text-amber-600 tracking-widest block">
-                  SAPANCA GÖLÜ PREMİUM YAT KİRALAMA
+                  SAPANCA GÃ–LÃœ PREMÄ°UM YAT KÄ°RALAMA
                 </span>
                 <h3 className="text-lg font-black text-stone-950 font-display">
-                  Lüks Skippered Tekne Kiralama
+                  LÃ¼ks Skippered Tekne Kiralama
                 </h3>
               </div>
             </div>
@@ -7100,20 +7102,20 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               {[
                 {
                   name: "Sapanca Sky Cruiser",
-                  d: "12 Kişi Kapasiteli | Sürat ve Kamaralı Lüks Tekne",
-                  h: "₺4.500/saat",
+                  d: "12 KiÅŸi Kapasiteli | SÃ¼rat ve KamaralÄ± LÃ¼ks Tekne",
+                  h: "â‚º4.500/saat",
                   img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=400",
                 },
                 {
                   name: "Lake Sunset Serenity",
-                  d: "8 Kişi Kapasiteli | Güneşlenmeli Kıç Havuzlu Keyif Teknesi",
-                  h: "₺3.800/saat",
+                  d: "8 KiÅŸi Kapasiteli | GÃ¼neÅŸlenmeli KÄ±Ã§ Havuzlu Keyif Teknesi",
+                  h: "â‚º3.800/saat",
                   img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=400",
                 },
                 {
                   name: "Water Wind Speedboat",
-                  d: "6 Kişi Kapasiteli | Su Sporları ve Sürat Turu Teknesi",
-                  h: "₺2.900/saat",
+                  d: "6 KiÅŸi Kapasiteli | Su SporlarÄ± ve SÃ¼rat Turu Teknesi",
+                  h: "â‚º2.900/saat",
                   img: "https://images.unsplash.com/photo-1473877995111-e4075af384ec?auto=format&fit=crop&q=80&w=400",
                 },
               ].map((boat, idx) => (
@@ -7140,7 +7142,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         {boat.h}
                       </span>
                       <a
-                        href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca gölünde ${boat.name} teknesi kiralama hakkında fiyat ve uygunluk sormak istiyorum.`)}`}
+                        href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca gÃ¶lÃ¼nde ${boat.name} teknesi kiralama hakkÄ±nda fiyat ve uygunluk sormak istiyorum.`)}`}
                         target="_blank"
                         rel="noreferrer"
                         className="rounded-lg bg-amber-500 hover:bg-amber-600 text-stone-950 font-black px-3.5 py-1.5 text-[10px] tracking-wide transition uppercase shadow-xs flex items-center gap-1 cursor-pointer"
@@ -7157,26 +7159,26 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               onClick={() => setShowBoatsModal(false)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
       )}
 
-      {/* 5. TUR ETKİNLİKLERİ MODALI */}
+      {/* 5. TUR ETKÄ°NLÄ°KLERÄ° MODALI */}
       {showToursModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl w-full max-w-xl border border-stone-200 shadow-2xl p-6 relative overflow-hidden animate-in zoom-in duration-150">
             <div className="mb-5 flex items-center gap-2">
               <div className="h-10 w-10 text-emerald-500 bg-emerald-50 rounded-xl flex items-center justify-center font-bold">
-                🍀
+                ğŸ€
               </div>
               <div>
                 <span className="text-[9px] font-black uppercase text-emerald-600 tracking-widest block">
-                  SAPANCA REHBERLİ ETKİNLİKLERİ
+                  SAPANCA REHBERLÄ° ETKÄ°NLÄ°KLERÄ°
                 </span>
                 <h3 className="text-lg font-black text-stone-950 font-display">
-                  Sapanca Macera & Doğa Turları
+                  Sapanca Macera & DoÄŸa TurlarÄ±
                 </h3>
               </div>
             </div>
@@ -7184,21 +7186,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             <div className="space-y-3.5 max-h-[350px] overflow-y-auto pr-1">
               {[
                 {
-                  name: "Sapanca Dağları ATV Safari Turu",
-                  d: "Çamurlu yollar, orman geçişli nehir sürprizleri ve gölet manzarası.",
-                  h: "₺1.200 / Havuzlu Atv",
+                  name: "Sapanca DaÄŸlarÄ± ATV Safari Turu",
+                  d: "Ã‡amurlu yollar, orman geÃ§iÅŸli nehir sÃ¼rprizleri ve gÃ¶let manzarasÄ±.",
+                  h: "â‚º1.200 / Havuzlu Atv",
                   img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=400",
                 },
                 {
-                  name: "Göl Sunset Kano & Kürek Turları",
-                  d: "Göl ortasında batarken kano keyfi, can yeleği ve rehber hocalar dahil.",
-                  h: "₺800 / Kişi",
+                  name: "GÃ¶l Sunset Kano & KÃ¼rek TurlarÄ±",
+                  d: "GÃ¶l ortasÄ±nda batarken kano keyfi, can yeleÄŸi ve rehber hocalar dahil.",
+                  h: "â‚º800 / KiÅŸi",
                   img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=400",
                 },
                 {
-                  name: "Samanlı Dağları Trekking & Şelale Keşfi",
-                  d: "Doğa yürüyüşü, taze nehir suları, Maşukiye orman pikniği.",
-                  h: "₺950 / Kişi",
+                  name: "SamanlÄ± DaÄŸlarÄ± Trekking & Åelale KeÅŸfi",
+                  d: "DoÄŸa yÃ¼rÃ¼yÃ¼ÅŸÃ¼, taze nehir sularÄ±, MaÅŸukiye orman pikniÄŸi.",
+                  h: "â‚º950 / KiÅŸi",
                   img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400",
                 },
               ].map((tour, idx) => (
@@ -7225,7 +7227,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                         {tour.h}
                       </span>
                       <a
-                        href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca'da ${tour.name} turu için rezervasyon ve kontenjan durumu sormak istiyorum.`)}`}
+                        href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca'da ${tour.name} turu iÃ§in rezervasyon ve kontenjan durumu sormak istiyorum.`)}`}
                         target="_blank"
                         rel="noreferrer"
                         className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-3.5 py-1.5 text-[10px] tracking-wide transition uppercase shadow-xs flex items-center gap-1 cursor-pointer"
@@ -7242,35 +7244,35 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               onClick={() => setShowToursModal(false)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
       )}
 
-      {/* 6. İLETİŞİM VE ADRES MODALI */}
+      {/* 6. Ä°LETÄ°ÅÄ°M VE ADRES MODALI */}
       {showContactModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl w-full max-w-sm border border-stone-200 shadow-2xl p-6 relative overflow-hidden animate-in zoom-in duration-150">
             <div className="mb-5 text-center">
               <span className="text-[9px] font-black uppercase text-[#FF385C] tracking-widest block">
-                İNTERAKTİF İLETİŞİM MERKEZİ
+                Ä°NTERAKTÄ°F Ä°LETÄ°ÅÄ°M MERKEZÄ°
               </span>
               <h3 className="text-md font-black text-stone-950 font-display">
-                Acente İrtibat Bilgileri
+                Acente Ä°rtibat Bilgileri
               </h3>
             </div>
 
             <div className="space-y-4">
               <div className="bg-stone-50 p-3.5 rounded-2xl border border-stone-200/60 text-xs">
                 <span className="block text-stone-400 font-bold uppercase text-[9px] mb-1">
-                  Müşteri Hizmetleri Telefon
+                  MÃ¼ÅŸteri Hizmetleri Telefon
                 </span>
                 <a
                   href={`tel:${AGENCY_DETAILS.phone}`}
                   className="font-mono font-bold text-stone-900 text-sm hover:text-[#FF385C] flex items-center gap-1.5"
                 >
-                  📞 {AGENCY_DETAILS.phone}
+                  ğŸ“ {AGENCY_DETAILS.phone}
                 </a>
               </div>
 
@@ -7293,12 +7295,12 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </div>
 
               <a
-                href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca gölünde villa veya bungalov kiralama hakkında canlı destek desteği almak istiyorum.`)}`}
+                href={`https://wa.me/905300000000?text=${encodeURIComponent(`Merhaba, Sapanca gÃ¶lÃ¼nde villa veya bungalov kiralama hakkÄ±nda canlÄ± destek desteÄŸi almak istiyorum.`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 text-xs transition shadow shadow-emerald-500/10 active:scale-95 cursor-pointer mt-2"
               >
-                <span>💬 CANLI WHATSAPP DESTEĞİ</span>
+                <span>ğŸ’¬ CANLI WHATSAPP DESTEÄÄ°</span>
               </a>
             </div>
 
@@ -7306,13 +7308,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               onClick={() => setShowContactModal(false)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 text-xs font-bold font-sans cursor-pointer"
             >
-              ✕
+              âœ•
             </button>
           </div>
         </div>
       )}
 
-      {/* 🏷️ YENİ KAMPANYA EKLE MODALI */}
+      {/* ğŸ·ï¸ YENÄ° KAMPANYA EKLE MODALI */}
       {showAddCampaignModal && (
         <div className="fixed inset-0 z-50 overflow-y-auto" id="add-campaign-dialog">
           <div className="flex min-h-screen items-center justify-center p-4 text-center">
@@ -7330,21 +7332,21 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
               </button>
 
               <h3 className="text-sm font-black text-stone-900 tracking-tight flex items-center gap-2 font-display uppercase border-b border-stone-100 pb-3 mb-5">
-                <span>🏷️ Yeni Kampanya Tanımlama</span>
+                <span>ğŸ·ï¸ Yeni Kampanya TanÄ±mlama</span>
               </h3>
 
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (!newCampaignForm.name.trim() || !newCampaignForm.code.trim()) {
-                    alert("Lütfen kampanya adını ve kupon kodunu doldurunuz.");
+                    alert("LÃ¼tfen kampanya adÄ±nÄ± ve kupon kodunu doldurunuz.");
                     return;
                   }
                   
                   // Validation of campaigns code duplicates
                   const isDup = campaigns.some(c => c.code.toUpperCase() === newCampaignForm.code.trim().toUpperCase());
                   if (isDup) {
-                    alert("Hata: Bu promosyon kupon kodu zaten mevcuttur. Lütfen özgün bir kod yazınız.");
+                    alert("Hata: Bu promosyon kupon kodu zaten mevcuttur. LÃ¼tfen Ã¶zgÃ¼n bir kod yazÄ±nÄ±z.");
                     return;
                   }
 
@@ -7366,17 +7368,17 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 }}
                 className="space-y-4"
               >
-                {/* Kampanya Adı */}
+                {/* Kampanya AdÄ± */}
                 <div>
                   <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                    Kampanya Adı (Genel Tanım)
+                    Kampanya AdÄ± (Genel TanÄ±m)
                   </label>
                   <input
                     type="text"
                     required
                     value={newCampaignForm.name}
                     onChange={(e) => setNewCampaignForm(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="Örn: Hafta Sonu Erken Rezervasyon Fırsatı"
+                    placeholder="Ã–rn: Hafta Sonu Erken Rezervasyon FÄ±rsatÄ±"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-1.5 text-xs font-bold text-stone-850 placeholder-stone-400 focus:outline-none focus:border-stone-450"
                   />
                 </div>
@@ -7391,34 +7393,34 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     required
                     value={newCampaignForm.code}
                     onChange={(e) => setNewCampaignForm(prev => ({ ...prev, code: e.target.value.toUpperCase().replace(/\s/g, "") }))}
-                    placeholder="Örn: SEZON10"
+                    placeholder="Ã–rn: SEZON10"
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-1.5 text-xs font-black font-mono text-stone-850 placeholder-stone-400 focus:outline-none focus:border-stone-450"
                   />
                   <span className="block text-[9px] text-stone-400 mt-1">
-                    Boşluksuz harf ve rakamlar kullanabilirsiniz.
+                    BoÅŸluksuz harf ve rakamlar kullanabilirsiniz.
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {/* İndirim Türü */}
+                  {/* Ä°ndirim TÃ¼rÃ¼ */}
                   <div>
                     <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                      İndirim Türü
+                      Ä°ndirim TÃ¼rÃ¼
                     </label>
                     <select
                       value={newCampaignForm.discountType}
                       onChange={(e) => setNewCampaignForm(prev => ({ ...prev, discountType: e.target.value as "percentage" | "fixed" }))}
                       className="w-full rounded-xl border border-stone-250 bg-white px-3 py-1.5 text-xs font-bold text-stone-850 focus:outline-none"
                     >
-                      <option value="percentage">Yüzde (%) Indirimi</option>
-                      <option value="fixed">Sabit Tutar (₺) Indirimi</option>
+                      <option value="percentage">YÃ¼zde (%) Indirimi</option>
+                      <option value="fixed">Sabit Tutar (â‚º) Indirimi</option>
                     </select>
                   </div>
 
-                  {/* İndirim Değeri */}
+                  {/* Ä°ndirim DeÄŸeri */}
                   <div>
                     <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                      İndirim Değeri
+                      Ä°ndirim DeÄŸeri
                     </label>
                     <input
                       type="number"
@@ -7434,14 +7436,14 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 {/* Uygulanacak Konut */}
                 <div>
                   <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                    Geçerli Olacağı Tesis
+                    GeÃ§erli OlacaÄŸÄ± Tesis
                   </label>
                   <select
                     value={newCampaignForm.targetVillaId}
                     onChange={(e) => setNewCampaignForm(prev => ({ ...prev, targetVillaId: e.target.value }))}
                     className="w-full rounded-xl border border-stone-250 bg-white px-3 py-1.5 text-xs font-bold text-stone-850 focus:outline-none"
                   >
-                    <option value="all">Tüm Tesislerde Geçerli (Genel)</option>
+                    <option value="all">TÃ¼m Tesislerde GeÃ§erli (Genel)</option>
                     {villas.map(v => (
                       <option key={v.id} value={v.id}>{v.name} ({v.region})</option>
                     ))}
@@ -7449,10 +7451,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {/* Başlangıç Tarihi */}
+                  {/* BaÅŸlangÄ±Ã§ Tarihi */}
                   <div>
                     <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                      Başlangıç Tarihi
+                      BaÅŸlangÄ±Ã§ Tarihi
                     </label>
                     <input
                       type="date"
@@ -7463,10 +7465,10 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     />
                   </div>
 
-                  {/* Bitiş Tarihi */}
+                  {/* BitiÅŸ Tarihi */}
                   <div>
                     <label className="block text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-1">
-                      Bitiş Tarihi
+                      BitiÅŸ Tarihi
                     </label>
                     <input
                       type="date"
@@ -7484,13 +7486,13 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                     onClick={() => setShowAddCampaignModal(false)}
                     className="flex-1 text-center py-2 rounded-xl border border-stone-250 text-stone-500 font-bold hover:bg-stone-50 transition cursor-pointer"
                   >
-                    Vazgeç
+                    VazgeÃ§
                   </button>
                   <button
                     type="submit"
                     className="flex-1 text-center py-2 rounded-xl bg-stone-900 text-amber-400 hover:bg-amber-500 hover:text-stone-950 font-black transition cursor-pointer shadow-sm"
                   >
-                    Yayınla 🚀
+                    YayÄ±nla ğŸš€
                   </button>
                 </div>
               </form>
@@ -7499,7 +7501,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         </div>
       )}
 
-      {/* 7. YENİ İLAN EKLE MODALI */}
+      {/* 7. YENÄ° Ä°LAN EKLE MODALI */}
       {showAddVillaModal && (
         <AddVillaModal
           onClose={() => setShowAddVillaModal(false)}
@@ -7524,27 +7526,53 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         />
       )}
 
-      {/* 8. İLAN DÜZENLEME MODALI */}
+      {/* 8. Ä°LAN DÃœZENLEME MODALI */}
       {editingVilla && (
         <EditVillaModal
+          isAdmin={currentRole === "admin"}
           villa={editingVilla}
           onClose={() => setEditingVilla(null)}
           onSave={(updatedVilla) => {
             const isHostEdit = currentRole !== "admin";
-            const updatedVillaWithStatus = isHostEdit 
-              ? { ...updatedVilla, approvalStatus: "pending" as const } 
-              : updatedVilla;
             
+            let updatedVillaWithStatus = updatedVilla;
+            
+            if (isHostEdit && editingVilla) {
+              const changes: Partial<Villa> = {};
+              Object.keys(updatedVilla).forEach((k) => {
+                const key = k as keyof Villa;
+                if (JSON.stringify(updatedVilla[key]) !== JSON.stringify(editingVilla[key])) {
+                  changes[key] = updatedVilla[key] as any;
+                }
+              });
+              
+              if (Object.keys(changes).length > 0) {
+                updatedVillaWithStatus = {
+                  ...editingVilla,
+                  pendingChanges: changes,
+                  approvalStatus: "pending_edit" as const
+                };
+              } else {
+                updatedVillaWithStatus = editingVilla;
+              }
+            } else if (!isHostEdit) {
+              updatedVillaWithStatus = {
+                ...updatedVilla,
+                approvalStatus: "approved" as const,
+                pendingChanges: undefined
+              };
+            }
+
             const updated = villas.map((v) =>
               v.id === updatedVillaWithStatus.id ? updatedVillaWithStatus : v,
             );
             saveVillasState(updated);
             
-            if (isHostEdit) {
+            if (isHostEdit && Object.keys(updatedVillaWithStatus.pendingChanges || {}).length > 0) {
               fetch(`/api/villas/${updatedVillaWithStatus.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ approvalStatus: 'pending' })
+                body: JSON.stringify({ pendingChanges: updatedVillaWithStatus.pendingChanges, approvalStatus: 'pending_edit' })
               }).catch(() => {});
             }
 
@@ -7553,7 +7581,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
         />
       )}
 
-      {/* 9. KADEMELİ FİYAT MODALI */}
+      {/* 9. KADEMELÄ° FÄ°YAT MODALI */}
       {tierEditingVilla && (
         <KademeliFiyatModal
           villa={tierEditingVilla}
@@ -7572,7 +7600,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 }
 
 // ==========================================
-// KADEMELİ FİYAT MODALI COMPONENT
+// KADEMELÄ° FÄ°YAT MODALI COMPONENT
 // ==========================================
 interface KademeliFiyatModalProps {
   villa: Villa;
@@ -7593,17 +7621,17 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
     setError("");
 
     if (!startDate || !endDate || !price) {
-      setError("Lütfen özel tarih aralığı ve gecelik fiyat alanlarını eksiksiz doldurunuz.");
+      setError("LÃ¼tfen Ã¶zel tarih aralÄ±ÄŸÄ± ve gecelik fiyat alanlarÄ±nÄ± eksiksiz doldurunuz.");
       return;
     }
 
     if (new Date(startDate) >= new Date(endDate)) {
-      setError("Giriş tarihi, çıkış tarihinden önce olmalıdır.");
+      setError("GiriÅŸ tarihi, Ã§Ä±kÄ±ÅŸ tarihinden Ã¶nce olmalÄ±dÄ±r.");
       return;
     }
 
     if (tiers.length >= 3) {
-      setError("En fazla 3 adet kademeli (özel) fiyat tanımlayabilirsiniz.");
+      setError("En fazla 3 adet kademeli (Ã¶zel) fiyat tanÄ±mlayabilirsiniz.");
       return;
     }
 
@@ -7617,7 +7645,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
     });
 
     if (isOverlapping) {
-      setError("Seçtiğiniz tarih aralığı mevcut bir kademeli fiyat aralığıyla çakışıyor.");
+      setError("SeÃ§tiÄŸiniz tarih aralÄ±ÄŸÄ± mevcut bir kademeli fiyat aralÄ±ÄŸÄ±yla Ã§akÄ±ÅŸÄ±yor.");
       return;
     }
 
@@ -7654,7 +7682,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
         <div className="flex items-center justify-between border-b border-stone-100 px-6 py-4 bg-stone-50/50">
           <div>
             <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
-              <span className="text-xl">📅</span> Kademeli Fiyat Yönetimi
+              <span className="text-xl">ğŸ“…</span> Kademeli Fiyat YÃ¶netimi
             </h2>
             <p className="text-xs text-stone-500 mt-0.5">{villa.name}</p>
           </div>
@@ -7670,22 +7698,22 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
           {/* Default Price Section */}
           <div className="p-4 bg-stone-50 rounded-2xl border border-stone-150">
             <label className="block text-xs font-black text-stone-700 uppercase tracking-wide mb-1.5">
-              Varsayılan Gecelik Fiyat
+              VarsayÄ±lan Gecelik Fiyat
             </label>
             <div className="relative rounded-xl shadow-xs max-w-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <span className="text-stone-500 text-sm">₺</span>
+                <span className="text-stone-500 text-sm">â‚º</span>
               </div>
               <input
                 type="number"
                 value={defaultPrice}
                 onChange={(e) => setDefaultPrice(Number(e.target.value))}
                 className="block w-full rounded-xl border border-stone-300 pl-8 pr-4 py-2.5 text-sm focus:border-rose-500 focus:ring-rose-500 font-bold"
-                placeholder="Örn: 5000"
+                placeholder="Ã–rn: 5000"
               />
             </div>
             <p className="text-[11px] text-stone-400 mt-2">
-              Özel bir tarih aralığı tanımlanmayan tüm günler için bu gecelik ücret geçerli olacaktır.
+              Ã–zel bir tarih aralÄ±ÄŸÄ± tanÄ±mlanmayan tÃ¼m gÃ¼nler iÃ§in bu gecelik Ã¼cret geÃ§erli olacaktÄ±r.
             </p>
           </div>
 
@@ -7696,7 +7724,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
             </h3>
             {tiers.length === 0 ? (
               <div className="text-stone-400 text-xs py-3 px-4 border border-dashed border-stone-200 rounded-xl bg-stone-50/40 text-center">
-                Henüz özel kiralama fiyata sahip bir dönem eklenmemiş. İlan için her zaman varsayılan fiyat geçerlidir.
+                HenÃ¼z Ã¶zel kiralama fiyata sahip bir dÃ¶nem eklenmemiÅŸ. Ä°lan iÃ§in her zaman varsayÄ±lan fiyat geÃ§erlidir.
               </div>
             ) : (
               <div className="space-y-2">
@@ -7715,19 +7743,19 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
                           {new Date(tier.endDate).toLocaleDateString("tr-TR", { day: "numeric", month: "long" })}
                         </div>
                         <div className="text-[11px] text-stone-400 mt-0.5">
-                          Tanımlı Kademeli Fiyat Aralığı
+                          TanÄ±mlÄ± Kademeli Fiyat AralÄ±ÄŸÄ±
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <span className="text-sm font-black text-[#FF385C]">
-                        ₺{tier.price.toLocaleString("tr-TR")} / gece
+                        â‚º{tier.price.toLocaleString("tr-TR")} / gece
                       </span>
                       <button
                         type="button"
                         onClick={() => handleRemoveTier(tier.id)}
                         className="p-1 text-stone-400 hover:text-red-600 rounded-lg hover:bg-stone-100 transition cursor-pointer"
-                        title="Dönemi Sil"
+                        title="DÃ¶nemi Sil"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -7743,13 +7771,13 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
             <form onSubmit={handleAddTier} className="p-4 rounded-2xl border border-stone-250 bg-white space-y-4">
               <div className="flex items-center gap-1.5 pb-2 border-b border-stone-100">
                 <span className="text-xs font-black text-[#FF385C] uppercase tracking-wide">
-                  ➕ Yeni Kademeli Fiyat / Özel Dönem Ekle
+                  â• Yeni Kademeli Fiyat / Ã–zel DÃ¶nem Ekle
                 </span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="space-y-1">
-                  <label className="block text-[11px] font-bold text-stone-600">Giriş Tarihi</label>
+                  <label className="block text-[11px] font-bold text-stone-600">GiriÅŸ Tarihi</label>
                   <input
                     type="date"
                     value={startDate}
@@ -7758,7 +7786,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="block text-[11px] font-bold text-stone-600">Çıkış Tarihi</label>
+                  <label className="block text-[11px] font-bold text-stone-600">Ã‡Ä±kÄ±ÅŸ Tarihi</label>
                   <input
                     type="date"
                     value={endDate}
@@ -7767,10 +7795,10 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="block text-[11px] font-bold text-stone-600">Gecelik Dönem Fiyatı (₺)</label>
+                  <label className="block text-[11px] font-bold text-stone-600">Gecelik DÃ¶nem FiyatÄ± (â‚º)</label>
                   <input
                     type="number"
-                    placeholder="Örn: 10000"
+                    placeholder="Ã–rn: 10000"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     className="block w-full rounded-xl border border-stone-300 px-3 py-2 text-xs focus:border-rose-500 focus:ring-rose-500 font-bold"
@@ -7791,7 +7819,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
                   className="bg-stone-900 hover:bg-stone-850 text-white font-extrabold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition active:scale-95 shadow-md cursor-pointer"
                 >
                   <PlusCircle className="h-3.5 w-3.5" />
-                  <span>Tarih Aralığı & Fiyat Ekle</span>
+                  <span>Tarih AralÄ±ÄŸÄ± & Fiyat Ekle</span>
                 </button>
               </div>
             </form>
@@ -7799,7 +7827,7 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
             <div className="p-4 rounded-2xl bg-amber-50 border border-amber-100 flex items-center gap-3">
               <AlertCircle className="h-5 w-5 text-amber-600 shrink-0" />
               <div className="text-xs text-amber-800 font-medium">
-                Kademeli fiyat kotasına ulaştınız (Maksimum 3 adet). Yeni eklemek için mevcut dönemsel fiyat listesinden en az bir tanesini silmelisiniz.
+                Kademeli fiyat kotasÄ±na ulaÅŸtÄ±nÄ±z (Maksimum 3 adet). Yeni eklemek iÃ§in mevcut dÃ¶nemsel fiyat listesinden en az bir tanesini silmelisiniz.
               </div>
             </div>
           )}
@@ -7812,14 +7840,14 @@ function KademeliFiyatModal({ villa, onClose, onSave }: KademeliFiyatModalProps)
             onClick={onClose}
             className="rounded-xl border border-stone-300 bg-white hover:bg-stone-50 text-stone-700 px-4 py-2.5 text-xs font-bold transition active:scale-95 cursor-pointer"
           >
-            Vazgeç
+            VazgeÃ§
           </button>
           <button
             type="button"
             onClick={handleSaveAll}
             className="rounded-xl bg-[#FF385C] hover:bg-[#E02647] text-white px-5 py-2.5 text-xs font-black transition active:scale-95 shadow-lg shadow-rose-500/10 cursor-pointer"
           >
-            Kaydet ve Güncelle 💾
+            Kaydet ve GÃ¼ncelle ğŸ’¾
           </button>
         </div>
       </div>
@@ -7841,7 +7869,7 @@ function AddVillaModal({
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [type, setType] = useState("bungalow");
-  const [region, setRegion] = useState("İstanbul");
+  const [region, setRegion] = useState("Ä°stanbul");
   const [capacity, setCapacity] = useState(4);
   const [bedrooms, setBedrooms] = useState(2);
   const [bathrooms, setBathrooms] = useState(1);
@@ -7852,9 +7880,9 @@ function AddVillaModal({
 
   // Boat Options
   const [boatType, setBoatType] = useState("Katamaran");
-  const [skipper, setSkipper] = useState("Kaptanlı");
-  const [concept, setConcept] = useState("Günlük Koy Gezisi");
-  const [port, setPort] = useState("Kuruçeşme Marinası, İstanbul");
+  const [skipper, setSkipper] = useState("KaptanlÄ±");
+  const [concept, setConcept] = useState("GÃ¼nlÃ¼k Koy Gezisi");
+  const [port, setPort] = useState("KuruÃ§eÅŸme MarinasÄ±, Ä°stanbul");
 
   // Custom Extra Services
   const [customExtraServices, setCustomExtraServices] = useState<any[]>([]);
@@ -7923,7 +7951,7 @@ function AddVillaModal({
     }
 
     if (!imgName.trim()) {
-      alert("Lütfen resim için bir isim yazınız (Örn: Mutfak, Salon, Havuz)");
+      alert("LÃ¼tfen resim iÃ§in bir isim yazÄ±nÄ±z (Ã–rn: Mutfak, Salon, Havuz)");
       return;
     }
 
@@ -7935,11 +7963,11 @@ function AddVillaModal({
       return;
     }
     if (imgCategory === "dis" && inCategoryCount >= 4) {
-      alert("Dış görünüm resimleri en fazla 4 adet olabilir!");
+      alert("DÄ±ÅŸ gÃ¶rÃ¼nÃ¼m resimleri en fazla 4 adet olabilir!");
       return;
     }
     if (imgCategory === "ic" && inCategoryCount >= 8) {
-      alert("İç görünüm resimleri en fazla 8 adet olabilir!");
+      alert("Ä°Ã§ gÃ¶rÃ¼nÃ¼m resimleri en fazla 8 adet olabilir!");
       return;
     }
     if (imgCategory === "hizmet" && inCategoryCount >= 4) {
@@ -7969,12 +7997,12 @@ function AddVillaModal({
 
   const handleAddSrv = () => {
     if (!srvName.trim()) {
-      alert("Hizmet adı girmelisiniz!");
+      alert("Hizmet adÄ± girmelisiniz!");
       return;
     }
     const priceNum = parseFloat(srvPrice);
     if (isNaN(priceNum) || priceNum < 0) {
-      alert("Geçerli bir fiyat girmelisiniz!");
+      alert("GeÃ§erli bir fiyat girmelisiniz!");
       return;
     }
     if (customExtraServices.length >= 5) {
@@ -8006,7 +8034,7 @@ function AddVillaModal({
         return prev.filter((s) => s !== slog);
       } else {
         if (prev.length >= 4) {
-          alert("En fazla 4 slogan seçebilirsiniz!");
+          alert("En fazla 4 slogan seÃ§ebilirsiniz!");
           return prev;
         }
         return [...prev, slog];
@@ -8029,12 +8057,12 @@ function AddVillaModal({
 
     const villaObj = {
       id: "villa-added-" + Date.now(),
-      name: name || (isBoat ? `${boatType} Azure` : "Özel Bungalov Evi"),
+      name: name || (isBoat ? `${boatType} Azure` : "Ã–zel Bungalov Evi"),
       title:
         title ||
         (isBoat
-          ? "Kaptanlı Muhteşem Yat Kiralama"
-          : "Lüks Yaşam ve Doğa Kaçamağı"),
+          ? "KaptanlÄ± MuhteÅŸem Yat Kiralama"
+          : "LÃ¼ks YaÅŸam ve DoÄŸa KaÃ§amaÄŸÄ±"),
       type: finalType,
       region,
       capacity,
@@ -8045,7 +8073,7 @@ function AddVillaModal({
       prePaymentRate,
       description:
         description ||
-        "Doğa ile iç içe, tüm detayları özenle düşünülmüş unutulmaz tatil seçeneği.",
+        "DoÄŸa ile iÃ§ iÃ§e, tÃ¼m detaylarÄ± Ã¶zenle dÃ¼ÅŸÃ¼nÃ¼lmÃ¼ÅŸ unutulmaz tatil seÃ§eneÄŸi.",
       images: finalImages,
       classifiedImages: classifiedImages,
       features: selectedFeatures,
@@ -8056,8 +8084,8 @@ function AddVillaModal({
       hostName: "Siz (Ev Sahibi)",
       hostAvatar:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150",
-      badge: isBoat ? "⛵ Yat Kiralama" : "Yeni İlan",
-      whatsappMessage: "Merhaba! Yeni ilanınız hakkında bilgi alabilir miyim?",
+      badge: isBoat ? "â›µ Yat Kiralama" : "Yeni Ä°lan",
+      whatsappMessage: "Merhaba! Yeni ilanÄ±nÄ±z hakkÄ±nda bilgi alabilir miyim?",
       catFeatures: [
         "view_mountain",
         "bath_hairdryer",
@@ -8091,10 +8119,10 @@ function AddVillaModal({
       <div className="bg-white rounded-3xl w-full max-w-2xl border border-stone-200 shadow-2xl p-6 relative my-8 max-h-[90vh] overflow-y-auto">
         <div className="mb-6">
           <h3 className="text-xl font-extrabold text-stone-900 font-display">
-            İlan Oluştur, Evin Boş Kalmasın 🏡
+            Ä°lan OluÅŸtur, Evin BoÅŸ KalmasÄ±n ğŸ¡
           </h3>
           <p className="text-xs text-stone-500 mt-1">
-            Gerekli alanları doldurarak ilanınızı anında yayına verin.
+            Gerekli alanlarÄ± doldurarak ilanÄ±nÄ±zÄ± anÄ±nda yayÄ±na verin.
           </p>
         </div>
 
@@ -8103,10 +8131,10 @@ function AddVillaModal({
           <div className="p-4 bg-amber-500/5 rounded-2xl border border-amber-500/20 flex items-center justify-between">
             <div>
               <span className="font-extrabold text-stone-900 text-xs block">
-                ⚓ Yat / Tekne Kiralama Seçeneği
+                âš“ Yat / Tekne Kiralama SeÃ§eneÄŸi
               </span>
               <span className="text-[11px] text-stone-500">
-                Eğer listelediğiniz mülk bir tekne ise bu kutucuğu işaretleyin.
+                EÄŸer listelediÄŸiniz mÃ¼lk bir tekne ise bu kutucuÄŸu iÅŸaretleyin.
               </span>
             </div>
             <label className="relative inline-flex items-center cursor-pointer select-none">
@@ -8123,13 +8151,13 @@ function AddVillaModal({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                Mülk / İlan Adı <span className="text-red-500">*</span>
+                MÃ¼lk / Ä°lan AdÄ± <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 required
                 placeholder={
-                  isBoat ? "Örn: Princess Katamaran" : "Örn: Sapanca Green Dome"
+                  isBoat ? "Ã–rn: Princess Katamaran" : "Ã–rn: Sapanca Green Dome"
                 }
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -8139,12 +8167,12 @@ function AddVillaModal({
 
             <div>
               <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                İlan Başlığı / Slogan <span className="text-red-500">*</span>
+                Ä°lan BaÅŸlÄ±ÄŸÄ± / Slogan <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 required
-                placeholder="Örn: Dere Kenarında Muhteşem Panoramik Kabin"
+                placeholder="Ã–rn: Dere KenarÄ±nda MuhteÅŸem Panoramik Kabin"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full rounded-xl border border-stone-250 px-3 py-2 text-xs focus:outline-none focus:border-[#FF385C]"
@@ -8164,40 +8192,40 @@ function AddVillaModal({
                   onChange={(e) => setBoatType(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Katamaran">⛵ Katamaran</option>
-                  <option value="Yelkenli">⛵ Yelkenli</option>
-                  <option value="Motor Yat">🚤 Motor Yat</option>
-                  <option value="Gulet">⚓ Ahşap Gulet</option>
+                  <option value="Katamaran">â›µ Katamaran</option>
+                  <option value="Yelkenli">â›µ Yelkenli</option>
+                  <option value="Motor Yat">ğŸš¤ Motor Yat</option>
+                  <option value="Gulet">âš“ AhÅŸap Gulet</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-sky-800 uppercase tracking-wider mb-1">
-                  Kaptan Seçeneği
+                  Kaptan SeÃ§eneÄŸi
                 </label>
                 <select
                   value={skipper}
                   onChange={(e) => setSkipper(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Kaptanlı">Kaptanlı (Fiyata Dahil)</option>
-                  <option value="Kaptansız">Kaptansız Kiralanabilir</option>
-                  <option value="Full Mürettebatlı">Full Mürettebatlı</option>
+                  <option value="KaptanlÄ±">KaptanlÄ± (Fiyata Dahil)</option>
+                  <option value="KaptansÄ±z">KaptansÄ±z Kiralanabilir</option>
+                  <option value="Full MÃ¼rettebatlÄ±">Full MÃ¼rettebatlÄ±</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-sky-800 uppercase tracking-wider mb-1">
-                  Konsept / Kullanım
+                  Konsept / KullanÄ±m
                 </label>
                 <select
                   value={concept}
                   onChange={(e) => setConcept(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Günlük Koy Gezisi">Günlük Koy Gezisi</option>
-                  <option value="Haftalık Mavi Yolculuk">
-                    Haftalık Mavi Yolculuk
+                  <option value="GÃ¼nlÃ¼k Koy Gezisi">GÃ¼nlÃ¼k Koy Gezisi</option>
+                  <option value="HaftalÄ±k Mavi Yolculuk">
+                    HaftalÄ±k Mavi Yolculuk
                   </option>
                   <option value="Yat Konaklama">Yat Konaklama</option>
                 </select>
@@ -8220,26 +8248,26 @@ function AddVillaModal({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                  Konut Türü
+                  Konut TÃ¼rÃ¼
                 </label>
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   className="w-full rounded-xl border border-stone-250 bg-stone-50 px-3 py-2 text-xs text-stone-850 font-bold focus:outline-none"
                 >
-                  <option value="bungalow">🏡 Bungalov</option>
-                  <option value="villa">🏡 Lüks Villa</option>
-                  <option value="mansion">🏰 Müstakil Ev</option>
-                  <option value="summer_house">🏖️ Yazlık</option>
-                  <option value="apartment">🏢 Daire</option>
-                  <option value="chalet">🍇 Dağ Evi</option>
-                  <option value="farmhouse">🐄 Çiftlik Evi</option>
+                  <option value="bungalow">ğŸ¡ Bungalov</option>
+                  <option value="villa">ğŸ¡ LÃ¼ks Villa</option>
+                  <option value="mansion">ğŸ° MÃ¼stakil Ev</option>
+                  <option value="summer_house">ğŸ–ï¸ YazlÄ±k</option>
+                  <option value="apartment">ğŸ¢ Daire</option>
+                  <option value="chalet">ğŸ‡ DaÄŸ Evi</option>
+                  <option value="farmhouse">ğŸ„ Ã‡iftlik Evi</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                  Hizmet Bölgesi / Şehir
+                  Hizmet BÃ¶lgesi / Åehir
                 </label>
                 <select
                   value={region}
@@ -8333,30 +8361,30 @@ function AddVillaModal({
 
             <div>
               <label className="block text-[10px] font-black text-[#FF385C] uppercase tracking-wider mb-1">
-                Kesin Ön Ödeme Oranı
+                Kesin Ã–n Ã–deme OranÄ±
               </label>
               <select
                 value={prePaymentRate}
                 onChange={(e) => setPrePaymentRate(Number(e.target.value))}
                 className="w-full rounded-xl border border-[#FF385C]/30 bg-stone-50 px-2 py-2 text-xs font-black text-stone-850"
               >
-                <option value={0}>Kapıda ödeme (Sadece %10 kaparo)</option>
-                <option value={10}>%10 Kesin Ön Ödemeli</option>
-                <option value={20}>%20 Kesin Ön Ödemeli</option>
-                <option value={30}>%30 Kesin Ön Ödemeli</option>
-                <option value={50}>%50 Kesin Ön Ödemeli</option>
+                <option value={0}>KapÄ±da Ã¶deme (Sadece %10 kaparo)</option>
+                <option value={10}>%10 Kesin Ã–n Ã–demeli</option>
+                <option value={20}>%20 Kesin Ã–n Ã–demeli</option>
+                <option value={30}>%30 Kesin Ã–n Ã–demeli</option>
+                <option value={50}>%50 Kesin Ã–n Ã–demeli</option>
               </select>
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-              Detaylı Açıklama <span className="text-red-500">*</span>
+              DetaylÄ± AÃ§Ä±klama <span className="text-red-500">*</span>
             </label>
             <textarea
               required
               rows={3}
-              placeholder="Misafirlerinize donanım, konum özellikleri ve diğer detaylardan bahsedin..."
+              placeholder="Misafirlerinize donanÄ±m, konum Ã¶zellikleri ve diÄŸer detaylardan bahsedin..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full rounded-xl border border-stone-250 px-3 py-2 text-xs text-stone-800"
@@ -8366,7 +8394,7 @@ function AddVillaModal({
           {/* AMENITIES */}
           <div>
             <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2">
-              Sunulan Olanaklar (Özellikler)
+              Sunulan Olanaklar (Ã–zellikler)
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
               {[
@@ -8400,7 +8428,7 @@ function AddVillaModal({
           {/* SLOGANS */}
           <div className="p-4 bg-rose-500/5 rounded-2xl border border-rose-200">
             <h4 className="text-[10px] font-black text-[#FF385C] uppercase tracking-wider mb-2">
-              Öne Çıkan Slogan Seçimi (Maksimum 4 Adet)
+              Ã–ne Ã‡Ä±kan Slogan SeÃ§imi (Maksimum 4 Adet)
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               {AVAILABLE_SLOGANS.map((item) => {
@@ -8433,7 +8461,7 @@ function AddVillaModal({
           {/* CUSTOM EXTRA SERVICES WITH INFORMATIONAL NOTE */}
           <div className="p-4 bg-amber-500/5 rounded-2xl border border-amber-500/20">
             <h4 className="text-[10px] font-black text-amber-600 uppercase tracking-wider mb-2 flex items-center gap-1">
-              ✨ Özel Ev Sahibi Ekstra Hizmetlerinizi Ekleyin (En Fazla 5 Adet)
+              âœ¨ Ã–zel Ev Sahibi Ekstra Hizmetlerinizi Ekleyin (En Fazla 5 Adet)
             </h4>
 
             {customExtraServices.length > 0 && (
@@ -8449,15 +8477,15 @@ function AddVillaModal({
                       </span>
                       <span className="text-[9px] text-stone-400 block font-bold uppercase">
                         {srv.type === "per_person_daily"
-                          ? "Kişi Başı / Günlük"
+                          ? "KiÅŸi BaÅŸÄ± / GÃ¼nlÃ¼k"
                           : srv.type === "per_person_flat"
-                            ? "Kişi Başı Sabit"
-                            : "Sabit Ücret"}
+                            ? "KiÅŸi BaÅŸÄ± Sabit"
+                            : "Sabit Ãœcret"}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-mono font-bold text-amber-600">
-                        ₺{srv.price}
+                        â‚º{srv.price}
                       </span>
                       <button
                         type="button"
@@ -8480,11 +8508,11 @@ function AddVillaModal({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 items-end">
                 <div>
                   <label className="block text-[8px] text-stone-400 font-bold uppercase mb-0.5">
-                    Hizmet Adı
+                    Hizmet AdÄ±
                   </label>
                   <input
                     type="text"
-                    placeholder="Örn: Serpme Kahvaltı"
+                    placeholder="Ã–rn: Serpme KahvaltÄ±"
                     value={srvName}
                     onChange={(e) => setSrvName(e.target.value)}
                     className="w-full text-xs px-2.5 py-1.5 border border-stone-200 rounded-lg bg-white"
@@ -8492,7 +8520,7 @@ function AddVillaModal({
                 </div>
                 <div>
                   <label className="block text-[8px] text-stone-400 font-bold uppercase mb-0.5">
-                    Ücret (₺)
+                    Ãœcret (â‚º)
                   </label>
                   <input
                     type="number"
@@ -8512,9 +8540,9 @@ function AddVillaModal({
                       onChange={(e) => setSrvType(e.target.value)}
                       className="w-full text-xs px-1.5 py-1.5 border border-stone-200 rounded-lg bg-white"
                     >
-                      <option value="per_person_daily">Kişi / Gün</option>
-                      <option value="per_person_flat">Kişi / Sabit</option>
-                      <option value="flat">Sabit Ücret</option>
+                      <option value="per_person_daily">KiÅŸi / GÃ¼n</option>
+                      <option value="per_person_flat">KiÅŸi / Sabit</option>
+                      <option value="flat">Sabit Ãœcret</option>
                     </select>
                   </div>
                   <button
@@ -8528,25 +8556,25 @@ function AddVillaModal({
               </div>
             )}
             <p className="text-[10px] text-amber-700/80 mt-3 font-semibold bg-white p-2 rounded-xl border border-amber-500/10 leading-relaxed">
-              💡 <strong>Bilgilendirme Notu:</strong> Ekstra hizmetler
-              dilediğiniz gibi fiyatlandırılarak misafirin toplam sepet
-              faturasına opsiyonel olarak ilave edilir.
+              ğŸ’¡ <strong>Bilgilendirme Notu:</strong> Ekstra hizmetler
+              dilediÄŸiniz gibi fiyatlandÄ±rÄ±larak misafirin toplam sepet
+              faturasÄ±na opsiyonel olarak ilave edilir.
             </p>
           </div>
 
-          {/* FOTOĞRAF EKLEME BÖLÜMÜ */}
+          {/* FOTOÄRAF EKLEME BÃ–LÃœMÃœ */}
           <div className="p-5 bg-stone-50 border border-stone-200 rounded-3xl space-y-4">
             <div>
               <h4 className="text-sm font-black text-stone-900 uppercase tracking-wider flex items-center gap-1.5">
-                📷 İlan Fotoğrafları Ekleme Bölümü
+                ğŸ“· Ä°lan FotoÄŸraflarÄ± Ekleme BÃ¶lÃ¼mÃ¼
               </h4>
               <p className="text-[11px] text-stone-500 mt-1">
-                İlanınız için resimleri yükleyin ve ait olduğu kategoriyi
-                tanımlayarak sınırları yönetin.
+                Ä°lanÄ±nÄ±z iÃ§in resimleri yÃ¼kleyin ve ait olduÄŸu kategoriyi
+                tanÄ±mlayarak sÄ±nÄ±rlarÄ± yÃ¶netin.
               </p>
             </div>
 
-            {/* FOTOĞRAFLARIN KATEGORİSİ VE BİLGİ PANELİ */}
+            {/* FOTOÄRAFLARIN KATEGORÄ°SÄ° VE BÄ°LGÄ° PANELÄ° */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <div className="p-2.5 rounded-xl bg-white border border-stone-150 text-center">
                 <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-widest leading-none mb-1 text-center">
@@ -8562,7 +8590,7 @@ function AddVillaModal({
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-stone-150 text-center">
                 <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-widest leading-none mb-1 text-center font-sans">
-                  Dış Görünüm
+                  DÄ±ÅŸ GÃ¶rÃ¼nÃ¼m
                 </span>
                 <span className="font-mono font-black text-stone-800 text-sm border-t border-stone-100 pt-1 block mt-1">
                   {
@@ -8574,7 +8602,7 @@ function AddVillaModal({
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-stone-150 text-center">
                 <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-widest leading-none mb-1 text-center font-sans">
-                  İç Görünüm
+                  Ä°Ã§ GÃ¶rÃ¼nÃ¼m
                 </span>
                 <span className="font-mono font-black text-stone-800 text-sm border-t border-stone-100 pt-1 block mt-1">
                   {
@@ -8598,16 +8626,16 @@ function AddVillaModal({
               </div>
             </div>
 
-            {/* YENİ RESİM TANIMLAYICI FORMU */}
+            {/* YENÄ° RESÄ°M TANIMLAYICI FORMU */}
             <div className="p-4 bg-white rounded-2xl border border-stone-250 space-y-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[9px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                    Resim İsmi / Başlığı <span className="text-red-500">*</span>
+                    Resim Ä°smi / BaÅŸlÄ±ÄŸÄ± <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Örn: Mutfak, Bahçe, Havuz"
+                    placeholder="Ã–rn: Mutfak, BahÃ§e, Havuz"
                     value={imgName}
                     onChange={(e) => setImgName(e.target.value)}
                     className="w-full text-xs px-3 py-2 border border-stone-200 rounded-xl focus:ring-1 focus:ring-[#FF385C]"
@@ -8616,7 +8644,7 @@ function AddVillaModal({
 
                 <div>
                   <label className="block text-[9px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                    Kategori / Bölüm <span className="text-red-500">*</span>
+                    Kategori / BÃ¶lÃ¼m <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={imgCategory}
@@ -8624,23 +8652,23 @@ function AddVillaModal({
                     className="w-full text-xs px-2.5 py-2 border border-stone-200 rounded-xl font-bold bg-stone-50"
                   >
                     <option value="vitrin">
-                      ⭐ Vitrin Fotosu (En Fazla 1 Adet)
+                      â­ Vitrin Fotosu (En Fazla 1 Adet)
                     </option>
                     <option value="dis">
-                      🌲 Dış Görünüm (En Fazla 4 Adet)
+                      ğŸŒ² DÄ±ÅŸ GÃ¶rÃ¼nÃ¼m (En Fazla 4 Adet)
                     </option>
-                    <option value="ic">🛋️ İç Görünüm (En Fazla 8 Adet)</option>
+                    <option value="ic">ğŸ›‹ï¸ Ä°Ã§ GÃ¶rÃ¼nÃ¼m (En Fazla 8 Adet)</option>
                     <option value="hizmet">
-                      🍳 Ek Hizmet Resimleri (En Fazla 4 Adet)
+                      ğŸ³ Ek Hizmet Resimleri (En Fazla 4 Adet)
                     </option>
                   </select>
                 </div>
               </div>
 
-              {/* DOSYA SEÇ / YÜKLE VE URL */}
+              {/* DOSYA SEÃ‡ / YÃœKLE VE URL */}
               <div className="space-y-2">
                 <label className="block text-[9px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                  Resim Yükleme (Dosya Seçin veya Link Yapıştırın)
+                  Resim YÃ¼kleme (Dosya SeÃ§in veya Link YapÄ±ÅŸtÄ±rÄ±n)
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
                   <div className="relative border border-dashed border-stone-250 hover:border-[#FF385C]/60 rounded-xl p-2 bg-stone-50/50 flex items-center justify-center cursor-pointer">
@@ -8654,12 +8682,12 @@ function AddVillaModal({
                     <div className="text-center">
                       <span className="block text-[11px] font-bold text-stone-600">
                         {imgFile
-                          ? "✅ Dosya Seçildi"
-                          : "📂 Bilgisayardan Fotoğraf Seç"}
+                          ? "âœ… Dosya SeÃ§ildi"
+                          : "ğŸ“‚ Bilgisayardan FotoÄŸraf SeÃ§"}
                       </span>
                       {imgFile && (
                         <span className="text-[9px] font-mono text-stone-400 truncate max-w-[200px] block mt-0.5">
-                          Base64 Görsel Verisi Yüklendi
+                          Base64 GÃ¶rsel Verisi YÃ¼klendi
                         </span>
                       )}
                     </div>
@@ -8668,7 +8696,7 @@ function AddVillaModal({
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Veya URL Yapıştırın (Örn: https://...)"
+                      placeholder="Veya URL YapÄ±ÅŸtÄ±rÄ±n (Ã–rn: https://...)"
                       value={imgUrl}
                       onChange={(e) => {
                         setImgUrl(e.target.value);
@@ -8689,16 +8717,16 @@ function AddVillaModal({
                   onClick={handleAddClassifiedImg}
                   className="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-extrabold text-xs rounded-xl flex items-center gap-1.5 transition active:scale-95 shadow-sm cursor-pointer"
                 >
-                  <span>➕ Listeye Fotoğraf Ekle</span>
+                  <span>â• Listeye FotoÄŸraf Ekle</span>
                 </button>
               </div>
             </div>
 
-            {/* EKLENMİŞ RESİMLERİN ÖNİZLEMESİ */}
+            {/* EKLENMÄ°Å RESÄ°MLERÄ°N Ã–NÄ°ZLEMESÄ° */}
             {classifiedImages.length > 0 ? (
               <div className="space-y-2">
                 <span className="block text-[10px] font-black text-stone-400 uppercase tracking-wider">
-                  Mevcut Resim Kataloğu ({classifiedImages.length} adet)
+                  Mevcut Resim KataloÄŸu ({classifiedImages.length} adet)
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {classifiedImages.map((img) => (
@@ -8720,9 +8748,9 @@ function AddVillaModal({
                             {img.category === "vitrin"
                               ? "Vitrin"
                               : img.category === "dis"
-                                ? "Dış"
+                                ? "DÄ±ÅŸ"
                                 : img.category === "ic"
-                                  ? "İç"
+                                  ? "Ä°Ã§"
                                   : "Ek Hizmet"}
                           </span>
                           <button
@@ -8748,8 +8776,8 @@ function AddVillaModal({
             ) : (
               <div className="p-4 bg-stone-100 rounded-2xl border border-stone-200 text-center">
                 <p className="text-[11px] text-stone-500 font-medium">
-                  Henüz fotoğraf eklemediniz. Varsayılan katalog görselleri
-                  kullanılacaktır.
+                  HenÃ¼z fotoÄŸraf eklemediniz. VarsayÄ±lan katalog gÃ¶rselleri
+                  kullanÄ±lacaktÄ±r.
                 </p>
               </div>
             )}
@@ -8761,13 +8789,13 @@ function AddVillaModal({
               onClick={onClose}
               className="px-4 py-2 text-stone-500 text-xs font-bold hover:bg-stone-50 rounded-xl cursor-pointer"
             >
-              İptal Et
+              Ä°ptal Et
             </button>
             <button
               type="submit"
               className="px-6 py-2.5 bg-[#FF385C] hover:bg-[#E02647] font-black text-xs text-white rounded-xl shadow-xs cursor-pointer"
             >
-              İlanı Onayla ve Yayınla🚀
+              Ä°lanÄ± Onayla ve YayÄ±nlağŸš€
             </button>
           </div>
         </form>
@@ -8780,46 +8808,49 @@ function AddVillaModal({
 // 2. AD-HOC STATEFUL EDIT LISTING DIALOG COMPONENT
 // ==========================================
 function EditVillaModal({
+  isAdmin,
   villa,
   onClose,
   onSave,
 }: {
+  isAdmin?: boolean;
   villa: any;
   onClose: () => void;
   onSave: (villa: any) => void;
 }) {
-  const [isBoat, setIsBoat] = useState(!!villa.isBoat);
-  const [name, setName] = useState(villa.name);
-  const [title, setTitle] = useState(villa.title);
-  const [type, setType] = useState(villa.type);
-  const [region, setRegion] = useState(villa.region);
-  const [capacity, setCapacity] = useState(villa.capacity);
-  const [bedrooms, setBedrooms] = useState(villa.bedrooms || 2);
-  const [bathrooms, setBathrooms] = useState(villa.bathrooms || 1);
-  const [pricePerNight, setPricePerNight] = useState(villa.pricePerNight);
-  const [minNights, setMinNights] = useState(villa.minNights || 2);
+  const pending = isAdmin && villa.pendingChanges ? villa.pendingChanges : {};
+  const [isBoat, setIsBoat] = useState(!!(pending.isBoat ?? villa.isBoat));
+  const [name, setName] = useState(pending.name ?? villa.name);
+  const [title, setTitle] = useState(pending.title ?? villa.title);
+  const [type, setType] = useState(pending.type ?? villa.type);
+  const [region, setRegion] = useState(pending.region ?? villa.region);
+  const [capacity, setCapacity] = useState(pending.capacity ?? villa.capacity);
+  const [bedrooms, setBedrooms] = useState(pending.bedrooms ?? (villa.bedrooms || 2));
+  const [bathrooms, setBathrooms] = useState(pending.bathrooms ?? (villa.bathrooms || 1));
+  const [pricePerNight, setPricePerNight] = useState(pending.pricePerNight ?? villa.pricePerNight);
+  const [minNights, setMinNights] = useState(pending.minNights ?? (villa.minNights || 2));
   const [prePaymentRate, setPrePaymentRate] = useState(
-    villa.prePaymentRate || 0,
+    pending.prePaymentRate ?? (villa.prePaymentRate || 0)
   );
-  const [description, setDescription] = useState(villa.description);
+  const [description, setDescription] = useState(pending.description ?? villa.description);
 
   // Boat Options
   const [boatType, setBoatType] = useState(
-    villa.boatDetails?.boatType || "Katamaran",
+    pending.boatDetails?.boatType ?? (villa.boatDetails?.boatType || "Katamaran")
   );
   const [skipper, setSkipper] = useState(
-    villa.boatDetails?.skipper || "Kaptanlı",
+    pending.boatDetails?.skipper ?? (villa.boatDetails?.skipper || "Kaptanlı")
   );
   const [concept, setConcept] = useState(
-    villa.boatDetails?.concept || "Günlük Koy Gezisi",
+    pending.boatDetails?.concept ?? (villa.boatDetails?.concept || "Günlük Koy Gezisi")
   );
   const [port, setPort] = useState(
-    villa.boatDetails?.port || "Kuruçeşme Marinası, İstanbul",
+    pending.boatDetails?.port ?? (villa.boatDetails?.port || "Kuruçeşme Marinası, İstanbul")
   );
 
   // Custom Extra Services
   const [customExtraServices, setCustomExtraServices] = useState<any[]>(
-    villa.extraServices || [],
+    pending.extraServices ?? (villa.extraServices || [])
   );
   const [srvName, setSrvName] = useState("");
   const [srvPrice, setSrvPrice] = useState("");
@@ -8827,27 +8858,27 @@ function EditVillaModal({
 
   // Features
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>(
-    villa.features || [],
+    pending.features ?? (villa.features || [])
   );
 
   // Slogans
   const [selectedSlogans, setSelectedSlogans] = useState<string[]>(
-    villa.slogans || [],
+    pending.slogans ?? (villa.slogans || [])
   );
 
   // Images
   const [imagesStr, setImagesStr] = useState<string>(
-    (villa.images || []).join('\n')
+    (pending.images ?? (villa.images || [])).join('\n')
   );
 
   const handleAddSrv = () => {
     if (!srvName.trim()) {
-      alert("Hizmet adı girmelisiniz!");
+      alert("Hizmet adÄ± girmelisiniz!");
       return;
     }
     const priceNum = parseFloat(srvPrice);
     if (isNaN(priceNum) || priceNum < 0) {
-      alert("Geçerli bir fiyat girmelisiniz!");
+      alert("GeÃ§erli bir fiyat girmelisiniz!");
       return;
     }
     if (customExtraServices.length >= 5) {
@@ -8879,7 +8910,7 @@ function EditVillaModal({
         return prev.filter((s) => s !== slog);
       } else {
         if (prev.length >= 4) {
-          alert("En fazla 4 slogan seçebilirsiniz!");
+          alert("En fazla 4 slogan seÃ§ebilirsiniz!");
           return prev;
         }
         return [...prev, slog];
@@ -8926,10 +8957,10 @@ function EditVillaModal({
         <div className="mb-6 flex justify-between items-start">
           <div>
             <h3 className="text-xl font-extrabold text-stone-900 font-display">
-              İlan Düzenleme Paneli 📝
+              Ä°lan DÃ¼zenleme Paneli ğŸ“
             </h3>
             <p className="text-xs text-stone-500 mt-1">
-              {villa.name} ilanınıza ait tüm verileri anlık olarak güncelleyin.
+              {villa.name} ilanÄ±nÄ±za ait tÃ¼m verileri anlÄ±k olarak gÃ¼ncelleyin.
             </p>
           </div>
           <button
@@ -8945,7 +8976,7 @@ function EditVillaModal({
           <div className="p-4 bg-amber-500/5 rounded-2xl border border-amber-500/20 flex items-center justify-between">
             <div>
               <span className="font-extrabold text-stone-900 text-xs block">
-                ⚓ Yat / Tekne Kiralama Seçeneği
+                âš“ Yat / Tekne Kiralama SeÃ§eneÄŸi
               </span>
               <span className="text-[11px] text-stone-500">
                 Ilan tekne ise isBoat parametresini aktif hale getirin.
@@ -8965,7 +8996,7 @@ function EditVillaModal({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                Mülk / İlan Adı
+                MÃ¼lk / Ä°lan AdÄ±
               </label>
               <input
                 type="text"
@@ -8978,7 +9009,7 @@ function EditVillaModal({
 
             <div>
               <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                İlan Başlığı
+                Ä°lan BaÅŸlÄ±ÄŸÄ±
               </label>
               <input
                 type="text"
@@ -9002,40 +9033,40 @@ function EditVillaModal({
                   onChange={(e) => setBoatType(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Katamaran">⛵ Katamaran</option>
-                  <option value="Yelkenli">⛵ Yelkenli</option>
-                  <option value="Motor Yat">🚤 Motor Yat</option>
-                  <option value="Gulet">⚓ Ahşap Gulet</option>
+                  <option value="Katamaran">â›µ Katamaran</option>
+                  <option value="Yelkenli">â›µ Yelkenli</option>
+                  <option value="Motor Yat">ğŸš¤ Motor Yat</option>
+                  <option value="Gulet">âš“ AhÅŸap Gulet</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-sky-800 uppercase tracking-wider mb-1">
-                  Kaptan Seçeneği
+                  Kaptan SeÃ§eneÄŸi
                 </label>
                 <select
                   value={skipper}
                   onChange={(e) => setSkipper(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Kaptanlı">Kaptanlı (Fiyata Dahil)</option>
-                  <option value="Kaptansız">Kaptansız Kiralanabilir</option>
-                  <option value="Full Mürettebatlı">Full Mürettebatlı</option>
+                  <option value="KaptanlÄ±">KaptanlÄ± (Fiyata Dahil)</option>
+                  <option value="KaptansÄ±z">KaptansÄ±z Kiralanabilir</option>
+                  <option value="Full MÃ¼rettebatlÄ±">Full MÃ¼rettebatlÄ±</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-bold text-sky-800 uppercase tracking-wider mb-1">
-                  Konsept / Kullanım
+                  Konsept / KullanÄ±m
                 </label>
                 <select
                   value={concept}
                   onChange={(e) => setConcept(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold"
                 >
-                  <option value="Günlük Koy Gezisi">Günlük Koy Gezisi</option>
-                  <option value="Haftalık Mavi Yolculuk">
-                    Haftalık Mavi Yolculuk
+                  <option value="GÃ¼nlÃ¼k Koy Gezisi">GÃ¼nlÃ¼k Koy Gezisi</option>
+                  <option value="HaftalÄ±k Mavi Yolculuk">
+                    HaftalÄ±k Mavi Yolculuk
                   </option>
                   <option value="Yat Konaklama">Yat Konaklama</option>
                 </select>
@@ -9057,26 +9088,26 @@ function EditVillaModal({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                  Konut Türü
+                  Konut TÃ¼rÃ¼
                 </label>
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   className="w-full rounded-xl border border-stone-250 bg-stone-50 px-3 py-2 text-xs font-bold focus:outline-none"
                 >
-                  <option value="bungalow">🏡 Bungalov</option>
-                  <option value="villa">🏡 Lüks Villa</option>
-                  <option value="mansion">🏰 Müstakil Ev</option>
-                  <option value="summer_house">🏖️ Yazlık</option>
-                  <option value="apartment">🏢 Daire</option>
-                  <option value="chalet">🍇 Dağ Evi</option>
-                  <option value="farmhouse">🐄 Çiftlik Evi</option>
+                  <option value="bungalow">ğŸ¡ Bungalov</option>
+                  <option value="villa">ğŸ¡ LÃ¼ks Villa</option>
+                  <option value="mansion">ğŸ° MÃ¼stakil Ev</option>
+                  <option value="summer_house">ğŸ–ï¸ YazlÄ±k</option>
+                  <option value="apartment">ğŸ¢ Daire</option>
+                  <option value="chalet">ğŸ‡ DaÄŸ Evi</option>
+                  <option value="farmhouse">ğŸ„ Ã‡iftlik Evi</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-                  Konum Bölgesi
+                  Konum BÃ¶lgesi
                 </label>
                 <select
                   value={region}
@@ -9165,25 +9196,25 @@ function EditVillaModal({
 
             <div>
               <label className="block text-[10px] font-black text-[#FF385C] uppercase tracking-wider mb-1">
-                Ödeme Koşulları
+                Ã–deme KoÅŸullarÄ±
               </label>
               <select
                 value={prePaymentRate}
                 onChange={(e) => setPrePaymentRate(Number(e.target.value))}
                 className="w-full rounded-xl border border-[#FF385C]/35 bg-white px-2 py-2 text-xs font-bold"
               >
-                <option value={0}>Kapıda ödeme (Sadece %10 kaparo)</option>
-                <option value={10}>%10 Kesin Ön Ödemeli</option>
-                <option value={20}>%20 Kesin Ön Ödemeli</option>
-                <option value={30}>%30 Kesin Ön Ödemeli</option>
-                <option value={50}>%50 Kesin Ön Ödemeli</option>
+                <option value={0}>KapÄ±da Ã¶deme (Sadece %10 kaparo)</option>
+                <option value={10}>%10 Kesin Ã–n Ã–demeli</option>
+                <option value={20}>%20 Kesin Ã–n Ã–demeli</option>
+                <option value={30}>%30 Kesin Ã–n Ã–demeli</option>
+                <option value={50}>%50 Kesin Ã–n Ã–demeli</option>
               </select>
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">
-              Detaylı Açıklama
+              DetaylÄ± AÃ§Ä±klama
             </label>
             <textarea
               rows={4}
@@ -9196,7 +9227,7 @@ function EditVillaModal({
           {/* AMENITIES */}
           <div>
             <label className="block text-[10px] font-black text-stone-400 uppercase tracking-wider mb-2">
-              Sunulan Olanaklar (Özellikler)
+              Sunulan Olanaklar (Ã–zellikler)
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
               {[
@@ -9230,7 +9261,7 @@ function EditVillaModal({
           {/* SLOGANS */}
           <div className="p-4 bg-rose-500/5 rounded-2xl border border-rose-250">
             <h4 className="text-[10px] font-black text-[#FF385C] uppercase tracking-wider mb-2">
-              Öne Çıkan Slogan Seçimi (Maksimum 4 Adet)
+              Ã–ne Ã‡Ä±kan Slogan SeÃ§imi (Maksimum 4 Adet)
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               {AVAILABLE_SLOGANS.map((item) => {
@@ -9263,7 +9294,7 @@ function EditVillaModal({
           {/* CUSTOM SERVICES */}
           <div className="p-4 bg-amber-500/5 rounded-2xl border border-amber-500/20">
             <h4 className="text-[10px] font-black text-amber-600 uppercase tracking-wider mb-2">
-              Özel Ev Sahibi Ekstra Hizmetlerinizi Ekleyin (En Fazla 5 Adet)
+              Ã–zel Ev Sahibi Ekstra Hizmetlerinizi Ekleyin (En Fazla 5 Adet)
             </h4>
 
             {customExtraServices.length > 0 && (
@@ -9279,15 +9310,15 @@ function EditVillaModal({
                       </span>
                       <span className="text-[9px] text-stone-400 block font-bold uppercase">
                         {srv.type === "per_person_daily"
-                          ? "Kişi Başı / Günlük"
+                          ? "KiÅŸi BaÅŸÄ± / GÃ¼nlÃ¼k"
                           : srv.type === "per_person_flat"
-                            ? "Kişi Başı Sabit"
-                            : "Sabit Ücret"}
+                            ? "KiÅŸi BaÅŸÄ± Sabit"
+                            : "Sabit Ãœcret"}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-mono font-bold text-amber-600">
-                        ₺{srv.price}
+                        â‚º{srv.price}
                       </span>
                       <button
                         type="button"
@@ -9310,11 +9341,11 @@ function EditVillaModal({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 items-end">
                 <div>
                   <label className="block text-[8px] text-stone-450 uppercase font-bold mb-0.5">
-                    Hizmet Adı
+                    Hizmet AdÄ±
                   </label>
                   <input
                     type="text"
-                    placeholder="Örn: Akşam Yemeği"
+                    placeholder="Ã–rn: AkÅŸam YemeÄŸi"
                     value={srvName}
                     onChange={(e) => setSrvName(e.target.value)}
                     className="w-full text-xs px-2.5 py-1.5 border border-stone-200 rounded-lg bg-white"
@@ -9322,7 +9353,7 @@ function EditVillaModal({
                 </div>
                 <div>
                   <label className="block text-[8px] text-stone-440 uppercase font-bold mb-0.5">
-                    Ücret (₺)
+                    Ãœcret (â‚º)
                   </label>
                   <input
                     type="number"
@@ -9342,9 +9373,9 @@ function EditVillaModal({
                       onChange={(e) => setSrvType(e.target.value)}
                       className="w-full text-xs px-1.5 py-1.5 border border-stone-200 rounded-lg bg-white"
                     >
-                      <option value="per_person_daily">Kişi / Gün</option>
-                      <option value="per_person_flat">Kişi / Sabit</option>
-                      <option value="flat">Sabit Ücret</option>
+                      <option value="per_person_daily">KiÅŸi / GÃ¼n</option>
+                      <option value="per_person_flat">KiÅŸi / Sabit</option>
+                      <option value="flat">Sabit Ãœcret</option>
                     </select>
                   </div>
                   <button
@@ -9358,16 +9389,16 @@ function EditVillaModal({
               </div>
             )}
             <p className="text-[10px] text-amber-700/80 mt-3 font-semibold bg-white p-2 rounded-xl border border-amber-500/10 leading-relaxed">
-              💡 <strong>Bilgilendirme Notu:</strong> Ekstra hizmetler
-              dilediğiniz gibi fiyatlandırılarak misafirin toplam sepet
-              faturasına opsiyonel olarak ilave edilir.
+              ğŸ’¡ <strong>Bilgilendirme Notu:</strong> Ekstra hizmetler
+              dilediÄŸiniz gibi fiyatlandÄ±rÄ±larak misafirin toplam sepet
+              faturasÄ±na opsiyonel olarak ilave edilir.
             </p>
           </div>
 
-          {/* RESİM BÖLÜMÜ / UYARI */}
+          {/* RESÄ°M BÃ–LÃœMÃœ / UYARI */}
           <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl">
             <h4 className="text-xs font-black text-stone-700 uppercase tracking-wider mb-2">
-              📷 Resim (Her satıra bir resim URL'si giriniz)
+              ğŸ“· Resim (Her satÄ±ra bir resim URL'si giriniz)
             </h4>
             <textarea
               rows={4}
@@ -9390,7 +9421,7 @@ function EditVillaModal({
               type="submit"
               className="px-6 py-2.5 bg-[#FF385C] hover:bg-[#E02647] font-black text-xs text-white rounded-xl shadow-xs cursor-pointer"
             >
-              Değişiklikleri Kaydet 💾
+              DeÄŸiÅŸiklikleri Kaydet ğŸ’¾
             </button>
           </div>
         </form>
@@ -9398,3 +9429,6 @@ function EditVillaModal({
     </div>
   );
 }
+
+
+
