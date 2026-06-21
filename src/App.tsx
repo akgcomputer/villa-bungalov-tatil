@@ -1721,18 +1721,31 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
 
                   {/* Category 2 */}
                   <button
-                    onClick={() => setFilterType("bungalow")}
+                    onClick={() => setFilterType("muhafazakar")}
                     className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
-                      filterType === "bungalow"
+                      filterType === "muhafazakar"
                         ? "border-stone-900 text-[#FF385C] font-bold"
                         : "border-transparent text-stone-400 hover:text-stone-700"
                     }`}
                   >
-                    <Tent className="h-5 w-5" />
-                    <span>Bungalovlar</span>
+                    <ShieldCheck className="h-5 w-5 text-emerald-600" />
+                    <span>Muhafazakar Villalar</span>
                   </button>
 
                   {/* Category 3 */}
+                  <button
+                    onClick={() => setFilterType("balayi")}
+                    className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
+                      filterType === "balayi"
+                        ? "border-stone-900 text-[#FF385C] font-bold"
+                        : "border-transparent text-stone-400 hover:text-stone-700"
+                    }`}
+                  >
+                    <Heart className="h-5 w-5 text-[#FF385C] fill-[#FF385C]" />
+                    <span>BalayÄ± VillalarÄ±</span>
+                  </button>
+
+                  {/* Category 4 */}
                   <button
                     onClick={() => setFilterType("villa")}
                     className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
@@ -1745,7 +1758,7 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
                     <span>LÃ¼ks Villalar</span>
                   </button>
 
-                  {/* Category 4 */}
+                  {/* Category 5 */}
                   <button
                     onClick={() => setFilterType("apartment")}
                     className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
@@ -1758,30 +1771,17 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
                     <span>Daireler</span>
                   </button>
 
-                  {/* Category 5 */}
-                  <button
-                    onClick={() => setFilterType("muhafazakar")}
-                    className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
-                      filterType === "muhafazakar"
-                        ? "border-stone-900 text-[#FF385C] font-bold"
-                        : "border-transparent text-stone-400 hover:text-stone-700"
-                    }`}
-                  >
-                    <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                    <span>Muhafazakar Villalar</span>
-                  </button>
-
                   {/* Category 6 */}
                   <button
-                    onClick={() => setFilterType("balayi")}
+                    onClick={() => setFilterType("bungalow")}
                     className={`flex flex-col items-center gap-1.5 pb-2 border-b-2 text-xs font-semibold transition-all ${
-                      filterType === "balayi"
+                      filterType === "bungalow"
                         ? "border-stone-900 text-[#FF385C] font-bold"
                         : "border-transparent text-stone-400 hover:text-stone-700"
                     }`}
                   >
-                    <Heart className="h-5 w-5 text-[#FF385C] fill-[#FF385C]" />
-                    <span>BalayÄ± VillalarÄ±</span>
+                    <Tent className="h-5 w-5" />
+                    <span>Bungalovlar</span>
                   </button>
                 </div>
 
@@ -1792,15 +1792,13 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
                 <div className="hidden md:flex items-center gap-2">
                   <SlidersHorizontal className="h-4 w-4 text-stone-400" />
                   <span className="text-xs text-stone-500 font-extrabold mr-2 uppercase tracking-wide">
-                    Ã–zellik Filtrelerinde :
+                    Filtre :
                   </span>
                   <div className="flex gap-1.5 font-sans">
                     {[
-                      { key: "heated_pool", label: "Havuz", icon: "â™¨ï¸" },
-                      { key: "jacuzzi", label: "Jakuzi", icon: "ğŸ›" },
-                      { key: "pet_friendly", label: "Evcil Dostu", icon: "ğŸ¾" },
-                      { key: "air_conditioning", label: "Klima", icon: "â„ï¸" },
-                      { key: "plus_thirty", label: "+30 DonanÄ±m", icon: "ğŸ›¡ï¸" },
+                      { key: "heated_pool", label: "Havuz", icon: "♨️" },
+                      { key: "jacuzzi", label: "Jakuzi", icon: "🛁" },
+                      { key: "pet_friendly", label: "Evcil Dostu", icon: "🐾" },
                     ].map((item) => {
                       const active = activeAmenities.includes(item.key);
                       return (
