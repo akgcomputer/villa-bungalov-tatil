@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   X, Star, MapPin, ShieldCheck, Heart, ChevronLeft, ChevronRight, Share2, 
-  ArrowLeft, Calendar, HelpCircle, Check, Sparkles, Sliders, PlayCircle, Eye
+  ArrowLeft, Calendar, HelpCircle, Check, Sparkles, Sliders, PlayCircle, Eye, User
 } from 'lucide-react';
 import { 
   Villa, 
@@ -96,7 +96,7 @@ export default function VillaDetailPage({
     <div className="w-full bg-[#FAFAFA]" id="villa-detail-page">
       {villa.approvalStatus === "pending" && (
         <div className="bg-amber-100 text-amber-800 text-xs font-bold text-center py-2 px-4 shadow-sm border-b border-amber-200">
-          Bu ilan şu anda onay bekliyor. Sadece sizin (veya sistem yöneticisinin) önizleme yapabilmesi için gösterilmektedir.
+          Bu ilan ÅŸu anda onay bekliyor. Sadece sizin (veya sistem yÃ¶neticisinin) Ã¶nizleme yapabilmesi iÃ§in gÃ¶sterilmektedir.
         </div>
       )}
       
@@ -109,7 +109,7 @@ export default function VillaDetailPage({
             id="btn-back-to-listings"
           >
             <ArrowLeft className="h-4 w-4 text-[#FF385C] group-hover:-translate-x-0.5 transition-transform" />
-            <span>Tüm İlanlara Geri Dön</span>
+            <span>TÃ¼m Ä°lanlara Geri DÃ¶n</span>
           </button>
 
           <div className="flex gap-2">
@@ -117,17 +117,17 @@ export default function VillaDetailPage({
             <button
               onClick={() => onToggleFavorite(villa.id)}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-50 border border-stone-200 hover:bg-rose-50 text-stone-700 hover:text-[#FF385C] transition active:scale-95"
-              title="Favorilere Ekle / Kaldır"
+              title="Favorilere Ekle / KaldÄ±r"
             >
               <Heart className={`h-5 w-5 ${isFavorite ? 'fill-[#FF385C] text-[#FF385C]' : ''}`} />
             </button>
             <button
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                alert("İlan bağlantısı panoya kopyalandı!");
+                alert("Ä°lan baÄŸlantÄ±sÄ± panoya kopyalandÄ±!");
               }}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-50 border border-stone-200 hover:bg-sky-50 text-stone-700 hover:text-sky-600 transition active:scale-95"
-              title="Paylaş"
+              title="PaylaÅŸ"
             >
               <Share2 className="h-4 w-4" />
             </button>
@@ -142,7 +142,7 @@ export default function VillaDetailPage({
         <div className="mb-6">
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="rounded-md bg-[#FF385C] px-2.5 py-0.7 text-[10px] font-black uppercase tracking-wider text-white shadow-xs">
-              {VILLA_TYPES_MAP[villa.type]?.icon || '🏡'} {VILLA_TYPES_MAP[villa.type]?.label || 'Lüks Konut'}
+              {VILLA_TYPES_MAP[villa.type]?.icon || 'ğŸ¡'} {VILLA_TYPES_MAP[villa.type]?.label || 'LÃ¼ks Konut'}
             </span>
             <span className="flex items-center gap-1 text-xs font-bold text-stone-500">
               <MapPin className="h-3.5 w-3.5 text-[#FF385C]" />
@@ -177,9 +177,9 @@ export default function VillaDetailPage({
               if (match) {
                 return (
                   <div className="absolute top-4 left-4 rounded-2xl bg-stone-900/90 backdrop-blur-md text-white text-xs font-black px-4 py-2 flex items-center gap-2 shadow-lg border border-white/10 uppercase tracking-widest animation-fade-in animate-pulse">
-                    <span className="text-rose-400 font-bold">📍 {match.name}</span>
+                    <span className="text-rose-400 font-bold">ğŸ“ {match.name}</span>
                     <span className="text-[10px] text-stone-300 bg-white/15 px-2 py-0.5 rounded font-medium">
-                      {match.category === 'vitrin' ? 'Vitrin' : match.category === 'dis' ? 'Dış Alan' : match.category === 'ic' ? 'İç Alan' : 'Ek Hizmet'}
+                      {match.category === 'vitrin' ? 'Vitrin' : match.category === 'dis' ? 'DÄ±ÅŸ Alan' : match.category === 'ic' ? 'Ä°Ã§ Alan' : 'Ek Hizmet'}
                     </span>
                   </div>
                 );
@@ -189,11 +189,11 @@ export default function VillaDetailPage({
 
             <div className="absolute bottom-4 left-4 rounded-xl bg-stone-950/80 backdrop-blur-xs text-white text-[10px] font-bold px-3 py-1.5 flex items-center gap-1.5">
               <Eye className="h-3.5 w-3.5 text-rose-400" />
-              <span>Görseli büyütmek için üzerine tıklayın</span>
+              <span>GÃ¶rseli bÃ¼yÃ¼tmek iÃ§in Ã¼zerine tÄ±klayÄ±n</span>
             </div>
 
             <div className="absolute bottom-4 right-4 rounded-xl bg-stone-950/80 text-white text-xs font-extrabold px-3 py-1.5 shadow-sm">
-              Fotoğraf {selectedImgIndex + 1} / {villa.images.length}
+              FotoÄŸraf {selectedImgIndex + 1} / {villa.images.length}
             </div>
           </div>
 
@@ -202,7 +202,7 @@ export default function VillaDetailPage({
             
             {/* Small Thumbnails grid block */}
             <div className="bg-white p-5 rounded-3xl border border-stone-200 shadow-xs">
-              <h4 className="text-[11px] font-black text-stone-400 uppercase tracking-wider mb-3">Fotoğraf Albümü ({villa.images.length})</h4>
+              <h4 className="text-[11px] font-black text-stone-400 uppercase tracking-wider mb-3">FotoÄŸraf AlbÃ¼mÃ¼ ({villa.images.length})</h4>
               <div className="grid grid-cols-3 gap-2.5">
                 {villa.images.map((img, i) => (
                   <button
@@ -229,26 +229,26 @@ export default function VillaDetailPage({
               
               <div className="relative">
                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#FF385C] text-white text-[10px] font-black uppercase tracking-wider rounded-lg mb-3 shadow-xs">
-                  ★ Misafirlerin Favorisi
+                  â˜… Misafirlerin Favorisi
                 </span>
                 
                 <h3 className="text-[15px] font-black text-stone-900 leading-tight">
-                  Misafirlere göre sevilen evlerden biri
+                  Misafirlere gÃ¶re sevilen evlerden biri
                 </h3>
                 <p className="text-xs text-stone-500 font-semibold mt-1">
-                  Puanı 5 üzerinden <span className="font-bold text-[#FF385C]">{villa.rating.toFixed(2)}</span> yıldız.
+                  PuanÄ± 5 Ã¼zerinden <span className="font-bold text-[#FF385C]">{villa.rating.toFixed(2)}</span> yÄ±ldÄ±z.
                 </p>
               </div>
 
               <div className="border-t border-rose-100/80 pt-4 mt-4 flex items-center justify-between">
                 <div>
                   <span className="block text-3xl font-black text-[#FF385C] leading-none">{villa.rating.toFixed(2)}</span>
-                  <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">PUAN GENELİ</span>
+                  <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">PUAN GENELÄ°</span>
                 </div>
                 <div className="w-px h-10 bg-rose-150" />
                 <div className="text-right">
                   <span className="block text-2xl font-black text-stone-850 leading-none">{villa.reviewCount || 147}</span>
-                  <span className="text-[10px] text-[#FF385C] font-extrabold uppercase tracking-wide">Değerlendirme</span>
+                  <span className="text-[10px] text-[#FF385C] font-extrabold uppercase tracking-wide">DeÄŸerlendirme</span>
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function VillaDetailPage({
             
             {/* Description card */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-xs">
-              <h2 className="text-lg font-bold text-stone-950 font-display mb-4">Bu Muhteşem Konaklama Alanı Hakkında</h2>
+              <h2 className="text-lg font-bold text-stone-950 font-display mb-4">Bu MuhteÅŸem Konaklama AlanÄ± HakkÄ±nda</h2>
               <p className="text-sm text-stone-600 leading-relaxed whitespace-pre-line font-sans">
                 {villa.description}
               </p>
@@ -278,22 +278,22 @@ export default function VillaDetailPage({
                       <span className="text-stone-850 text-sm font-extrabold">{villa.boatDetails?.boatType || 'Katamaran'}</span>
                     </div>
                     <div className="border-x border-stone-200">
-                      <span className="block text-[9px] text-stone-400 font-bold uppercase">KAPTAN SEÇENEĞİ</span>
-                      <span className="text-stone-850 text-sm font-extrabold">{villa.boatDetails?.skipper || 'Kaptanlı'}</span>
+                      <span className="block text-[9px] text-stone-400 font-bold uppercase">KAPTAN SEÃ‡ENEÄÄ°</span>
+                      <span className="text-stone-850 text-sm font-extrabold">{villa.boatDetails?.skipper || 'KaptanlÄ±'}</span>
                     </div>
                     <div className="border-r border-stone-200">
-                      <span className="block text-[9px] text-stone-400 font-bold uppercase">LİMAN</span>
+                      <span className="block text-[9px] text-stone-400 font-bold uppercase">LÄ°MAN</span>
                       <span className="text-stone-855 text-sm font-extrabold truncate block px-1">{villa.boatDetails?.port || 'Bodrum'}</span>
                     </div>
                     <div>
-                      <span className="block text-[9px] text-rose-500 font-black uppercase">KAPASİTE</span>
-                      <span className="text-rose-700 text-sm font-black">{villa.capacity} Kişi</span>
+                      <span className="block text-[9px] text-rose-500 font-black uppercase">KAPASÄ°TE</span>
+                      <span className="text-rose-700 text-sm font-black">{villa.capacity} KiÅŸi</span>
                     </div>
                   </>
                 ) : (
                   <>
                     <div>
-                      <span className="block text-[9px] text-stone-400 font-bold uppercase">KAPASİTE</span>
+                      <span className="block text-[9px] text-stone-400 font-bold uppercase">KAPASÄ°TE</span>
                       <span className="text-stone-850 text-sm font-extrabold">{villa.capacity} Misafir</span>
                     </div>
                     <div className="border-x border-stone-200">
@@ -315,7 +315,7 @@ export default function VillaDetailPage({
 
             {/* CUSTOM SLOGANS SECTION (Required Custom Layout) */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-xs">
-              <h2 className="text-lg font-bold text-stone-950 font-display mb-6">Öne Çıkan Özellikler & Sloganlar</h2>
+              <h2 className="text-lg font-bold text-stone-950 font-display mb-6">Ã–ne Ã‡Ä±kan Ã–zellikler & Sloganlar</h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" id="slogans-grid">
                 {activeSlogans.map((sloganId) => {
@@ -344,10 +344,10 @@ export default function VillaDetailPage({
 
             {/* CATEGORIZED AMENITIES DISPLAY ("Bu mekan size neler sunuyor?") */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-xs" id="categorized-amenities-section">
-              <h2 className="text-lg font-bold text-stone-950 font-display mb-2">Bu mekân size neler sunuyor?</h2>
-              <p className="text-xs text-stone-400 font-semibold mb-6">Mülk sahibinin sizin için özel olarak sunduğu olanaklar listesi</p>
+              <h2 className="text-lg font-bold text-stone-950 font-display mb-2">Bu mekÃ¢n size neler sunuyor?</h2>
+              <p className="text-xs text-stone-400 font-semibold mb-6">MÃ¼lk sahibinin sizin iÃ§in Ã¶zel olarak sunduÄŸu olanaklar listesi</p>
 
-              {/* Display a subset preview and a 'Daka Fazla Göster' button */}
+              {/* Display a subset preview and a 'Daka Fazla GÃ¶ster' button */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 {/* Grab only the first 6 active items of the matching config to show upfront */}
                 {(() => {
@@ -372,7 +372,7 @@ export default function VillaDetailPage({
                   
                   if (elements.length === 0) {
                     return (
-                      <p className="text-stone-400 italic">Olanak bilgisi bulunamadı.</p>
+                      <p className="text-stone-400 italic">Olanak bilgisi bulunamadÄ±.</p>
                     );
                   }
                   return elements;
@@ -388,7 +388,7 @@ export default function VillaDetailPage({
                   id="btn-show-all-amenities"
                 >
                   <Sliders className="h-4 w-4 text-[#FF385C]" />
-                  <span>Tüm {presentAmenitiesCount} Donanımı ve Özelliği Göster</span>
+                  <span>TÃ¼m {presentAmenitiesCount} DonanÄ±mÄ± ve Ã–zelliÄŸi GÃ¶ster</span>
                 </button>
               </div>
 
@@ -403,28 +403,23 @@ export default function VillaDetailPage({
             <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-md sticky top-24">
               <div className="flex items-baseline justify-[#111] gap-1.5 border-b border-stone-100 pb-4 mb-4">
                 <div>
-                  <span className="text-stone-400 text-[10px] font-bold uppercase tracking-wider block">Gecelik Kira Tutarı</span>
-                  <span className="text-2xl font-black text-stone-900 font-mono">₺{getVillaPricePerNightForDisplay(villa).toLocaleString('tr-TR')}</span>
+                  <span className="text-stone-400 text-[10px] font-bold uppercase tracking-wider block">Gecelik Kira TutarÄ±</span>
+                  <span className="text-2xl font-black text-stone-900 font-mono">â‚º{getVillaPricePerNightForDisplay(villa).toLocaleString('tr-TR')}</span>
                   <span className="text-xs text-stone-400 font-normal"> / gece</span>
                 </div>
                 
                 <div className="text-right">
                   <span className="text-[10px] font-bold bg-rose-50 text-[#FF385C] border border-rose-100 px-2.5 py-0.5 rounded-md uppercase tracking-wide">
-                    KOMİSYONSUZ
+                    KOMÄ°SYONSUZ
                   </span>
                 </div>
               </div>
 
               {/* Host profile block in booking widget */}
               <div className="flex items-center gap-3 my-4 p-3 bg-stone-50 rounded-2xl border border-stone-100">
-                <img 
-                  src={villa.hostAvatar} 
-                  alt={villa.hostName} 
-                  className="h-9 w-9 rounded-full object-cover bg-stone-200 shrink-0"
-                  referrerPolicy="no-referrer"
-                />
+                <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0 shadow-sm"><User className="h-5 w-5" /></div>
                 <div className="min-w-0">
-                  <span className="block text-[10px] text-stone-400 uppercase font-bold">İlan Müellifi ev sahibi</span>
+                  <span className="block text-[10px] text-stone-400 uppercase font-bold">Ä°lan MÃ¼ellifi ev sahibi</span>
                   <span className="text-xs font-black text-stone-850 truncate block">{villa.hostName}</span>
                 </div>
                 <div className="ml-auto bg-white px-2 py-1 rounded-xl text-[10px] font-extrabold text-stone-750 flex items-center gap-0.5 border border-stone-150 shrink-0">
@@ -438,13 +433,13 @@ export default function VillaDetailPage({
                 <span className="text-[11px] font-extrabold text-stone-400 uppercase tracking-wider block">Ev Sahibi Ekstra Hizmetleri</span>
                 <div className="bg-stone-50 border border-stone-200/85 p-4 rounded-2xl">
                   {(villa.extraServices || []).length === 0 ? (
-                    <p className="text-[11px] text-[#A6A6A6] font-sans italic">Bu mülk için ekstra yemek, temizlik veya transfer tanımlanmamış.</p>
+                    <p className="text-[11px] text-[#A6A6A6] font-sans italic">Bu mÃ¼lk iÃ§in ekstra yemek, temizlik veya transfer tanÄ±mlanmamÄ±ÅŸ.</p>
                   ) : (
                     <ul className="space-y-2 font-sans">
                       {villa.extraServices.map((srv) => {
                         return (
                           <li key={srv.id} className="text-stone-800 text-[12px] sm:text-[13px] font-extrabold flex items-center gap-2">
-                            <span className="text-[#FF385C] font-black shrink-0 text-md">•</span>
+                            <span className="text-[#FF385C] font-black shrink-0 text-md">â€¢</span>
                             <span className="text-stone-900">{srv.name}</span>
                           </li>
                         );
@@ -461,19 +456,19 @@ export default function VillaDetailPage({
                   onClick={() => onQuickBook(villa)}
                   className="w-full text-center py-3.5 rounded-2xl bg-stone-950 hover:bg-stone-850 text-white text-xs font-black transition active:scale-95 shadow-md shadow-stone-950/10"
                 >
-                  Rezervasyon Talebi Oluştur
+                  Rezervasyon Talebi OluÅŸtur
                 </button>
 
                 <button
                   type="button"
                   onClick={() => {
-                    const msg = `Merhaba, *${villa.name}* (URL: ${window.location.host}${getVillaSlug(villa.name, villa.region)}) eviniz hakkında doğrudan bilgi alabilir miyim?`;
+                    const msg = `Merhaba, *${villa.name}* (URL: ${window.location.host}${getVillaSlug(villa.name, villa.region)}) eviniz hakkÄ±nda doÄŸrudan bilgi alabilir miyim?`;
                     const url = `https://wa.me/${AGENCY_DETAILS.whatsapp.replace('+', '')}?text=${encodeURIComponent(msg)}`;
                     window.open(url, '_blank');
                   }}
                   className="w-full justify-center flex items-center gap-1.5 py-3 rounded-2xl border border-emerald-250 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-black transition active:scale-95"
                 >
-                  <span>💬</span>
+                  <span>ğŸ’¬</span>
                   <span>WhatsAPP ile Sor</span>
                 </button>
               </div>
@@ -482,9 +477,9 @@ export default function VillaDetailPage({
               <div className="mt-4 bg-stone-50 border border-stone-100 p-3 rounded-xl text-[10px] text-stone-600 space-y-1">
                 <span className="font-bold text-stone-800 block flex items-center gap-1">
                   <ShieldCheck className="h-3.5 w-3.5 text-[#FF385C]" />
-                  Doğrudan Ev Sahibi Teyiti
+                  DoÄŸrudan Ev Sahibi Teyiti
                 </span>
-                <p>Bu konutta komisyon ve aracı ücreti bulunmaz. Rezervasyon sırasında yalnızca %10 oranında güvence kaparosu tahsil edilir.</p>
+                <p>Bu konutta komisyon ve aracÄ± Ã¼creti bulunmaz. Rezervasyon sÄ±rasÄ±nda yalnÄ±zca %10 oranÄ±nda gÃ¼vence kaparosu tahsil edilir.</p>
               </div>
 
             </div>
@@ -502,7 +497,7 @@ export default function VillaDetailPage({
           {/* Top Bar on Zoom overlay */}
           <div className="flex items-center justify-between text-white py-2 px-4">
             <span className="text-xs font-mono tracking-widest font-bold">
-              FOTOĞRAF KABİNİ {zoomIndex + 1} / {villa.images.length}
+              FOTOÄRAF KABÄ°NÄ° {zoomIndex + 1} / {villa.images.length}
             </span>
             <button
               onClick={() => setZoomIndex(null)}
@@ -521,7 +516,7 @@ export default function VillaDetailPage({
             <button
               onClick={prevZoomImage}
               className="absolute left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/30 backdrop-blur-sm active:scale-90 transition"
-              title="Önceki Görsel"
+              title="Ã–nceki GÃ¶rsel"
             >
               <ChevronLeft className="h-7 w-7" />
             </button>
@@ -540,9 +535,9 @@ export default function VillaDetailPage({
                 if (match) {
                   return (
                     <div className="absolute top-4 left-4 rounded-2xl bg-stone-950/95 backdrop-blur-md text-white text-sm font-black px-4 py-2 flex items-center gap-2 shadow-2xl border border-white/10 uppercase tracking-widest">
-                      <span className="text-rose-400 font-bold">📍 {match.name}</span>
+                      <span className="text-rose-400 font-bold">ğŸ“ {match.name}</span>
                       <span className="text-xs text-stone-300 bg-white/15 px-2.5 py-0.5 rounded font-medium">
-                        {match.category === 'vitrin' ? 'Vitrin' : match.category === 'dis' ? 'Dış Alan' : match.category === 'ic' ? 'İç Alan' : 'Ek Hizmet'}
+                        {match.category === 'vitrin' ? 'Vitrin' : match.category === 'dis' ? 'DÄ±ÅŸ Alan' : match.category === 'ic' ? 'Ä°Ã§ Alan' : 'Ek Hizmet'}
                       </span>
                     </div>
                   );
@@ -555,7 +550,7 @@ export default function VillaDetailPage({
             <button
               onClick={nextZoomImage}
               className="absolute right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/30 backdrop-blur-sm active:scale-90 transition"
-              title="Sonraki Görsel"
+              title="Sonraki GÃ¶rsel"
             >
               <ChevronRight className="h-7 w-7" />
             </button>
@@ -564,7 +559,7 @@ export default function VillaDetailPage({
 
           {/* Bottom Bar indicators on Zoom overlay */}
           <div className="text-center text-white/50 text-[10px] pb-4">
-            Gezinmek için yanlardaki okları veya klavyenizi kullanabilirsiniz. Kapatmak için X butonuna basın.
+            Gezinmek iÃ§in yanlardaki oklarÄ± veya klavyenizi kullanabilirsiniz. Kapatmak iÃ§in X butonuna basÄ±n.
           </div>
 
         </div>
@@ -582,7 +577,7 @@ export default function VillaDetailPage({
               <div className="sticky top-0 bg-white border-b border-stone-150 px-6 py-4 flex items-center justify-between z-10">
                 <div>
                   <h3 className="text-base font-black text-stone-900 font-display">Bu mekan size neler sunuyor?</h3>
-                  <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">Tüm donanımlar ve mevcut olmayan özellikler</span>
+                  <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">TÃ¼m donanÄ±mlar ve mevcut olmayan Ã¶zellikler</span>
                 </div>
                 
                 <button
@@ -615,7 +610,7 @@ export default function VillaDetailPage({
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         {isMissingCategory ? (
                           // Explicit missing amenities display
-                          // "Mevcut olmayanları Mevcut olmayan olanakların altına Yok: diyerek listeleyip üzeri çizgili listeleyelim"
+                          // "Mevcut olmayanlarÄ± Mevcut olmayan olanaklarÄ±n altÄ±na Yok: diyerek listeleyip Ã¼zeri Ã§izgili listeleyelim"
                           cat.items.map((item) => (
                             <div key={item.id} className="flex items-center gap-2.5 p-2 rounded-xl bg-rose-50/45 border border-rose-100/60 text-stone-400 line-through select-none col-span-2">
                               <span className="text-sm">Yok: {item.icon}</span>
@@ -658,8 +653,8 @@ export default function VillaDetailPage({
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                           {/* Add default missing item of prompt first, then highlight others */}
                           <div className="flex items-center gap-2.5 p-2 rounded-xl bg-rose-50 text-stone-400/90 line-through select-none col-span-1 sm:col-span-2 border border-rose-100">
-                            <span className="text-sm shrink-0">❌</span>
-                            <span className="font-extrabold text-stone-500">Yok: Konutta çamaşır kurutma makinesi (Ücretsiz)</span>
+                            <span className="text-sm shrink-0">âŒ</span>
+                            <span className="font-extrabold text-stone-500">Yok: Konutta Ã§amaÅŸÄ±r kurutma makinesi (Ãœcretsiz)</span>
                           </div>
 
                           {allRegularMissing.slice(0, 10).map((miss, mIdx) => (
@@ -696,3 +691,4 @@ export default function VillaDetailPage({
     </div>
   );
 }
+
