@@ -68,6 +68,10 @@ import AiAssistant from "./components/AiAssistant";
 import ReservationPanel, { Booking } from "./components/ReservationPanel";
 import UserDashboard from "./components/UserDashboard";
 import VillaDetailPage from "./components/VillaDetailPage";
+import AdminUsers from "./components/admin/AdminUsers";
+import AdminHosts from "./components/admin/AdminHosts";
+import AdminCampaigns from "./components/admin/AdminCampaigns";
+import AdminPictures from "./components/admin/AdminPictures";
 
 export interface HostCampaign {
   id: string;
@@ -766,10 +770,23 @@ export default function App() {
         console.error("API fetch error", err);
       }
       
+      const DATA_VERSION = "v3_imported_data";
+      const localVersion = localStorage.getItem("airbnb_data_version");
+      
+      if (localVersion !== DATA_VERSION) {
+        // Version mismatch or new import: Wipe and load from VILLA_DATA
+        localStorage.removeItem("airbnb_villas");
+        setVillas(VILLA_DATA);
+        localStorage.setItem("airbnb_villas", JSON.stringify(VILLA_DATA));
+        localStorage.setItem("airbnb_data_version", DATA_VERSION);
+        return;
+      }
+      
       const savedVillas = localStorage.getItem("airbnb_villas");
       if (savedVillas) {
         try {
-          setVillas(JSON.parse(savedVillas));
+          const parsedVillas = JSON.parse(savedVillas);
+          setVillas(parsedVillas);
         } catch (e) {
           setVillas(VILLA_DATA);
         }
@@ -3437,7 +3454,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             <button onClick={() => navigateTo("/admin/users")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
               <Users className="h-5 w-5 text-blue-400" /> Kullanıcılar
             </button>
@@ -3449,6 +3466,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
             </button>
             <button onClick={() => navigateTo("/admin/pictures")} className="bg-stone-900 text-white p-4 rounded-2xl hover:bg-stone-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-stone-800 hover:border-stone-600">
               <ImageIcon className="h-5 w-5 text-[#FF385C]" /> Görseller
+            </button>
+            <button onClick={() => navigateTo("/admin")} className="bg-blue-900 text-white p-4 rounded-2xl hover:bg-blue-800 transition shadow-sm font-bold flex items-center justify-center gap-2 border border-blue-800 hover:border-blue-600">
+              <ShieldCheck className="h-5 w-5 text-blue-300" /> Admin Paneli
             </button>
           </div>
 
@@ -3657,7 +3677,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
                               <button
                                 onClick={async () => {
                                   if (confirm("Bu ilanı tamamen silmek istediğinize emin misiniz?")) {
-                                    const updatedList = villas.map(villa => villa.id === v.id ? { ...villa, isActive: false, approvalStatus: "rejected" as const } : villa);
+                                    const updatedList = villas.filter(villa => villa.id !== v.id);
                                     saveVillasState(updatedList);
                                     try {
                                       await fetch(`/api/villas/${v.id}`, { method: "DELETE" });
@@ -4887,47 +4907,19 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
           )}
 
           {currentPath === "/admin/users" && (
-            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
-              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
-                <Users className="h-5 w-5 text-blue-500" /> Sistem Kullanıcıları
-              </h3>
-              <div className="text-center py-10 text-stone-400 text-xs">
-                Yükleniyor...
-              </div>
-            </div>
+            <AdminUsers bookings={bookings} />
           )}
 
           {currentPath === "/admin/hosts" && (
-            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
-              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
-                <UserCheck className="h-5 w-5 text-emerald-500" /> Ev Sahipleri Yönetimi
-              </h3>
-              <div className="text-center py-10 text-stone-400 text-xs">
-                Yükleniyor...
-              </div>
-            </div>
+            <AdminHosts villas={villas} bookings={bookings} />
           )}
 
           {currentPath === "/admin/campaigns" && (
-            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
-              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
-                <BadgeAlert className="h-5 w-5 text-amber-500" /> Kampanyalar ve Kuponlar
-              </h3>
-              <div className="text-center py-10 text-stone-400 text-xs">
-                Yükleniyor...
-              </div>
-            </div>
+            <AdminCampaigns villas={villas} />
           )}
 
           {currentPath === "/admin/pictures" && (
-            <div className="bg-white p-6 rounded-3xl border border-stone-200 shadow-xs">
-              <h3 className="text-base font-bold text-stone-950 mb-4 font-display flex items-center gap-2">
-                <ImageIcon className="h-5 w-5 text-[#FF385C]" /> Tesis Görselleri
-              </h3>
-              <div className="text-center py-10 text-stone-400 text-xs">
-                Yükleniyor...
-              </div>
-            </div>
+            <AdminPictures villas={villas} />
           )}
         </main>
       )}
@@ -5039,12 +5031,9 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
 
                     {/* Airbnb Host Section */}
                     <div className="flex items-center gap-3 my-4 p-3 bg-stone-50 rounded-xl border border-stone-100">
-                      <img
-                        src={selectedVilla.hostAvatar}
-                        alt={selectedVilla.hostName}
-                        className="h-9 w-9 rounded-full object-cover bg-stone-200"
-                        referrerPolicy="no-referrer"
-                      />
+                      <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white shrink-0 shadow-sm">
+                        <User className="h-5 w-5" />
+                      </div>
                       <div>
                         <span className="block text-xs text-stone-400">
                           Ev Sahibi
@@ -7541,7 +7530,7 @@ Müsaitlik durumunu teyit ederek rezervasyonumu netleştirmek istiyorum. Teşekk
           villa={editingVilla}
           onClose={() => setEditingVilla(null)}
           onSave={(updatedVilla) => {
-            const isHostEdit = !isAdmin;
+            const isHostEdit = currentRole !== "admin";
             const updatedVillaWithStatus = isHostEdit 
               ? { ...updatedVilla, approvalStatus: "pending" as const } 
               : updatedVilla;
@@ -8257,17 +8246,11 @@ function AddVillaModal({
                   onChange={(e) => setRegion(e.target.value)}
                   className="w-full rounded-xl border border-stone-250 bg-stone-50 px-3 py-2 text-xs text-stone-850 font-bold focus:outline-none"
                 >
-                  <option value="Sapanca Merkez">🌲 Sapanca Merkez</option>
-                  <option value="Kırkpınar">🌊 Kırkpınar</option>
-                  <option value="Maşukiye">🏔️ Maşukiye</option>
-                  <option value="İstanbul">🏛️ İstanbul</option>
-                  <option value="Bursa">🏔️ Bursa</option>
-                  <option value="Balıkesir">🏖️ Balıkesir</option>
-                  <option value="Yalova">🌊 Yalova</option>
-                  <option value="Sakarya">🌲 Sakarya</option>
-                  <option value="Kocaeli">🏭 Kocaeli</option>
-                  <option value="Tekirdağ">🍇 Tekirdağ</option>
-                  <option value="Çanakkale">⚓ Çanakkale</option>
+                  {REGIONS.filter((r) => r !== "Hepsi").map((reg) => (
+                    <option key={reg} value={reg}>
+                      {reg}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -8852,6 +8835,11 @@ function EditVillaModal({
     villa.slogans || [],
   );
 
+  // Images
+  const [imagesStr, setImagesStr] = useState<string>(
+    (villa.images || []).join('\n')
+  );
+
   const handleAddSrv = () => {
     if (!srvName.trim()) {
       alert("Hizmet adı girmelisiniz!");
@@ -8918,6 +8906,7 @@ function EditVillaModal({
       features: selectedFeatures,
       extraServices: customExtraServices,
       slogans: selectedSlogans,
+      images: imagesStr.split('\n').map(s => s.trim()).filter(Boolean),
       isBoat,
       boatDetails: isBoat
         ? {
@@ -9058,7 +9047,6 @@ function EditVillaModal({
                 </label>
                 <input
                   type="text"
-                  required
                   value={port}
                   onChange={(e) => setPort(e.target.value)}
                   className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs"
@@ -9095,15 +9083,11 @@ function EditVillaModal({
                   onChange={(e) => setRegion(e.target.value)}
                   className="w-full rounded-xl border border-stone-250 bg-stone-50 px-3 py-2 text-xs font-bold focus:outline-none"
                 >
-                  <option value="Sapanca Merkez">Sapanca Merkez</option>
-                  <option value="Kırkpınar">Kırkpınar</option>
-                  <option value="Maşukiye">Maşukiye</option>
-                  <option value="İstanbul">İstanbul</option>
-                  <option value="Bursa">Bursa</option>
-                  <option value="Balıkesir">Balıkesir</option>
-                  <option value="Yalova">Yalova</option>
-                  <option value="Sakarya">Sakarya</option>
-                  <option value="Kocaeli">Kocaeli</option>
+                  {REGIONS.filter((r) => r !== "Hepsi").map((reg) => (
+                    <option key={reg} value={reg}>
+                      {reg}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -9382,12 +9366,16 @@ function EditVillaModal({
 
           {/* RESİM BÖLÜMÜ / UYARI */}
           <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl">
-            <h4 className="text-xs font-black text-stone-700 uppercase tracking-wider mb-1">
-              📷 Resim
+            <h4 className="text-xs font-black text-stone-700 uppercase tracking-wider mb-2">
+              📷 Resim (Her satıra bir resim URL'si giriniz)
             </h4>
-            <p className="text-[11px] text-stone-500 font-medium font-sans">
-              *Resimler ilan bilgileri girdikten sonra ekleyiniz
-            </p>
+            <textarea
+              rows={4}
+              value={imagesStr}
+              onChange={(e) => setImagesStr(e.target.value)}
+              placeholder="https://resim-url-1.jpg&#10;https://resim-url-2.jpg"
+              className="w-full rounded-xl border border-stone-250 px-3 py-2 text-xs text-stone-850 font-mono"
+            />
           </div>
 
           <div className="flex gap-3 pt-4 border-t border-stone-200 justify-end">
