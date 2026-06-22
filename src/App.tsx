@@ -60,6 +60,8 @@ import {
   AVAILABLE_SLOGANS,
   CATEGORIZED_AMENITIES,
   VILLA_TYPES_MAP,
+  MOCK_USERS,
+  type User,
 } from "./data";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -270,6 +272,7 @@ export default function App() {
 
   // Dynamic state for Villas (to allow Host to add real properties, and Admin to delete/update)
   const [villas, setVillas] = useState<Villa[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [showAddVillaModal, setShowAddVillaModal] = useState(false);
   const [editingVilla, setEditingVilla] = useState<Villa | null>(null);
   const [tierEditingVilla, setTierEditingVilla] = useState<Villa | null>(null);
@@ -796,6 +799,19 @@ export default function App() {
       }
     };
     loadVillas();
+
+    // Load Users
+    const savedUsers = localStorage.getItem("airbnb_users");
+    if (savedUsers) {
+      try {
+        setUsers(JSON.parse(savedUsers));
+      } catch(e) {
+        setUsers(MOCK_USERS);
+      }
+    } else {
+      setUsers(MOCK_USERS);
+      localStorage.setItem("airbnb_users", JSON.stringify(MOCK_USERS));
+    }
 
     // 2. Bookings load
     const savedBookings = localStorage.getItem("villabungalov_bookings");
@@ -4907,7 +4923,7 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
           )}
 
           {currentPath === "/admin/users" && (
-            <AdminUsers bookings={bookings} />
+            <AdminUsers users={users} setUsers={setUsers} />
           )}
 
           {currentPath === "/admin/hosts" && (

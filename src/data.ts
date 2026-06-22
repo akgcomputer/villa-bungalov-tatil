@@ -1,3 +1,19 @@
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: 'admin' | 'host' | 'subhost';
+  status: 'active' | 'suspended';
+  createdAt: string;
+}
+
+export const MOCK_USERS: User[] = [
+  { id: 'usr_1', name: 'Sistem Yöneticisi', email: 'admin@villabungalov.com', phone: '+90 555 000 0000', role: 'admin', status: 'active', createdAt: new Date().toISOString() },
+  { id: 'usr_2', name: 'Ahmet Yılmaz', email: 'ahmet@example.com', phone: '+90 532 111 2233', role: 'host', status: 'active', createdAt: new Date().toISOString() },
+  { id: 'usr_3', name: 'Ayşe Kaya', email: 'ayse@example.com', phone: '+90 544 333 4455', role: 'subhost', status: 'active', createdAt: new Date().toISOString() },
+];
+
 export interface ExtraService {
   id: string;
   name: string;

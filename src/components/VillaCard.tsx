@@ -34,6 +34,49 @@ export default function VillaCard({
 }: VillaCardProps) {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isSwiping, setIsSwiping] = useState(false);
+
+  const minSwipeDistance = 30;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsSwiping(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+    setIsSwiping(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const endX = e.changedTouches[0].clientX;
+    const distance = touchStart - endX;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe || isRightSwipe) {
+      setIsSwiping(true);
+      if (isLeftSwipe) {
+        if (villa.images && villa.images.length > 0) {
+          setCurrentImgIndex((prev) => (prev === villa.images.length - 1 ? 0 : prev + 1));
+        }
+      } else {
+        if (villa.images && villa.images.length > 0) {
+          setCurrentImgIndex((prev) => (prev === 0 ? villa.images.length - 1 : prev - 1));
+        }
+      }
+      setTimeout(() => setIsSwiping(false), 50); // reset swiping state after click event cycle
+    } else {
+      setIsSwiping(false);
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (villa.images && villa.images.length > 0) {
@@ -52,10 +95,22 @@ export default function VillaCard({
     <div 
       className="group flex flex-col overflow-hidden bg-transparent cursor-pointer"
       id={`villa-${villa.id}`}
-      onClick={() => onSelect(villa)}
+      onClick={(e) => {
+        if (isSwiping) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        onSelect(villa);
+      }}
     >
       {/* Thumbnail area (Slick Airbnb slider representation) */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-stone-100 shadow-sm border border-stone-100">
+      <div 
+        className="relative aspect-square w-full overflow-hidden rounded-xl bg-stone-100 shadow-sm border border-stone-100 touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <img
           src={villa.images[currentImgIndex] || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&q=80&w=800'}
           alt={villa.name}
@@ -82,7 +137,7 @@ export default function VillaCard({
         </button>
 
         {/* Image navigation controls */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
           <button
             onClick={prevImage}
             className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-stone-800 shadow-xl hover:bg-white active:scale-90"
