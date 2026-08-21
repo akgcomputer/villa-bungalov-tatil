@@ -273,6 +273,9 @@ export default function App() {
   // Dynamic state for Villas (to allow Host to add real properties, and Admin to delete/update)
   const [villas, setVillas] = useState<Villa[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [showLegalWarning, setShowLegalWarning] = useState(() => {
+    return !sessionStorage.getItem("legalWarningSeen");
+  });
   const [showAddVillaModal, setShowAddVillaModal] = useState(false);
   const [editingVilla, setEditingVilla] = useState<Villa | null>(null);
   const [tierEditingVilla, setTierEditingVilla] = useState<Villa | null>(null);
@@ -7608,6 +7611,44 @@ MÃ¼saitlik durumunu teyit ederek rezervasyonumu netleÅŸtirmek istiyorum. Te�
             setTierEditingVilla(null);
           }}
         />
+      )}
+
+      {showLegalWarning && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
+            <button
+              onClick={() => {
+                sessionStorage.setItem("legalWarningSeen", "true");
+                setShowLegalWarning(false);
+              }}
+              className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <h1 className="text-2xl font-black text-stone-900 mb-4 pr-6">
+              YASAL UYARI
+            </h1>
+            <div className="text-sm text-stone-600 space-y-4 leading-relaxed font-medium">
+              <p>
+                5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Hakkında Kanun ve 6563 sayılı Elektronik Ticaretin Düzenlenmesi Hakkında Kanun ile ilgili mevzuat gereğince; platformumuzda yayınlanan ilanlardaki bilgilerin, fiyatların, görsellerin doğruluğu ve hukuki sorumluluğu tamamen ilanı veren kullanıcıya aittir.
+              </p>
+              <p>
+                İlan girişlerinde kimlik/yetki doğrulaması zorunlu olup; yetkisiz, yanıltıcı veya gerçeğe aykırı ilan girişlerinde yasal yaptırımlar uygulanmakta ve ilanlar derhal yayından kaldırılmaktadır.
+              </p>
+            </div>
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => {
+                  sessionStorage.setItem("legalWarningSeen", "true");
+                  setShowLegalWarning(false);
+                }}
+                className="bg-[#FF385C] text-white px-6 py-2.5 rounded-xl font-bold hover:bg-[#E02647] transition-colors"
+              >
+                Anladım
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
